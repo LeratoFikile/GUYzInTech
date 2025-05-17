@@ -1,0 +1,2982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUYz in Tech - Innovation for Everyone</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: rgba(255, 255, 255, 0.9);
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    /* Loading bar styles */
+    .loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      z-index: 9999;
+      transition: width 0.4s ease;
+    }
+
+    .loading-bar.complete {
+      opacity: 0;
+      transition: opacity 0.5s ease 0.5s;
+    }
+
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(14, 255, 255, 0.3);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      padding: 0.5rem 0;
+      text-shadow: 0 0 10px rgba(14, 255, 255, 0.3);
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #0ef;
+      border-radius: 50%;
+      bottom: 12px;
+      right: -12px;
+      box-shadow: 0 0 10px #0ef, 0 0 20px #0ef;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      transition: all 0.3s;
+      font-size: 1rem;
+      font-weight: 500;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: #0ef;
+      text-shadow: 0 0 10px rgba(14, 255, 255, 0.5);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: #0ef;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 800px;
+      padding: 2rem 0;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(14, 255, 255, 0.3);
+    }
+
+    .values {
+      display: flex;
+      gap: 2rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .value-card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 200px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(14, 255, 255, 0.1);
+      border-color: rgba(14, 255, 255, 0.3);
+    }
+
+    .value-card h3 {
+      color: #0ef;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .value-card p {
+      opacity: 0.9;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator .line {
+      width: 2px;
+      height: 30px;
+      background: linear-gradient(to bottom, #ff3e9d, #0ef);
+      margin-bottom: 5px;
+    }
+
+    .scroll-indicator .arrow {
+      border: solid #0ef;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      50% {
+        transform: translateY(10px) translateX(-50%);
+      }
+    }
+
+    .tech-stats {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .stat {
+      text-align: right;
+    }
+
+    .stat h3 {
+      font-size: 2.5rem;
+      color: #0ef;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 100px 5%;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: -10px;
+      left: 0;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+    }
+
+    .about-content {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .about-text {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .about-image {
+      flex: 1;
+      min-height: 300px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(14, 255, 255, 0.2);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #0ef;
+      font-size: 1.2rem;
+      backdrop-filter: blur(5px);
+    }
+
+    .mission-vision {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .mission-card, .vision-card {
+      flex: 1;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .mission-card:hover, .vision-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(14, 255, 255, 0.1);
+      border-color: rgba(14, 255, 255, 0.3);
+    }
+
+    .mission-card h3, .vision-card h3 {
+      color: #ff3e9d;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .mission-card p, .vision-card p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .quote {
+      font-size: 1.8rem;
+      font-style: italic;
+      margin: 3rem 0;
+      padding: 2rem;
+      border-left: 3px solid #0ef;
+      background: rgba(14, 255, 255, 0.1);
+      line-height: 1.5;
+    }
+
+    .quote .gradient-text {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-style: normal;
+    }
+
+    .projects-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      width: calc(50% - 1rem);
+      max-width: 450px;
+      min-width: 300px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(14, 255, 255, 0.1);
+      border-color: rgba(14, 255, 255, 0.3);
+    }
+
+    .project-image {
+      height: 200px;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #0ef;
+      border-bottom: 1px solid rgba(14, 255, 255, 0.2);
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    .project-info h3 {
+      color: #0ef;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .project-info p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tech-tag {
+      background: rgba(14, 255, 255, 0.1);
+      color: #0ef;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(14, 255, 255, 0.3);
+    }
+
+    .community-section {
+      text-align: center;
+    }
+
+    .community-stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 3rem 0;
+    }
+
+    .community-stat {
+      padding: 1.5rem;
+      min-width: 200px;
+    }
+
+    .community-stat h3 {
+      font-size: 2.2rem;
+      color: #ff3e9d;
+      margin-bottom: 0.5rem;
+    }
+
+    .community-stat p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .community-image {
+      height: 350px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem auto;
+      border: 1px solid rgba(14, 255, 255, 0.2);
+      color: #0ef;
+      font-size: 1.2rem;
+      max-width: 800px;
+    }
+
+    /* Game popup styles */
+    .game-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game-container {
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid #0ef;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 0 30px rgba(14, 255, 255, 0.5);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .game-title {
+      color: #0ef;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .close-game {
+      background: #ff3e9d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .close-game:hover {
+      transform: rotate(90deg);
+    }
+
+    #game-canvas {
+      background-color: #111;
+      width: 100%;
+      height: 300px;
+      margin: 0 auto;
+      display: block;
+      border: 1px solid #0ef;
+    }
+
+    .game-controls {
+      margin-top: 1rem;
+      color: #0ef;
+      font-size: 1rem;
+    }
+
+    .game-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .game-btn {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: transform 0.3s;
+    }
+
+    .game-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-top: 70px;
+      }
+
+      nav {
+        padding: 0.8rem 5%;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .quote {
+        font-size: 1.4rem;
+        padding: 1.5rem;
+      }
+
+      .quote .gradient-text {
+        font-size: 1rem;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .about-image {
+        min-height: 250px;
+        width: 100%;
+      }
+
+      .mission-vision {
+        flex-direction: column;
+      }
+
+      .tech-stats {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+        margin-top: 3rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .stat {
+        text-align: left;
+      }
+
+      .project-card {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .project-image {
+        height: 180px;
+      }
+
+      .community-image {
+        height: 250px;
+      }
+    }
+
+     /* Contact Section Styles */
+    .contact-section {
+      padding: 100px 5%;
+      position: relative;
+      background: rgba(0, 0, 0, 0.7);
+      border-top: 1px solid rgba(14, 255, 255, 0.2);
+    }
+
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-info h3 {
+      color: #0ef;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-method:hover {
+      background: rgba(14, 255, 255, 0.1);
+      border-color: rgba(14, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.2rem;
+    }
+
+    .whatsapp-icon {
+      background: #25D366;
+      color: white;
+    }
+
+    .email-icon {
+      background: #D44638;
+      color: white;
+    }
+
+    .contact-text h4 {
+      margin-bottom: 0.3rem;
+      color: #ff3e9d;
+    }
+
+    .contact-text p {
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
+
+    .contact-form {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #0ef;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: transform 0.3s;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Project Modal Styles */
+    .project-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background: rgba(0, 0, 0, 0.9);
+      margin: 5% auto;
+      padding: 2rem;
+      border: 2px solid #0ef;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 0 30px rgba(14, 255, 255, 0.5);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: #ff3e9d;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      margin-bottom: 2rem;
+    }
+
+    .modal-header h3 {
+      font-size: 2rem;
+      color: #0ef;
+      margin-bottom: 1rem;
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 300px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.5rem;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-body {
+      margin-bottom: 2rem;
+    }
+
+    .modal-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-section h4 {
+      color: #ff3e9d;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .modal-section p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: rgba(14, 255, 255, 0.1);
+      color: #0ef;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: 1px solid rgba(14, 255, 255, 0.3);
+    }
+
+    .project-links a:hover {
+      background: rgba(14, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 100px 5%;
+      background: rgba(0, 0, 0, 0.7);
+      border-top: 1px solid rgba(14, 255, 255, 0.2);
+    }
+
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(14, 255, 255, 0.1);
+      border-color: rgba(14, 255, 255, 0.3);
+    }
+
+    .service-card h3 {
+      color: #0ef;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .service-card h3 .icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(14, 255, 255, 0.1);
+    }
+
+    .service-card p {
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card .btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* Community Join Options */
+    .join-options {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .join-option {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(14, 255, 255, 0.1);
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s;
+      border: 1px solid rgba(14, 255, 255, 0.3);
+    }
+
+    .join-option:hover {
+      background: rgba(14, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .join-option .icon {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .whatsapp-option .icon {
+      background: #25D366;
+      color: white;
+    }
+
+    .email-option .icon {
+      background: #D44638;
+      color: white;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .modal-content {
+        margin: 2rem auto;
+        padding: 1.5rem;
+      }
+
+      .modal-header h3 {
+        font-size: 1.5rem;
+      }
+
+      .modal-image {
+        height: 200px;
+      }
+
+      .join-options {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .join-option {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+    /* Chatbot styles */
+    .chatbot-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+    
+    .chatbot-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .chatbot-btn:hover {
+      transform: scale(1.1) rotate(10deg);
+    }
+    
+    .chatbot-window {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 300px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid #0ef;
+      border-radius: 15px;
+      overflow: hidden;
+      transform: scale(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+    
+    .chatbot-window.active {
+      transform: scale(1);
+    }
+    
+    .chatbot-header {
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      padding: 0.8rem;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .chatbot-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    
+    .chatbot-messages {
+      height: 250px;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    
+    .message {
+      margin-bottom: 1rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+    
+    .bot-message {
+      background: rgba(14, 255, 255, 0.2);
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+    
+    .user-message {
+      background: rgba(255, 62, 157, 0.2);
+      align-self: flex-end;
+      margin-left: auto;
+      border-bottom-right-radius: 0;
+    }
+    
+    .chatbot-quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .quick-reply {
+      background: rgba(14, 255, 255, 0.1);
+      border: 1px solid rgba(14, 255, 255, 0.3);
+      color: #0ef;
+      padding: 0.5rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .quick-reply:hover {
+      background: rgba(14, 255, 255, 0.3);
+    }
+    
+    .chatbot-input {
+      display: flex;
+      padding: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .chatbot-input input {
+      flex: 1;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: white;
+    }
+    
+    .chatbot-input button {
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      color: white;
+      border: none;
+      padding: 0 1rem;
+      border-radius: 5px;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .project-card {
+        flex: 0 0 100%;
+      }
+      
+      .project-card.active {
+        transform: scale(1);
+      }
+      
+      .collaborators-circle {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .collaborator {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .chatbot-window {
+        width: 250px;
+      }
+    }
+  </style>
+  <style>
+
+  /* Updated Project Slider Styles */
+  .projects-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .project-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 500px;
+    perspective: 1000px;
+  }
+
+  .project-card {
+    position: absolute;
+    width: 300px;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+  }
+
+  .project-card.prev {
+    left: 10%;
+    transform: translateX(-50%) scale(0.85);
+    filter: blur(2px) brightness(0.8);
+    z-index: 1;
+    opacity: 0.9;
+  }
+
+  .project-card.active {
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    z-index: 3;
+    filter: none;
+  }
+
+  .project-card.next {
+    left: 90%;
+    transform: translateX(-50%) scale(0.85);
+    filter: blur(2px) brightness(0.8);
+    z-index: 1;
+    opacity: 0.9;
+  }
+
+  .project-card.hidden {
+    display: none;
+  }
+
+  .slider-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 4;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .slider-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff3e9d, #0ef);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(14, 255, 255, 0.5);
+    pointer-events: all;
+    margin: 0 20px;
+  }
+
+
+  .slider-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 30px rgba(255, 62, 157, 0.7);
+  }
+
+  /* COLLABORATORS CIRCLE */
+  .collaborators-circle {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    position: relative;
+    margin: 2rem auto;
+    border: 3px solid #0ef;
+    box-shadow: 0 0 30px rgba(14, 255, 255, 0.3),
+                inset 0 0 20px rgba(255, 62, 157, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .collaborator {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    border: 2px solid #ff3e9d;
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    box-shadow: 0 0 15px rgba(255, 62, 157, 0.5);
+  }
+
+  .collaborator:hover {
+    transform: scale(1.3) rotate(10deg);
+    z-index: 2;
+    box-shadow: 0 0 25px rgba(255, 62, 157, 0.9);
+    border-color: #0ef;
+  }
+
+  .collaborator img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: filter 0.3s ease;
+  }
+
+  .collaborator:hover img {
+    filter: grayscale(0%);
+  }
+
+  /* PROJECT MODAL STYLES */
+  .project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .modal-content {
+    background: rgba(0, 0, 0, 0.95);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 2px solid #0ef;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 0 50px rgba(14, 255, 255, 0.3),
+                0 0 30px rgba(255, 62, 157, 0.3);
+    animation: modalFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #ff3e9d;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .close-modal:hover {
+    transform: rotate(90deg) scale(1.2);
+    color: #0ef;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .modal-header h3 {
+    font-size: 2.2rem;
+    color: #0ef;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(14, 255, 255, 0.5);
+  }
+
+  .modal-image {
+    width: 100%;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(14, 255, 255, 0.3);
+  }
+
+  .modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .modal-image:hover img {
+    transform: scale(1.05);
+  }
+
+  .modal-section {
+    margin-bottom: 2rem;
+    border-bottom: 1px dashed rgba(14, 255, 255, 0.3);
+    padding-bottom: 1.5rem;
+  }
+
+  .modal-section h4 {
+    color: #ff3e9d;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .modal-section h4::before {
+    content: '▹';
+    color: #0ef;
+  }
+
+  
+</style>
+</head>
+<body>
+  <!-- Loading bar -->
+  <div class="loading-bar" id="loading-bar"></div>
+  
+  <div id="canvas-container"></div>
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">GUYzInTech</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#community">Community</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="hero">
+      <h1>Redefining <span class="gradient-text">Technology</span> for Everyone</h1>
+      <p class="tagline">Women-led innovation creating impactful, community-driven solutions through education, outreach, and cutting-edge development.</p>
+      <a href="#about" class="btn">Learn More</a>
+      <button id="game-btn" class="btn" style="margin-top: 20px;">Play Game</button>
+      
+      <div class="values">
+        <div class="value-card">
+          <h3>Innovation</h3>
+          <p>Embracing cutting-edge technology to solve real-world problems and create meaningful change.</p>
+        </div>
+        <div class="value-card">
+          <h3>Empowerment</h3>
+          <p>Providing individuals with the tools and skills to thrive in a tech-driven world.</p>
+        </div>
+        <div class="value-card">
+          <h3>Community</h3>
+          <p>Building partnerships to create lasting, positive change in underserved areas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tech-stats">
+      <div class="stat">
+        <h3>1</h3>
+        <p>Community Programs</p>
+      </div>
+      <div class="stat">
+        <h3>200</h3>
+        <p>Lives Impacted</p>
+      </div>
+      <div class="stat">
+        <h3>100%</h3>
+        <p>Inclusive Approach</p>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="line"></div>
+      <div class="arrow"></div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">Who We Are</h2>
+    
+    <div class="quote">
+      "GUYz is like a compass in a crowd — always pointing people in the right direction, no matter how chaotic the world gets."
+      <span class="gradient-text">- Our Guiding Principle</span>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <p><strong>GUYz in Tech is an inclusive, women-led technology company</strong> that creates impactful, community-driven solutions through innovation, education, and outreach. We specialize in software development, artificial intelligence, and digital literacy, all aimed at empowering individuals, supporting businesses, and bridging the gap between people and technology.</p>
+        
+        <p>Our name — <strong>GUYz</strong> — is intentional. It's designed to challenge traditional assumptions and redefine who belongs in the tech space. It represents inclusivity, leadership, and a strong message that technology is for everyone, regardless of gender, age, or background.</p>
+        
+        <p>We are more than just a tech company. We actively engage with our communities through hands-on outreach, providing mentorship, and offering digital literacy programs. From helping youth apply to university to teaching tech skills in underserved communities, we ensure that technology serves people, not the other way around.</p>
+      </div>
+      
+      <div class="about-image">
+        [Team Photo Placeholder]
+      </div>
+    </div>
+    
+    <div class="mission-vision">
+      <div class="mission-card">
+        <h3>Our Mission</h3>
+        <p>To create inclusive, real-world tech solutions that empower individuals, strengthen communities, and make technology accessible, relevant, and transformative for all. We aim to bridge the digital divide through innovation, education, and active community engagement.</p>
+      </div>
+      
+      <div class="vision-card">
+        <h3>Our Vision</h3>
+        <p>To become a leading force in inclusive innovation, using technology to inspire growth, drive social impact, and build a more connected, equitable future for all.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <h2 class="section-title">Our Projects</h2>
+    
+    <div class="quote">
+      "We don't just build technology — we build bridges between people and possibilities."
+      <span class="gradient-text">- Our Development Philosophy</span>
+    </div>
+    
+  <div class="projects-container">
+    <div class="project-slider" id="projectSlider">
+      <!-- Project 1 - RoboCodes -->
+      <div class="project-card active">
+        <div class="project-image">
+          <img src="image.png" alt="RoboCodes Project">
+        </div>
+        <div class="project-info">
+          <h3>RoboCodes</h3>
+          <p>An AI-powered, gamified educational tool designed to teach children coding and robotics in a fun, accessible way.</p>
+          <div class="project-tech">
+            <span class="tech-tag">AI</span>
+            <span class="tech-tag">Education</span>
+            <span class="tech-tag">Gamification</span>
+          </div>
+          <button class="btn read-more" data-modal="robocodes-modal">Read More</button>
+        </div>
+      </div>
+      
+      <!-- Project 2 - QhaweLami -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="qhawe.png" alt="QhaweLami Project">
+        </div>
+        <div class="project-info">
+          <h3>QhaweLami</h3>
+          <p>A gamified AI-powered web app built to combat gender-based violence through interactive learning.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Web App</span>
+            <span class="tech-tag">AI</span>
+            <span class="tech-tag">Social Impact</span>
+          </div>
+          <button class="btn read-more" data-modal="qhawe-modal">Read More</button>
+        </div>
+      </div>
+      
+      <!-- Project 3 - AquaGuard -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="water-meter.jpg" alt="AquaGuard Project">
+        </div>
+        <div class="project-info">
+          <h3>AquaGuard</h3>
+          <p>An IoT-powered gamified web app that helps users monitor water usage and learn conservation techniques.</p>
+          <div class="project-tech">
+            <span class="tech-tag">IoT</span>
+            <span class="tech-tag">Gamification</span>
+            <span class="tech-tag">Web App</span>
+          </div>
+          <button class="btn read-more" data-modal="aquaguard-modal">Read More</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slider-nav">
+      <button class="slider-btn" id="prevBtn">‹</button>
+      <button class="slider-btn" id="nextBtn">›</button>
+    </div>
+  </div>
+</section>
+  </section>
+
+
+  <!-- Community Section -->
+   <section id="community" class="community-section">
+    <h2 class="section-title">Our Community</h2>
+    
+    <div class="quote">
+      "Alone we can do so little; together we can code the future."
+      <span class="gradient-text">- Our Community Mantra</span>
+    </div>
+    
+    <p>At GUYz, we believe technology thrives when it's built by and for diverse communities. Our outreach programs create spaces where everyone can learn, grow, and contribute to the digital world.</p>
+    
+    <div class="community-stats">
+      <div class="community-stat">
+        <h3>1</h3>
+        <p>Workshops Held</p>
+      </div>
+      <div class="community-stat">
+        <h3>200</h3>
+        <p>Community Members</p>
+      </div>
+      <div class="community-stat">
+        <h3>0</h3>
+        <p>Partner Organizations</p>
+      </div>
+    </div>
+    
+    <div class="community-image">
+      [Community Event Photo]
+    </div>
+    
+    <div class="join-options">
+      <a href="https://wa.me/+27681960560" class="join-option whatsapp-option" target="_blank">
+        <div class="icon">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <span>Join via WhatsApp</span>
+      </a>
+      <a href="mailto:guyzconnect@gmail.com" class="join-option email-option" target="_blank">
+        <div class="icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <span>Join via Email</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <h2 class="section-title">Our Services</h2>
+    
+    <div class="quote">
+      "We don't just build software — we craft digital experiences that solve real problems and delight users."
+      <span class="gradient-text">- Our Development Approach</span>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <h3><span class="icon">💻</span> Custom Web & App Development</h3>
+        <p>We create tailored web and mobile applications designed specifically for your business needs. From e-commerce platforms to productivity tools, we build solutions that grow with you.</p>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
+      
+      <div class="service-card">
+        <h3><span class="icon">🎮</span> Gamification Solutions</h3>
+        <p>Specializing in gamified experiences, we help you engage your audience through game mechanics, rewards systems, and interactive elements that boost participation and retention.</p>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
+      
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <h2 class="section-title">Get In Touch</h2>
+    
+    <div class="quote">
+      "Great things in business are never done by one person. They're done by a team of people."
+      <span class="gradient-text">- Let's build something great together</span>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <div class="contact-methods">
+          <a href="https://wa.me/+27681960560" class="contact-method" target="_blank">
+            <div class="contact-icon whatsapp-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-text">
+              <h4>WhatsApp</h4>
+              <p>Chat with us directly for quick responses</p>
+            </div>
+          </a>
+          
+          <a href="mailto:guyzconnect@gmail.com" class="contact-method" target="_blank">
+            <div class="contact-icon email-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Email Us</h4>
+              <p>Send us a detailed message about your needs</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<!-- Project Modals with Collaborators Circle -->
+<div id="robocodes-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h3>RoboCodes</h3>
+      <div class="modal-image">
+        <img src="image.png" alt="RoboCodes Project">
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>About the Project</h4>
+        <p>RoboCodes is an AI-powered, gamified educational tool designed to teach children coding and robotics in a fun, accessible way. The platform brings tech education to life in schools and communities where it's needed most, making complex concepts approachable through interactive lessons and challenges.</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Our Inspiration</h4>
+        <p>We noticed a significant gap in tech education in underserved communities. Many children never get exposure to coding or robotics, putting them at a disadvantage in our increasingly digital world. RoboCodes was born from our desire to democratize tech education and inspire the next generation of innovators.</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Collaborations</h4>
+        <div class="collaborators-circle">
+          <div class="collaborator" style="top: 10px; left: 70px;">
+            <img src="kat.jpg" alt="RoboCodes Project">
+          </div>
+          <div class="collaborator" style="top: 70px; left: 10px;">
+            <img src="kat.jpg" alt="Education Expert">
+          </div>
+          <div class="collaborator" style="top: 70px; right: 10px;">
+            <img src="kat.jpg" alt="Game Designer">
+          </div>
+          <div class="collaborator" style="bottom: 10px; left: 70px;">
+            <img src="qhawe.png" alt="AI Specialist">
+          </div>
+        </div>
+        <p>We partnered with local schools and community centers to pilot the program. Educational psychologists helped us design age-appropriate learning paths, while game designers ensured the experience remained engaging and rewarding for young learners.</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Technologies Used</h4>
+        <div class="project-tech">
+          <span class="tech-tag">AI</span>
+          <span class="tech-tag">Robotics/Coding DBE curriculum</span>
+          <span class="tech-tag">Gamification</span>
+          <span class="tech-tag">HTML/CSS/JS</span>
+          <span class="tech-tag">Three.js</span>
+          <span class="tech-tag">Visual Studio Code</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Express</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="project-links">
+        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="qhawe-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h3>QhaweLami</h3>
+      <div class="modal-image">
+        <img src="qhawe.png" alt="QhaweLami Project">
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>About the Project</h4>
+        <p>QhaweLami (meaning "My Hero" in isiXhosa) is a gamified AI-powered web app built to combat gender-based violence by educating and empowering users through interactive learning. The platform provides resources, real-time assistance, and educational games that teach about healthy relationships and personal safety.</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Our Inspiration</h4>
+        <p>Alarmed by South Africa's high rates of gender-based violence, we wanted to create a tool that could educate and empower individuals while being accessible and engaging. The gamification approach helps break down barriers to discussing difficult topics and makes learning about personal safety more approachable.</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Collaborations</h4>
+        <div class="collaborators-circle">
+          <div class="collaborator" style="top: 10px; left: 70px;">
+            <img src="kat.jpg" alt="NGO Director">
+          </div>
+          <div class="collaborator" style="top: 70px; left: 10px;">
+            <img src="psychologist.jpg" alt="Psychologist">
+          </div>
+          <div class="collaborator" style="top: 70px; right: 10px;">
+            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+          </div>
+          <div class="collaborator" style="bottom: 10px; left: 70px;">
+            <img src="community-leader.jpg" alt="Community Leader">
+          </div>
+        </div>
+        <p>We worked closely with NGOs specializing in gender-based violence prevention, psychologists, and survivors to ensure the content was both accurate and sensitive. Special thanks to developer Ms Katlego Nomsa Mphetseni for her contributions.</p>
+        <p>Contact: katlegonomsa5@gmail.com</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Technologies Used</h4>
+        <div class="project-tech">
+          <span class="tech-tag">Web App</span>
+          <span class="tech-tag">AI</span>
+          <span class="tech-tag">Social Impact</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Vue.js</span>
+          <span class="tech-tag">Gamification</span>
+          <span class="tech-tag">HTML/CSS/JS</span>
+          <span class="tech-tag">Three.js</span>
+          <span class="tech-tag">Visual Studio Code</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Express</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="project-links">
+        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="aquaguard-modal" class="project-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h3>AquaGuard</h3>
+      <div class="modal-image">
+        <img src="water-meter.jpg" alt="AquaGuard Project">
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <h4>About the Project</h4>
+        <p>AquaGuard is an IoT-powered gamified web app that helps users monitor their water usage and learn how to manage their water consumption in real-time. The system gathers data from smart water meters, provides actionable insights, and rewards conservation efforts through a fun, competitive interface.</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Our Inspiration</h4>
+        <p>With increasing water scarcity in many regions, we wanted to create a solution that would make water conservation engaging and rewarding. Traditional water monitoring systems often go unused because they're not engaging - AquaGuard changes that by making water conservation a game with real-world impact.</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Collaborations</h4>
+        <div class="collaborators-circle">
+          <div class="collaborator" style="top: 10px; left: 70px;">
+            <img src="environmental-scientist.jpg" alt="Environmental Scientist">
+          </div>
+          <div class="collaborator" style="top: 70px; left: 10px;">
+            <img src="hardware-engineer.jpg" alt="Hardware Engineer">
+          </div>
+          <div class="collaborator" style="top: 70px; right: 10px;">
+            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+          </div>
+          <div class="collaborator" style="bottom: 10px; left: 70px;">
+            <img src="municipal-officer.jpg" alt="Municipal Officer">
+          </div>
+        </div>
+        <p>We worked closely with environmental scientists to ensure our water-saving tips were scientifically valid. Local municipalities helped us test the system with real households. Special thanks to developers Ms Katlego Nomsa Mphetseni and Ms Relebogile [Last Name] for their contributions.</p>
+        <p>Contact: katlegonomsa5@gmail.com</p>
+        <p>Contact: [Relebogile's Email]</p>
+      </div>
+      
+      <div class="modal-section">
+        <h4>Technologies Used</h4>
+        <div class="project-tech">
+          <span class="tech-tag">IoT</span>
+          <span class="tech-tag">Gamification</span>
+          <span class="tech-tag">Data Visualization</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Raspberry Pi</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="project-links">
+        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Game Popup -->
+  <div class="game-popup" id="game-popup">
+    <div class="game-container">
+      <div class="game-header">
+        <h2 class="game-title">Code Defender</h2>
+        <button class="close-game" id="close-game">×</button>
+      </div>
+      <canvas id="game-canvas"></canvas>
+      <div class="game-controls">
+        <div class="game-stats">
+          <p id="score">Score: 0</p>
+          <p id="level">Level: 1</p>
+          <p id="lives">Lives: 3</p>
+        </div>
+        <p>Use arrow keys to move and space to shoot</p>
+        <button class="game-btn" id="restart-game">Restart Game</button>
+      </div>
+    </div>
+  </div>
+
+ <!-- Chatbot Implementation -->
+<div class="chatbot-container">
+  <button class="chatbot-btn" id="chatbotToggle">💬</button>
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <span>GUYz Assistant</span>
+      <button class="chatbot-close" id="chatbotClose">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="message bot-message">
+        Hi there! How can I help you today?
+      </div>
+    </div>
+    <div class="chatbot-quick-replies">
+      <div class="quick-reply" data-message="Want to work with us?">Want to work with us?</div>
+      <div class="quick-reply" data-message="Tell me about your projects">Tell me about your projects</div>
+      <div class="quick-reply" data-message="How to join your community?">How to join your community?</div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbotInput" placeholder="Type your message...">
+      <button id="chatbotSend">Send</button>
+    </div>
+  </div>
+</div>
+
+  <script>
+    // Loading bar functionality
+    const loadingBar = document.getElementById('loading-bar');
+    
+    function simulateLoading() {
+      let width = 0;
+      loadingBar.style.width = '0%';
+      loadingBar.classList.remove('complete');
+      
+      const interval = setInterval(() => {
+        width += Math.random() * 10;
+        if (width >= 100) {
+          width = 100;
+          clearInterval(interval);
+          loadingBar.classList.add('complete');
+        }
+        loadingBar.style.width = width + '%';
+      }, 100);
+    }
+    
+    // Run loading animation when page loads
+    window.addEventListener('load', () => {
+      simulateLoading();
+      
+      // Also run it when navigating between sections
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', () => {
+          simulateLoading();
+        });
+      });
+    });
+
+    // Three.js animation setup
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+    
+    // Particles setup
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 2000;
+    const posArray = new Float32Array(particlesCount * 3);
+    
+    for (let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 10;
+    }
+    
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    
+    // Materials
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.03,
+      color: 0x00eeff,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending
+    });
+    
+    // Mesh
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+    
+    // Create sphere
+    const sphereGeometry = new THREE.SphereGeometry(1.5, 32, 32);
+    const sphereMaterial = new THREE.MeshBasicMaterial({
+      color: 0xff3e9d,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.2
+    });
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    scene.add(sphere);
+    
+    // Create outer sphere
+    const outerSphereGeometry = new THREE.SphereGeometry(2, 16, 16);
+    const outerSphereMaterial = new THREE.MeshBasicMaterial({
+      color: 0x00eeff,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.1
+    });
+    const outerSphere = new THREE.Mesh(outerSphereGeometry, outerSphereMaterial);
+    scene.add(outerSphere);
+    
+    // Position camera
+    camera.position.z = 5;
+    
+    // Mouse interaction
+    const mouse = {
+      x: 0,
+      y: 0
+    };
+    
+    document.addEventListener('mousemove', (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Rotate particles
+      particlesMesh.rotation.y += 0.001;
+      particlesMesh.rotation.x += 0.0005;
+      
+      // Rotate spheres
+      sphere.rotation.y += 0.002;
+      outerSphere.rotation.y -= 0.001;
+      outerSphere.rotation.x += 0.0005;
+      
+      // Mouse interaction effect
+      particlesMesh.rotation.x += mouse.y * 0.0008;
+      particlesMesh.rotation.y += mouse.x * 0.0008;
+      
+      sphere.rotation.x += mouse.y * 0.001;
+      sphere.rotation.y += mouse.x * 0.001;
+      
+      renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    // Add subtle pulsing animation to the spheres
+    function pulse() {
+      const time = Date.now() * 0.001;
+      sphere.scale.x = 1 + Math.sin(time) * 0.05;
+      sphere.scale.y = 1 + Math.sin(time) * 0.05;
+      sphere.scale.z = 1 + Math.sin(time) * 0.05;
+      
+      outerSphere.scale.x = 1 + Math.cos(time) * 0.05;
+      outerSphere.scale.y = 1 + Math.cos(time) * 0.05;
+      outerSphere.scale.z = 1 + Math.cos(time) * 0.05;
+      
+      requestAnimationFrame(pulse);
+    }
+    
+    pulse();
+
+    // Game functionality
+    const gamePopup = document.getElementById('game-popup');
+    const gameBtn = document.getElementById('game-btn');
+    const closeGame = document.getElementById('close-game');
+    const restartGame = document.getElementById('restart-game');
+    const gameCanvas = document.getElementById('game-canvas');
+    const scoreDisplay = document.getElementById('score');
+    const levelDisplay = document.getElementById('level');
+    const livesDisplay = document.getElementById('lives');
+
+    // Game state
+    let gameInterval;
+    let score = 0;
+    let level = 1;
+    let lives = 3;
+    let gameSpeed = 1;
+    let isGameOver = false;
+    
+    // Player object
+    let player = {
+      x: gameCanvas.width / 2 - 25,
+      y: gameCanvas.height - 60,
+      width: 50,
+      height: 50,
+      speed: 5,
+      color: '#0ef'
+    };
+    
+    // Game objects
+    let bullets = [];
+    let enemies = [];
+    let explosions = [];
+    let powerUps = [];
+    
+    // Controls
+    let keys = {
+      ArrowLeft: false,
+      ArrowRight: false,
+      ArrowUp: false,
+      ArrowDown: false,
+      Space: false
+    };
+    
+    let lastShot = 0;
+    const shotDelay = 300;
+    
+    // Game images (we'll use simple shapes but could be replaced with actual images)
+    const playerImg = {
+      draw(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(this.x + this.width / 2, this.y);
+        ctx.lineTo(this.x, this.y + this.height);
+        ctx.lineTo(this.x + this.width, this.y + this.height);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Add some details
+        ctx.fillStyle = '#ff3e9d';
+        ctx.beginPath();
+        ctx.arc(this.x + this.width / 2, this.y + this.height / 2, 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+    
+    const enemyImg = {
+      draw(ctx, x, y, size) {
+        // Draw bug-like enemy
+        ctx.fillStyle = '#f00';
+        ctx.beginPath();
+        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Eyes
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(x - size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
+        ctx.arc(x + size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Antennae
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(x - size / 4, y - size / 3);
+        ctx.lineTo(x - size / 2, y - size / 1.5);
+        ctx.moveTo(x + size / 4, y - size / 3);
+        ctx.lineTo(x + size / 2, y - size / 1.5);
+        ctx.stroke();
+      }
+    };
+    
+    const powerUpImg = {
+      draw(ctx, x, y, size) {
+        // Draw power-up as a shield
+        ctx.fillStyle = '#0f0';
+        ctx.beginPath();
+        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(x, y, size / 2 - 2, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        ctx.fillStyle = '#fff';
+        ctx.font = `bold ${size / 2}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('+', x, y);
+      }
+    };
+
+    function startGame() {
+      // Reset game state
+      score = 0;
+      level = 1;
+      lives = 3;
+      gameSpeed = 1;
+      isGameOver = false;
+      
+      player = {
+        x: gameCanvas.width / 2 - 25,
+        y: gameCanvas.height - 60,
+        width: 50,
+        height: 50,
+        speed: 5,
+        color: '#0ef'
+      };
+      
+      bullets = [];
+      enemies = [];
+      explosions = [];
+      powerUps = [];
+      
+      // Update displays
+      updateDisplays();
+      
+      // Start game loop
+      if (gameInterval) clearInterval(gameInterval);
+      gameInterval = setInterval(gameLoop, 16);
+      
+      // Draw initial state
+      drawGame();
+    }
+
+    function resetGame() {
+      clearInterval(gameInterval);
+    }
+
+    function gameLoop() {
+      if (isGameOver) return;
+      
+      update();
+      drawGame();
+    }
+
+    function update() {
+      // Move player
+      if (keys.ArrowLeft && player.x > 0) {
+        player.x -= player.speed;
+      }
+      if (keys.ArrowRight && player.x < gameCanvas.width - player.width) {
+        player.x += player.speed;
+      }
+      if (keys.ArrowUp && player.y > 0) {
+        player.y -= player.speed;
+      }
+      if (keys.ArrowDown && player.y < gameCanvas.height - player.height) {
+        player.y += player.speed;
+      }
+      
+      // Shoot bullets
+      const now = Date.now();
+      if (keys.Space && now - lastShot > shotDelay) {
+        bullets.push({
+          x: player.x + player.width / 2 - 2.5,
+          y: player.y,
+          width: 5,
+          height: 15,
+          speed: 7 * gameSpeed,
+          color: '#ff3e9d'
+        });
+        lastShot = now;
+      }
+      
+      // Move bullets
+      for (let i = bullets.length - 1; i >= 0; i--) {
+        bullets[i].y -= bullets[i].speed;
+        
+        // Remove bullets that are off screen
+        if (bullets[i].y < 0) {
+          bullets.splice(i, 1);
+        }
+      }
+      
+      // Spawn enemies based on level
+      const spawnRate = 0.02 + (level * 0.005);
+      if (Math.random() < spawnRate) {
+        const size = 20 + Math.random() * 20;
+        enemies.push({
+          x: Math.random() * (gameCanvas.width - size),
+          y: -size,
+          width: size,
+          height: size,
+          speed: (1 + Math.random() * 2) * gameSpeed,
+          health: Math.ceil(level / 2),
+          maxHealth: Math.ceil(level / 2)
+        });
+      }
+      
+      // Spawn power-ups occasionally
+      if (Math.random() < 0.005) {
+        powerUps.push({
+          x: Math.random() * (gameCanvas.width - 20),
+          y: -20,
+          width: 20,
+          height: 20,
+          speed: 2 * gameSpeed,
+          type: Math.random() > 0.5 ? 'life' : 'power'
+        });
+      }
+      
+      // Move enemies and check collisions
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        enemies[i].y += enemies[i].speed;
+        
+        // Check if enemy hit player
+        if (checkCollision(enemies[i], player)) {
+          lives--;
+          updateDisplays();
+          
+          // Create explosion
+          explosions.push({
+            x: enemies[i].x + enemies[i].width / 2,
+            y: enemies[i].y + enemies[i].height / 2,
+            size: enemies[i].width * 1.5,
+            frames: 10
+          });
+          
+          enemies.splice(i, 1);
+          
+          if (lives <= 0) {
+            gameOver();
+          }
+          continue;
+        }
+        
+        // Check if enemy reached bottom
+        if (enemies[i].y > gameCanvas.height) {
+          enemies.splice(i, 1);
+          continue;
+        }
+        
+        // Check bullet collisions
+        for (let j = bullets.length - 1; j >= 0; j--) {
+          if (checkCollision(bullets[j], enemies[i])) {
+            enemies[i].health--;
+            
+            // Create small explosion
+            explosions.push({
+              x: bullets[j].x + bullets[j].width / 2,
+              y: bullets[j].y + bullets[j].height / 2,
+              size: 15,
+              frames: 5
+            });
+            
+            bullets.splice(j, 1);
+            
+            if (enemies[i].health <= 0) {
+              score += 10 * level;
+              updateDisplays();
+              
+              // Create bigger explosion
+              explosions.push({
+                x: enemies[i].x + enemies[i].width / 2,
+                y: enemies[i].y + enemies[i].height / 2,
+                size: enemies[i].width * 1.5,
+                frames: 15
+              });
+              
+              // Chance to drop power-up
+              if (Math.random() < 0.2) {
+                powerUps.push({
+                  x: enemies[i].x + enemies[i].width / 2 - 10,
+                  y: enemies[i].y + enemies[i].height / 2 - 10,
+                  width: 20,
+                  height: 20,
+                  speed: 2,
+                  type: Math.random() > 0.5 ? 'life' : 'power'
+                });
+              }
+              
+              enemies.splice(i, 1);
+              
+              // Check level progression
+              if (score >= level * 100) {
+                levelUp();
+              }
+            }
+            break;
+          }
+        }
+      }
+      
+      // Move power-ups
+      for (let i = powerUps.length - 1; i >= 0; i--) {
+        powerUps[i].y += powerUps[i].speed;
+        
+        // Check if power-up collected
+        if (checkCollision(powerUps[i], player)) {
+          if (powerUps[i].type === 'life') {
+            lives++;
+          } else {
+            // Power-up effect (faster shooting temporarily)
+            player.speed *= 1.5;
+            setTimeout(() => {
+              player.speed /= 1.5;
+            }, 5000);
+          }
+          updateDisplays();
+          powerUps.splice(i, 1);
+          continue;
+        }
+        
+        // Remove if off screen
+        if (powerUps[i].y > gameCanvas.height) {
+          powerUps.splice(i, 1);
+        }
+      }
+      
+      // Update explosions
+      for (let i = explosions.length - 1; i >= 0; i--) {
+        explosions[i].frames--;
+        if (explosions[i].frames <= 0) {
+          explosions.splice(i, 1);
+        }
+      }
+    }
+
+    function checkCollision(obj1, obj2) {
+      return obj1.x < obj2.x + obj2.width &&
+             obj1.x + obj1.width > obj2.x &&
+             obj1.y < obj2.y + obj2.height &&
+             obj1.y + obj1.height > obj2.y;
+    }
+
+    function drawGame() {
+      const ctx = gameCanvas.getContext('2d');
+      
+      // Clear canvas
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+      
+      // Draw starry background
+      ctx.fillStyle = '#fff';
+      for (let i = 0; i < 50; i++) {
+        const x = Math.random() * gameCanvas.width;
+        const y = (Math.random() * gameCanvas.height + Date.now() / 100) % gameCanvas.height;
+        const size = Math.random() * 2;
+        ctx.fillRect(x, y, size, size);
+      }
+      
+      // Draw explosions
+      for (let explosion of explosions) {
+        const radius = explosion.size * (1 - explosion.frames / 15);
+        const gradient = ctx.createRadialGradient(
+          explosion.x, explosion.y, 0,
+          explosion.x, explosion.y, radius
+        );
+        gradient.addColorStop(0, '#ff3e9d');
+        gradient.addColorStop(0.5, '#f80');
+        gradient.addColorStop(1, 'transparent');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(explosion.x, explosion.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      
+      // Draw bullets
+      for (let bullet of bullets) {
+        ctx.fillStyle = bullet.color;
+        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+        
+        // Add glow effect
+        ctx.shadowColor = bullet.color;
+        ctx.shadowBlur = 5;
+        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+        ctx.shadowBlur = 0;
+      }
+      
+      // Draw enemies
+      for (let enemy of enemies) {
+        enemyImg.draw(ctx, enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width);
+        
+        // Draw health bar
+        if (enemy.health < enemy.maxHealth) {
+          const healthWidth = enemy.width * (enemy.health / enemy.maxHealth);
+          ctx.fillStyle = '#f00';
+          ctx.fillRect(enemy.x, enemy.y - 10, enemy.width, 3);
+          ctx.fillStyle = '#0f0';
+          ctx.fillRect(enemy.x, enemy.y - 10, healthWidth, 3);
+        }
+      }
+      
+      // Draw power-ups
+      for (let powerUp of powerUps) {
+        powerUpImg.draw(ctx, powerUp.x + powerUp.width / 2, powerUp.y + powerUp.height / 2, powerUp.width);
+      }
+      
+      // Draw player
+      playerImg.draw(ctx);
+      
+      // Draw HUD
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+      ctx.fillRect(0, 0, gameCanvas.width, 30);
+      
+      ctx.fillStyle = '#0ef';
+      ctx.font = '14px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText(`Score: ${score}`, 10, 20);
+      
+      ctx.textAlign = 'center';
+      ctx.fillText(`Level: ${level}`, gameCanvas.width / 2, 20);
+      
+      ctx.textAlign = 'right';
+      ctx.fillText(`Lives: ${lives}`, gameCanvas.width - 10, 20);
+    }
+
+    function updateDisplays() {
+      scoreDisplay.textContent = `Score: ${score}`;
+      levelDisplay.textContent = `Level: ${level}`;
+      livesDisplay.textContent = `Lives: ${lives}`;
+    }
+
+    function levelUp() {
+      level++;
+      gameSpeed *= 1.1;
+      updateDisplays();
+      
+      // Flash the screen
+      const ctx = gameCanvas.getContext('2d');
+      ctx.fillStyle = 'rgba(14, 255, 255, 0.3)';
+      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+      
+      // Show level up message
+      ctx.fillStyle = '#ff3e9d';
+      ctx.font = '24px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(`LEVEL ${level}`, gameCanvas.width / 2, gameCanvas.height / 2);
+    }
+
+    function gameOver() {
+      isGameOver = true;
+      clearInterval(gameInterval);
+      
+      const ctx = gameCanvas.getContext('2d');
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+      
+      ctx.fillStyle = '#f00';
+      ctx.font = '30px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('GAME OVER', gameCanvas.width / 2, gameCanvas.height / 2 - 30);
+      
+      ctx.fillStyle = '#fff';
+      ctx.font = '20px Arial';
+      ctx.fillText(`Final Score: ${score}`, gameCanvas.width / 2, gameCanvas.height / 2 + 20);
+      
+      ctx.fillStyle = '#0ef';
+      ctx.font = '16px Arial';
+      ctx.fillText('Click Restart to play again', gameCanvas.width / 2, gameCanvas.height / 2 + 60);
+    }
+
+    // Handle keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (gamePopup.style.display !== 'flex') return;
+      
+      switch(e.key) {
+        case 'ArrowLeft': keys.ArrowLeft = true; break;
+        case 'ArrowRight': keys.ArrowRight = true; break;
+        case 'ArrowUp': keys.ArrowUp = true; break;
+        case 'ArrowDown': keys.ArrowDown = true; break;
+        case ' ': keys.Space = true; e.preventDefault(); break;
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      switch(e.key) {
+        case 'ArrowLeft': keys.ArrowLeft = false; break;
+        case 'ArrowRight': keys.ArrowRight = false; break;
+        case 'ArrowUp': keys.ArrowUp = false; break;
+        case 'ArrowDown': keys.ArrowDown = false; break;
+        case ' ': keys.Space = false; e.preventDefault(); break;
+      }
+    });
+
+    // Show/hide game popup
+    gameBtn.addEventListener('click', () => {
+      gamePopup.style.display = 'flex';
+      startGame();
+    });
+
+    closeGame.addEventListener('click', () => {
+      gamePopup.style.display = 'none';
+      resetGame();
+    });
+
+    restartGame.addEventListener('click', () => {
+      resetGame();
+      startGame();
+    });
+
+    // Set canvas size properly
+    function resizeCanvas() {
+      const size = Math.min(400, window.innerWidth * 0.9);
+      gameCanvas.width = size;
+      gameCanvas.height = 300;
+      
+      // Adjust player position if canvas size changes
+      if (player) {
+        player.x = gameCanvas.width / 2 - 25;
+        player.y = gameCanvas.height - 60;
+      }
+    }
+
+    window.addEventListener('load', () => {
+      resizeCanvas();
+      simulateLoading();
+    });
+    window.addEventListener('resize', resizeCanvas);
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+  <script>
+    // [Previous JavaScript remains unchanged until the end]
+
+    // Add these new scripts at the end of your existing JavaScript
+
+    // Project Modals functionality
+    document.querySelectorAll('.read-more').forEach(button => {
+      button.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        modal.style.display = 'block';
+        
+        // Add loading animation
+        const images = modal.querySelectorAll('img');
+        images.forEach(img => {
+          img.style.opacity = '0';
+          img.onload = () => {
+            img.style.transition = 'opacity 0.5s ease';
+            img.style.opacity = '1';
+          };
+        });
+      });
+    });
+
+    document.querySelectorAll('.close-modal').forEach(button => {
+      button.addEventListener('click', function() {
+        this.closest('.project-modal').style.display = 'none';
+      });
+    });
+
+    // Close modal when clicking outside content
+    window.addEventListener('click', function(event) {
+      document.querySelectorAll('.project-modal').forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Here you would typically send this data to your server
+      // For now, we'll simulate a successful submission
+      
+      // Show success message
+      alert(`Thank you, ${name}! Your message has been sent. We'll get back to you soon at ${email}.`);
+      
+      // Reset form
+      this.reset();
+    });
+
+    // Add Font Awesome for icons (if not already included)
+    if (!document.querySelector('link[href*="font-awesome"]')) {
+      const faLink = document.createElement('link');
+      faLink.rel = 'stylesheet';
+      faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+      document.head.appendChild(faLink);
+    }
+
+    // Smooth scroll to contact section
+    document.querySelectorAll('a[href="#contact"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Add a slight pulse animation to draw attention to the form
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.style.transform = 'scale(1.02)';
+        setTimeout(() => {
+          contactForm.style.transform = 'scale(1)';
+        }, 300);
+      });
+    });
+
+    // Add hover effects to buttons for better feedback
+    document.querySelectorAll('.btn, .join-option, .project-links a').forEach(button => {
+      button.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+        this.style.boxShadow = '0 5px 15px rgba(14, 255, 255, 0.3)';
+      });
+      
+      button.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = 'none';
+      });
+    });
+
+    // Add focus styles for accessibility
+    document.querySelectorAll('a, button, input, textarea').forEach(element => {
+      element.addEventListener('focus', function() {
+        this.style.outline = '2px solid #0ef';
+        this.style.outlineOffset = '2px';
+      });
+      
+      element.addEventListener('blur', function() {
+        this.style.outline = 'none';
+      });
+    });
+  </script>
+  
+
+<script>
+
+  // Project Slider Functionality
+  const slider = document.querySelector('.project-slider');
+  const cards = document.querySelectorAll('.project-card');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+
+  function updateSlider() {
+    cards.forEach((card, index) => {
+      card.classList.remove('prev', 'active', 'next', 'hidden');
+      
+      if (index === currentIndex) {
+        card.classList.add('active');
+      } else if (index === (currentIndex + 1) % cards.length) {
+        card.classList.add('next');
+      } else if (index === (currentIndex - 1 + cards.length) % cards.length) {
+        card.classList.add('prev');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  function slide(direction) {
+    currentIndex = (currentIndex + direction + cards.length) % cards.length;
+    updateSlider();
+    animateButton(direction === -1 ? prevBtn : nextBtn);
+  }
+
+  prevBtn.addEventListener('click', () => slide(-1));
+  nextBtn.addEventListener('click', () => slide(1));
+
+  function animateButton(btn) {
+    btn.style.transform = 'scale(0.8)';
+    setTimeout(() => {
+      btn.style.transform = 'scale(1)';
+    }, 200);
+  }
+
+  // Initialize slider
+  updateSlider();
+
+
+  // Project Modal Functionality
+  document.querySelectorAll('.read-more').forEach(button => {
+    button.addEventListener('click', function() {
+      const modalId = this.getAttribute('data-modal');
+      const modal = document.getElementById(modalId);
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.querySelectorAll('.close-modal').forEach(button => {
+    button.addEventListener('click', function() {
+      this.closest('.project-modal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+  });
+
+  window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('project-modal')) {
+      event.target.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+   // Enhanced Chatbot Functionality
+  const chatbotToggle = document.getElementById('chatbotToggle');
+  const chatbotWindow = document.getElementById('chatbotWindow');
+  const chatbotClose = document.getElementById('chatbotClose');
+  const chatbotMessages = document.getElementById('chatbotMessages');
+  const chatbotInput = document.getElementById('chatbotInput');
+  const chatbotSend = document.getElementById('chatbotSend');
+  const quickReplies = document.querySelectorAll('.quick-reply');
+
+  chatbotToggle.addEventListener('click', () => {
+    chatbotWindow.classList.toggle('active');
+  });
+
+  chatbotClose.addEventListener('click', () => {
+    chatbotWindow.classList.remove('active');
+  });
+
+  function addMessage(text, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+    messageDiv.textContent = text;
+    chatbotMessages.appendChild(messageDiv);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  const botResponses = {
+    'work with us': "We'd love to collaborate! Here's how to reach us:\n\n📧 guyzconnect@gmail.com\n📱 +27 68 196 0560\n💬 WhatsApp: +27 68 196 0560\n\nOr fill out our contact form below!",
+    'projects': "Our current projects:\n\n🤖 RoboCodes - AI education platform\n🛡️ QhaweLami - GBV prevention app\n💧 AquaGuard - Water monitoring system\n\nClick any project to learn more!",
+    'community': "Join our community through:\n\n🔹 Monthly tech workshops\n🔹 Hackathons\n🔹 Mentorship programs\n🔹 Digital literacy initiatives\n\nVisit our Community section for upcoming events!",
+    'services': "We offer:\n\n💻 Custom Web & App Development\n🎮 Gamification Solutions\n🤖 AI & IoT Integration\n📚 Tech Education Programs\n\nLet us know what you're interested in!",
+    'team': "GUYz is a women-led tech collective with diverse expertise:\n\n👩‍💻 Developers\n🎨 Designers\n📊 Data Scientists\n👩‍🏫 Educators\n\nWe're passionate about inclusive tech solutions!",
+    'mission': "Our mission is to create inclusive, real-world tech solutions that empower individuals, strengthen communities, and make technology accessible for all.",
+    'location': "We're based in South Africa but work with partners globally!\n\n📍 Main Office: Pretoria, South Africa\n🌍 Remote Teams: Worldwide\n\nOur digital programs reach communities everywhere.",
+    'help': "I can help with:\n\n• Project information\n• Team details\n• Services offered\n• Community programs\n• Contact information\n\nWhat would you like to know?",
+    'default': "I'm not sure I understand. Try asking about:\n\n• Our projects\n• Working with us\n• Community programs\n• Our services\n• The GUYz team"
+  };
+
+  function handleUserMessage(message) {
+    addMessage(message, true);
+    chatbotInput.value = '';
+    
+    setTimeout(() => {
+      const lowerMsg = message.toLowerCase();
+      let response = botResponses.default;
+      
+      if (lowerMsg.includes('work') || lowerMsg.includes('collab') || lowerMsg.includes('contact')) {
+        response = botResponses['work with us'];
+      } else if (lowerMsg.includes('project') || lowerMsg.includes('app') || lowerMsg.includes('product')) {
+        response = botResponses.projects;
+      } else if (lowerMsg.includes('community') || lowerMsg.includes('join') || lowerMsg.includes('program')) {
+        response = botResponses.community;
+      } else if (lowerMsg.includes('service') || lowerMsg.includes('offer') || lowerMsg.includes('provide')) {
+        response = botResponses.services;
+      } else if (lowerMsg.includes('team') || lowerMsg.includes('who are you') || lowerMsg.includes('founder')) {
+        response = botResponses.team;
+      } else if (lowerMsg.includes('mission') || lowerMsg.includes('vision') || lowerMsg.includes('purpose')) {
+        response = botResponses.mission;
+      } else if (lowerMsg.includes('location') || lowerMsg.includes('where') || lowerMsg.includes('based')) {
+        response = botResponses.location;
+      } else if (lowerMsg.includes('help') || lowerMsg.includes('support') || lowerMsg.includes('what can you do')) {
+        response = botResponses.help;
+      }
+      
+      addMessage(response);
+    }, 800);
+  }
+
+  chatbotSend.addEventListener('click', () => {
+    const message = chatbotInput.value.trim();
+    if (message) handleUserMessage(message);
+  });
+
+  chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const message = chatbotInput.value.trim();
+      if (message) handleUserMessage(message);
+    }
+  });
+
+  // Add more quick replies
+  const quickReplyData = [
+    "Want to work with us?",
+    "Tell me about your projects",
+    "How to join your community?",
+    "What services do you offer?",
+    "Tell me about your team",
+    "What's your mission?"
+  ];
+
+  const quickRepliesContainer = document.querySelector('.chatbot-quick-replies');
+  quickRepliesContainer.innerHTML = ''; // Clear existing replies
+
+  quickReplyData.forEach(replyText => {
+    const reply = document.createElement('div');
+    reply.classList.add('quick-reply');
+    reply.textContent = replyText;
+    reply.addEventListener('click', () => {
+      handleUserMessage(replyText);
+    });
+    quickRepliesContainer.appendChild(reply);
+  });
+
+  // Initialize with welcome message
+  setTimeout(() => {
+    addMessage("Hi there! I'm the GUYz assistant. How can I help you today?");
+  }, 1000);
+</script>
+</body>
+</html>
