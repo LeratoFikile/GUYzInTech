@@ -670,6 +670,32 @@
       transform: translateY(-3px);
     }
 
+    /* Touch controls for mobile */
+    .touch-controls {
+      display: none;
+      justify-content: center;
+      margin-top: 1rem;
+      gap: 1rem;
+    }
+
+    .touch-btn {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .touch-btn:active {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
     /* Contact Section Styles */
     .contact-section {
       padding: 70px 5%; /* Reduced */
@@ -926,6 +952,45 @@
       transform: translateY(-3px);
     }
 
+    /* Collaborators Section */
+    .collaborators-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .collaborator-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+    }
+
+    .collaborator-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ff3e9d;
+      box-shadow: 0 0 10px rgba(255, 62, 157, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .collaborator-img:hover {
+      transform: scale(1.1);
+      border-color: #0ef;
+      box-shadow: 0 0 15px rgba(14, 255, 255, 0.7);
+    }
+
+    .collaborator-name {
+      margin-top: 0.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #0ef;
+    }
+
     /* Services Section */
     .services-section {
       padding: 70px 5%; /* Reduced */
@@ -934,15 +999,13 @@
     }
 
     .services-grid {
-      display: flex;
-      flex-direction: column; /* Stack on mobile */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem; /* Reduced */
       margin-top: 2rem; /* Reduced */
     }
 
     .service-card {
-      flex: 1;
-      min-width: 100%; /* Full width */
       background: rgba(0, 0, 0, 0.6);
       padding: 1.5rem; /* Reduced */
       border-radius: 10px;
@@ -1036,6 +1099,93 @@
     .email-option .icon {
       background: #D44638;
       color: white;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 2rem 5%;
+      border-top: 1px solid rgba(14, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+    }
+
+    .whatsapp-link {
+      background: #25D366;
+    }
+
+    .instagram-link {
+      background: #E1306C;
+    }
+
+    .tiktok-link {
+      background: #000;
+    }
+
+    .email-link {
+      background: #D44638;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .footer-links a {
+      color: #0ef;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #ff3e9d;
+      text-decoration: underline;
+    }
+
+    .footer-copyright {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
 
     /* Chatbot styles */
@@ -1180,49 +1330,6 @@
       font-size: 0.9rem; /* Smaller */
     }
 
-    /* COLLABORATORS CIRCLE */
-    .collaborators-circle {
-      width: 180px; /* Smaller */
-      height: 180px;
-      border-radius: 50%;
-      position: relative;
-      margin: 1.5rem auto; /* Reduced */
-      border: 2px solid #0ef; /* Thinner */
-      box-shadow: 0 0 20px rgba(14, 255, 255, 0.3), /* Smaller shadow */
-                  inset 0 0 15px rgba(255, 62, 157, 0.3);
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .collaborator {
-      width: 50px; /* Smaller */
-      height: 50px;
-      border-radius: 50%;
-      overflow: hidden;
-      position: absolute;
-      border: 2px solid #ff3e9d;
-      transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      box-shadow: 0 0 10px rgba(255, 62, 157, 0.5); /* Smaller shadow */
-    }
-
-    .collaborator:hover {
-      transform: scale(1.2) rotate(10deg); /* Less dramatic */
-      z-index: 2;
-      box-shadow: 0 0 15px rgba(255, 62, 157, 0.9); /* Smaller shadow */
-      border-color: #0ef;
-    }
-
-    .collaborator img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(30%);
-      transition: filter 0.3s ease;
-    }
-
-    .collaborator:hover img {
-      filter: grayscale(0%);
-    }
-
     /* Mobile menu styles */
     @media (max-width: 768px) {
       .menu-toggle {
@@ -1253,30 +1360,9 @@
         font-size: 1.2rem;
       }
       
-      /* Adjust collaborator positions for mobile */
-      .collaborator {
-        width: 40px;
-        height: 40px;
-      }
-      
-      .collaborator:nth-child(1) {
-        top: 5px;
-        left: 60px;
-      }
-      
-      .collaborator:nth-child(2) {
-        top: 60px;
-        left: 5px;
-      }
-      
-      .collaborator:nth-child(3) {
-        top: 60px;
-        right: 5px;
-      }
-      
-      .collaborator:nth-child(4) {
-        bottom: 5px;
-        left: 60px;
+      /* Show touch controls on mobile */
+      .touch-controls {
+        display: flex;
       }
     }
 
@@ -1379,14 +1465,6 @@
         flex-direction: row;
       }
       
-      .services-grid {
-        flex-direction: row;
-      }
-      
-      .join-options {
-        flex-direction: row;
-      }
-      
       .modal-footer {
         flex-direction: row;
       }
@@ -1407,14 +1485,13 @@
         padding: 1rem;
       }
       
-      .collaborators-circle {
-        width: 150px;
-        height: 150px;
+      .collaborator-card {
+        width: 100px;
       }
       
-      .collaborator {
-        width: 35px;
-        height: 35px;
+      .collaborator-img {
+        width: 60px;
+        height: 60px;
       }
     }
   </style>
@@ -1655,6 +1732,18 @@
         <p>Specializing in gamified experiences, we help you engage your audience through game mechanics, rewards systems, and interactive elements that boost participation and retention.</p>
         <a href="#contact" class="btn">Talk to us</a>
       </div>
+
+      <div class="service-card">
+        <h3><span class="icon">🤖</span> AI Integration</h3>
+        <p>Implement cutting-edge artificial intelligence solutions to automate processes, gain insights from data, and create intelligent applications tailored to your needs.</p>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
+
+      <div class="service-card">
+        <h3><span class="icon">🌐</span> Digital Literacy Programs</h3>
+        <p>Comprehensive training programs designed to equip individuals and organizations with essential digital skills for the modern world.</p>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
     </div>
   </section>
 
@@ -1718,7 +1807,7 @@
     </div>
   </section>
 
-<!-- Project Modals with Collaborators Circle -->
+<!-- Project Modals with Collaborators Section -->
 <div id="robocodes-modal" class="project-modal">
   <div class="modal-content">
     <span class="close-modal">&times;</span>
@@ -1741,18 +1830,22 @@
       
       <div class="modal-section">
         <h4>Collaborations</h4>
-        <div class="collaborators-circle">
-          <div class="collaborator" style="top: 10px; left: 70px;">
-            <img src="kat.jpg" alt="RoboCodes Project">
+        <div class="collaborators-container">
+          <div class="collaborator-card">
+            <img src="kat.jpg" alt="Project Lead" class="collaborator-img">
+            <div class="collaborator-name">Project Lead</div>
           </div>
-          <div class="collaborator" style="top: 70px; left: 10px;">
-            <img src="kat.jpg" alt="Education Expert">
+          <div class="collaborator-card">
+            <img src="kat.jpg" alt="Education Expert" class="collaborator-img">
+            <div class="collaborator-name">Education Expert</div>
           </div>
-          <div class="collaborator" style="top: 70px; right: 10px;">
-            <img src="kat.jpg" alt="Game Designer">
+          <div class="collaborator-card">
+            <img src="kat.jpg" alt="Game Designer" class="collaborator-img">
+            <div class="collaborator-name">Game Designer</div>
           </div>
-          <div class="collaborator" style="bottom: 10px; left: 70px;">
-            <img src="qhawe.png" alt="AI Specialist">
+          <div class="collaborator-card">
+            <img src="qhawe.png" alt="AI Specialist" class="collaborator-img">
+            <div class="collaborator-name">AI Specialist</div>
           </div>
         </div>
         <p>We partnered with local schools and community centers to pilot the program. Educational psychologists helped us design age-appropriate learning paths, while game designers ensured the experience remained engaging and rewarding for young learners.</p>
@@ -1804,18 +1897,22 @@
       
       <div class="modal-section">
         <h4>Collaborations</h4>
-        <div class="collaborators-circle">
-          <div class="collaborator" style="top: 10px; left: 70px;">
-            <img src="kat.jpg" alt="NGO Director">
+        <div class="collaborators-container">
+          <div class="collaborator-card">
+            <img src="kat.jpg" alt="NGO Director" class="collaborator-img">
+            <div class="collaborator-name">NGO Director</div>
           </div>
-          <div class="collaborator" style="top: 70px; left: 10px;">
-            <img src="psychologist.jpg" alt="Psychologist">
+          <div class="collaborator-card">
+            <img src="psychologist.jpg" alt="Psychologist" class="collaborator-img">
+            <div class="collaborator-name">Psychologist</div>
           </div>
-          <div class="collaborator" style="top: 70px; right: 10px;">
-            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+          <div class="collaborator-card">
+            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni" class="collaborator-img">
+            <div class="collaborator-name">Katlego Nomsa Mphetseni</div>
           </div>
-          <div class="collaborator" style="bottom: 10px; left: 70px;">
-            <img src="community-leader.jpg" alt="Community Leader">
+          <div class="collaborator-card">
+            <img src="community-leader.jpg" alt="Community Leader" class="collaborator-img">
+            <div class="collaborator-name">Community Leader</div>
           </div>
         </div>
         <p>We worked closely with NGOs specializing in gender-based violence prevention, psychologists, and survivors to ensure the content was both accurate and sensitive. Special thanks to developer Ms Katlego Nomsa Mphetseni for her contributions.</p>
@@ -1871,18 +1968,22 @@
       
       <div class="modal-section">
         <h4>Collaborations</h4>
-        <div class="collaborators-circle">
-          <div class="collaborator" style="top: 10px; left: 70px;">
-            <img src="environmental-scientist.jpg" alt="Environmental Scientist">
+        <div class="collaborators-container">
+          <div class="collaborator-card">
+            <img src="environmental-scientist.jpg" alt="Environmental Scientist" class="collaborator-img">
+            <div class="collaborator-name">Environmental Scientist</div>
           </div>
-          <div class="collaborator" style="top: 70px; left: 10px;">
-            <img src="hardware-engineer.jpg" alt="Hardware Engineer">
+          <div class="collaborator-card">
+            <img src="hardware-engineer.jpg" alt="Hardware Engineer" class="collaborator-img">
+            <div class="collaborator-name">Hardware Engineer</div>
           </div>
-          <div class="collaborator" style="top: 70px; right: 10px;">
-            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+          <div class="collaborator-card">
+            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni" class="collaborator-img">
+            <div class="collaborator-name">Katlego Nomsa Mphetseni</div>
           </div>
-          <div class="collaborator" style="bottom: 10px; left: 70px;">
-            <img src="municipal-officer.jpg" alt="Municipal Officer">
+          <div class="collaborator-card">
+            <img src="municipal-officer.jpg" alt="Municipal Officer" class="collaborator-img">
+            <div class="collaborator-name">Municipal Officer</div>
           </div>
         </div>
         <p>We worked closely with environmental scientists to ensure our water-saving tips were scientifically valid. Local municipalities helped us test the system with real households. Special thanks to developers Ms Katlego Nomsa Mphetseni and Ms Relebogile [Last Name] for their contributions.</p>
@@ -1911,25 +2012,61 @@
   </div>
 </div>
 
-  <!-- Game Popup -->
+  <!-- Game Popup - Memory Match Game -->
   <div class="game-popup" id="game-popup">
     <div class="game-container">
       <div class="game-header">
-        <h2 class="game-title">Code Defender</h2>
+        <h2 class="game-title">Memory Match</h2>
         <button class="close-game" id="close-game">×</button>
       </div>
       <canvas id="game-canvas"></canvas>
       <div class="game-controls">
         <div class="game-stats">
-          <p id="score">Score: 0</p>
-          <p id="level">Level: 1</p>
-          <p id="lives">Lives: 3</p>
+          <p id="score">Matches: 0</p>
+          <p id="moves">Moves: 0</p>
+          <p id="timer">Time: 0s</p>
         </div>
-        <p>Use arrow keys to move and space to shoot</p>
-        <button class="game-btn" id="restart-game">Restart Game</button>
+        <div class="touch-controls">
+          <div class="touch-btn" id="new-game-btn">🔄</div>
+        </div>
+        <button class="game-btn" id="restart-game">New Game</button>
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">GUYzInTech</div>
+      
+      <div class="footer-social">
+        <a href="https://wa.me/+27681960560" class="social-link whatsapp-link" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="social-link instagram-link" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="social-link tiktok-link" target="_blank">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="mailto:guyzconnect@gmail.com" class="social-link email-link" target="_blank">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </div>
+      
+      <div class="footer-copyright">
+        &copy; 2024 GUYzInTech. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
  <!-- Chatbot Implementation -->
 <div class="chatbot-container">
@@ -2122,539 +2259,293 @@
     
     pulse();
 
-    // Game functionality
+    // Memory Match Game
     const gamePopup = document.getElementById('game-popup');
     const gameBtn = document.getElementById('game-btn');
     const closeGame = document.getElementById('close-game');
     const restartGame = document.getElementById('restart-game');
+    const newGameBtn = document.getElementById('new-game-btn');
     const gameCanvas = document.getElementById('game-canvas');
     const scoreDisplay = document.getElementById('score');
-    const levelDisplay = document.getElementById('level');
-    const livesDisplay = document.getElementById('lives');
+    const movesDisplay = document.getElementById('moves');
+    const timerDisplay = document.getElementById('timer');
 
     // Game state
     let gameInterval;
-    let score = 0;
-    let level = 1;
-    let lives = 3;
-    let gameSpeed = 1;
-    let isGameOver = false;
+    let timerInterval;
+    let seconds = 0;
+    let matches = 0;
+    let moves = 0;
+    let firstCard = null;
+    let secondCard = null;
+    let canFlip = true;
+    let cardValues = [];
+    let cardElements = [];
+    let matchedCards = [];
+    let gameStarted = false;
     
-    // Player object
-    let player = {
-      x: gameCanvas.width / 2 - 25,
-      y: gameCanvas.height - 60,
-      width: 50,
-      height: 50,
-      speed: 5,
-      color: '#0ef'
-    };
+    // Card symbols (using emoji for simplicity)
+    const symbols = ['💻', '🎮', '🤖', '🌐', '🔌', '📱', '💡', '🔋'];
     
-    // Game objects
-    let bullets = [];
-    let enemies = [];
-    let explosions = [];
-    let powerUps = [];
+    // Game dimensions
+    const rows = 4;
+    const cols = 4;
+    const totalCards = rows * cols;
     
-    // Controls
-    let keys = {
-      ArrowLeft: false,
-      ArrowRight: false,
-      ArrowUp: false,
-      ArrowDown: false,
-      Space: false
-    };
-    
-    let lastShot = 0;
-    const shotDelay = 300;
-    
-    // Game images (we'll use simple shapes but could be replaced with actual images)
-    const playerImg = {
-      draw(ctx) {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.moveTo(this.x + this.width / 2, this.y);
-        ctx.lineTo(this.x, this.y + this.height);
-        ctx.lineTo(this.x + this.width, this.y + this.height);
-        ctx.closePath();
-        ctx.fill();
-        
-        // Add some details
-        ctx.fillStyle = '#ff3e9d';
-        ctx.beginPath();
-        ctx.arc(this.x + this.width / 2, this.y + this.height / 2, 5, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    };
-    
-    const enemyImg = {
-      draw(ctx, x, y, size) {
-        // Draw bug-like enemy
-        ctx.fillStyle = '#f00';
-        ctx.beginPath();
-        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Eyes
-        ctx.fillStyle = '#fff';
-        ctx.beginPath();
-        ctx.arc(x - size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
-        ctx.arc(x + size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Antennae
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(x - size / 4, y - size / 3);
-        ctx.lineTo(x - size / 2, y - size / 1.5);
-        ctx.moveTo(x + size / 4, y - size / 3);
-        ctx.lineTo(x + size / 2, y - size / 1.5);
-        ctx.stroke();
-      }
-    };
-    
-    const powerUpImg = {
-      draw(ctx, x, y, size) {
-        // Draw power-up as a shield
-        ctx.fillStyle = '#0f0';
-        ctx.beginPath();
-        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(x, y, size / 2 - 2, 0, Math.PI * 2);
-        ctx.stroke();
-        
-        ctx.fillStyle = '#fff';
-        ctx.font = `bold ${size / 2}px Arial`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('+', x, y);
-      }
-    };
-
-    function startGame() {
+    // Initialize game
+    function initGame() {
       // Reset game state
-      score = 0;
-      level = 1;
-      lives = 3;
-      gameSpeed = 1;
-      isGameOver = false;
-      
-      player = {
-        x: gameCanvas.width / 2 - 25,
-        y: gameCanvas.height - 60,
-        width: 50,
-        height: 50,
-        speed: 5,
-        color: '#0ef'
-      };
-      
-      bullets = [];
-      enemies = [];
-      explosions = [];
-      powerUps = [];
+      matches = 0;
+      moves = 0;
+      seconds = 0;
+      firstCard = null;
+      secondCard = null;
+      canFlip = true;
+      matchedCards = [];
+      gameStarted = false;
       
       // Update displays
       updateDisplays();
       
-      // Start game loop
+      // Clear any existing intervals
+      if (timerInterval) clearInterval(timerInterval);
       if (gameInterval) clearInterval(gameInterval);
-      gameInterval = setInterval(gameLoop, 16);
       
-      // Draw initial state
+      // Set up canvas
+      resizeCanvas();
+      
+      // Create card values (pairs of symbols)
+      cardValues = [];
+      const pairs = [...symbols, ...symbols].slice(0, totalCards);
+      
+      // Shuffle the cards
+      for (let i = pairs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+      }
+      
+      cardValues = pairs;
+      
+      // Draw initial game state
       drawGame();
     }
-
-    function resetGame() {
-      clearInterval(gameInterval);
+    
+    // Resize canvas to maintain aspect ratio
+    function resizeCanvas() {
+      const size = Math.min(400, window.innerWidth * 0.9);
+      gameCanvas.width = size;
+      gameCanvas.height = size * 1.1; // Extra space for UI
     }
-
-    function gameLoop() {
-      if (isGameOver) return;
-      
-      update();
-      drawGame();
-    }
-
-    function update() {
-      // Move player
-      if (keys.ArrowLeft && player.x > 0) {
-        player.x -= player.speed;
-      }
-      if (keys.ArrowRight && player.x < gameCanvas.width - player.width) {
-        player.x += player.speed;
-      }
-      if (keys.ArrowUp && player.y > 0) {
-        player.y -= player.speed;
-      }
-      if (keys.ArrowDown && player.y < gameCanvas.height - player.height) {
-        player.y += player.speed;
-      }
-      
-      // Shoot bullets
-      const now = Date.now();
-      if (keys.Space && now - lastShot > shotDelay) {
-        bullets.push({
-          x: player.x + player.width / 2 - 2.5,
-          y: player.y,
-          width: 5,
-          height: 15,
-          speed: 7 * gameSpeed,
-          color: '#ff3e9d'
-        });
-        lastShot = now;
-      }
-      
-      // Move bullets
-      for (let i = bullets.length - 1; i >= 0; i--) {
-        bullets[i].y -= bullets[i].speed;
-        
-        // Remove bullets that are off screen
-        if (bullets[i].y < 0) {
-          bullets.splice(i, 1);
-        }
-      }
-      
-      // Spawn enemies based on level
-      const spawnRate = 0.02 + (level * 0.005);
-      if (Math.random() < spawnRate) {
-        const size = 20 + Math.random() * 20;
-        enemies.push({
-          x: Math.random() * (gameCanvas.width - size),
-          y: -size,
-          width: size,
-          height: size,
-          speed: (1 + Math.random() * 2) * gameSpeed,
-          health: Math.ceil(level / 2),
-          maxHealth: Math.ceil(level / 2)
-        });
-      }
-      
-      // Spawn power-ups occasionally
-      if (Math.random() < 0.005) {
-        powerUps.push({
-          x: Math.random() * (gameCanvas.width - 20),
-          y: -20,
-          width: 20,
-          height: 20,
-          speed: 2 * gameSpeed,
-          type: Math.random() > 0.5 ? 'life' : 'power'
-        });
-      }
-      
-      // Move enemies and check collisions
-      for (let i = enemies.length - 1; i >= 0; i--) {
-        enemies[i].y += enemies[i].speed;
-        
-        // Check if enemy hit player
-        if (checkCollision(enemies[i], player)) {
-          lives--;
-          updateDisplays();
-          
-          // Create explosion
-          explosions.push({
-            x: enemies[i].x + enemies[i].width / 2,
-            y: enemies[i].y + enemies[i].height / 2,
-            size: enemies[i].width * 1.5,
-            frames: 10
-          });
-          
-          enemies.splice(i, 1);
-          
-          if (lives <= 0) {
-            gameOver();
-          }
-          continue;
-        }
-        
-        // Check if enemy reached bottom
-        if (enemies[i].y > gameCanvas.height) {
-          enemies.splice(i, 1);
-          continue;
-        }
-        
-        // Check bullet collisions
-        for (let j = bullets.length - 1; j >= 0; j--) {
-          if (checkCollision(bullets[j], enemies[i])) {
-            enemies[i].health--;
-            
-            // Create small explosion
-            explosions.push({
-              x: bullets[j].x + bullets[j].width / 2,
-              y: bullets[j].y + bullets[j].height / 2,
-              size: 15,
-              frames: 5
-            });
-            
-            bullets.splice(j, 1);
-            
-            if (enemies[i].health <= 0) {
-              score += 10 * level;
-              updateDisplays();
-              
-              // Create bigger explosion
-              explosions.push({
-                x: enemies[i].x + enemies[i].width / 2,
-                y: enemies[i].y + enemies[i].height / 2,
-                size: enemies[i].width * 1.5,
-                frames: 15
-              });
-              
-              // Chance to drop power-up
-              if (Math.random() < 0.2) {
-                powerUps.push({
-                  x: enemies[i].x + enemies[i].width / 2 - 10,
-                  y: enemies[i].y + enemies[i].height / 2 - 10,
-                  width: 20,
-                  height: 20,
-                  speed: 2,
-                  type: Math.random() > 0.5 ? 'life' : 'power'
-                });
-              }
-              
-              enemies.splice(i, 1);
-              
-              // Check level progression
-              if (score >= level * 100) {
-                levelUp();
-              }
-            }
-            break;
-          }
-        }
-      }
-      
-      // Move power-ups
-      for (let i = powerUps.length - 1; i >= 0; i--) {
-        powerUps[i].y += powerUps[i].speed;
-        
-        // Check if power-up collected
-        if (checkCollision(powerUps[i], player)) {
-          if (powerUps[i].type === 'life') {
-            lives++;
-          } else {
-            // Power-up effect (faster shooting temporarily)
-            player.speed *= 1.5;
-            setTimeout(() => {
-              player.speed /= 1.5;
-            }, 5000);
-          }
-          updateDisplays();
-          powerUps.splice(i, 1);
-          continue;
-        }
-        
-        // Remove if off screen
-        if (powerUps[i].y > gameCanvas.height) {
-          powerUps.splice(i, 1);
-        }
-      }
-      
-      // Update explosions
-      for (let i = explosions.length - 1; i >= 0; i--) {
-        explosions[i].frames--;
-        if (explosions[i].frames <= 0) {
-          explosions.splice(i, 1);
-        }
-      }
-    }
-
-    function checkCollision(obj1, obj2) {
-      return obj1.x < obj2.x + obj2.width &&
-             obj1.x + obj1.width > obj2.x &&
-             obj1.y < obj2.y + obj2.height &&
-             obj1.y + obj1.height > obj2.y;
-    }
-
+    
+    // Draw the game
     function drawGame() {
       const ctx = gameCanvas.getContext('2d');
+      const cardWidth = gameCanvas.width / cols;
+      const cardHeight = (gameCanvas.height * 0.9) / rows; // 90% of height for cards
       
       // Clear canvas
       ctx.fillStyle = '#111';
       ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
       
-      // Draw starry background
-      ctx.fillStyle = '#fff';
-      for (let i = 0; i < 50; i++) {
-        const x = Math.random() * gameCanvas.width;
-        const y = (Math.random() * gameCanvas.height + Date.now() / 100) % gameCanvas.height;
-        const size = Math.random() * 2;
-        ctx.fillRect(x, y, size, size);
-      }
-      
-      // Draw explosions
-      for (let explosion of explosions) {
-        const radius = explosion.size * (1 - explosion.frames / 15);
-        const gradient = ctx.createRadialGradient(
-          explosion.x, explosion.y, 0,
-          explosion.x, explosion.y, radius
-        );
-        gradient.addColorStop(0, '#ff3e9d');
-        gradient.addColorStop(0.5, '#f80');
-        gradient.addColorStop(1, 'transparent');
-        
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(explosion.x, explosion.y, radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      
-      // Draw bullets
-      for (let bullet of bullets) {
-        ctx.fillStyle = bullet.color;
-        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-        
-        // Add glow effect
-        ctx.shadowColor = bullet.color;
-        ctx.shadowBlur = 5;
-        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-        ctx.shadowBlur = 0;
-      }
-      
-      // Draw enemies
-      for (let enemy of enemies) {
-        enemyImg.draw(ctx, enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width);
-        
-        // Draw health bar
-        if (enemy.health < enemy.maxHealth) {
-          const healthWidth = enemy.width * (enemy.health / enemy.maxHealth);
-          ctx.fillStyle = '#f00';
-          ctx.fillRect(enemy.x, enemy.y - 10, enemy.width, 3);
-          ctx.fillStyle = '#0f0';
-          ctx.fillRect(enemy.x, enemy.y - 10, healthWidth, 3);
+      // Draw cards
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const index = row * cols + col;
+          const x = col * cardWidth;
+          const y = row * cardHeight;
+          
+          // Draw card background
+          ctx.fillStyle = matchedCards.includes(index) ? '#0ef' : '#ff3e9d';
+          ctx.fillRect(x + 2, y + 2, cardWidth - 4, cardHeight - 4);
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x + 2, y + 2, cardWidth - 4, cardHeight - 4);
+          
+          // Draw card content if revealed or matched
+          if (matchedCards.includes(index) || index === firstCard || index === secondCard) {
+            ctx.fillStyle = '#fff';
+            ctx.font = `bold ${Math.min(cardWidth, cardHeight) * 0.4}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(cardValues[index], x + cardWidth / 2, y + cardHeight / 2);
+          } else {
+            // Draw card back
+            ctx.fillStyle = '#222';
+            ctx.fillRect(x + 2, y + 2, cardWidth - 4, cardHeight - 4);
+            ctx.fillStyle = '#0ef';
+            ctx.font = `bold ${Math.min(cardWidth, cardHeight) * 0.2}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('GUYz', x + cardWidth / 2, y + cardHeight / 2);
+          }
         }
       }
       
-      // Draw power-ups
-      for (let powerUp of powerUps) {
-        powerUpImg.draw(ctx, powerUp.x + powerUp.width / 2, powerUp.y + powerUp.height / 2, powerUp.width);
-      }
+      // Draw UI
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      ctx.fillRect(0, gameCanvas.height * 0.9, gameCanvas.width, gameCanvas.height * 0.1);
       
-      // Draw player
-      playerImg.draw(ctx);
-      
-      // Draw HUD
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-      ctx.fillRect(0, 0, gameCanvas.width, 30);
-      
-      ctx.fillStyle = '#0ef';
+      ctx.fillStyle = '#fff';
       ctx.font = '14px Arial';
       ctx.textAlign = 'left';
-      ctx.fillText(`Score: ${score}`, 10, 20);
+      ctx.fillText(`Matches: ${matches}`, 10, gameCanvas.height * 0.93);
       
       ctx.textAlign = 'center';
-      ctx.fillText(`Level: ${level}`, gameCanvas.width / 2, 20);
+      ctx.fillText(`Moves: ${moves}`, gameCanvas.width / 2, gameCanvas.height * 0.93);
       
       ctx.textAlign = 'right';
-      ctx.fillText(`Lives: ${lives}`, gameCanvas.width - 10, 20);
+      ctx.fillText(`Time: ${seconds}s`, gameCanvas.width - 10, gameCanvas.height * 0.93);
     }
-
+    
+    // Handle card click
+    function handleCardClick(x, y) {
+      if (!canFlip) return;
+      
+      const cardWidth = gameCanvas.width / cols;
+      const cardHeight = (gameCanvas.height * 0.9) / rows;
+      
+      const col = Math.floor(x / cardWidth);
+      const row = Math.floor(y / cardHeight);
+      const index = row * cols + col;
+      
+      // Check if card is already matched or already flipped
+      if (matchedCards.includes(index) || index === firstCard || index === secondCard) {
+        return;
+      }
+      
+      // Start timer on first move
+      if (!gameStarted) {
+        gameStarted = true;
+        startTimer();
+      }
+      
+      // Flip the card
+      if (firstCard === null) {
+        firstCard = index;
+      } else if (secondCard === null) {
+        secondCard = index;
+        moves++;
+        updateDisplays();
+        
+        // Check for match
+        if (cardValues[firstCard] === cardValues[secondCard]) {
+          matches++;
+          matchedCards.push(firstCard, secondCard);
+          firstCard = null;
+          secondCard = null;
+          
+          // Check for win
+          if (matches === totalCards / 2) {
+            gameWon();
+          }
+        } else {
+          // No match, flip back after delay
+          canFlip = false;
+          setTimeout(() => {
+            firstCard = null;
+            secondCard = null;
+            canFlip = true;
+            drawGame();
+          }, 1000);
+        }
+      }
+      
+      drawGame();
+    }
+    
+    // Start game timer
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        seconds++;
+        updateDisplays();
+      }, 1000);
+    }
+    
+    // Update displays
     function updateDisplays() {
-      scoreDisplay.textContent = `Score: ${score}`;
-      levelDisplay.textContent = `Level: ${level}`;
-      livesDisplay.textContent = `Lives: ${lives}`;
+      scoreDisplay.textContent = `Matches: ${matches}`;
+      movesDisplay.textContent = `Moves: ${moves}`;
+      timerDisplay.textContent = `Time: ${seconds}s`;
     }
-
-    function levelUp() {
-      level++;
-      gameSpeed *= 1.1;
-      updateDisplays();
-      
-      // Flash the screen
-      const ctx = gameCanvas.getContext('2d');
-      ctx.fillStyle = 'rgba(14, 255, 255, 0.3)';
-      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-      
-      // Show level up message
-      ctx.fillStyle = '#ff3e9d';
-      ctx.font = '24px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText(`LEVEL ${level}`, gameCanvas.width / 2, gameCanvas.height / 2);
-    }
-
-    function gameOver() {
-      isGameOver = true;
-      clearInterval(gameInterval);
+    
+    // Game won
+    function gameWon() {
+      clearInterval(timerInterval);
       
       const ctx = gameCanvas.getContext('2d');
       ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
       ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
       
-      ctx.fillStyle = '#f00';
-      ctx.font = '30px Arial';
+      ctx.fillStyle = '#0ef';
+      ctx.font = '24px Arial';
       ctx.textAlign = 'center';
-      ctx.fillText('GAME OVER', gameCanvas.width / 2, gameCanvas.height / 2 - 30);
+      ctx.fillText('You Win!', gameCanvas.width / 2, gameCanvas.height / 2 - 30);
+      
+      ctx.fillStyle = '#ff3e9d';
+      ctx.font = '18px Arial';
+      ctx.fillText(`Time: ${seconds}s`, gameCanvas.width / 2, gameCanvas.height / 2);
+      ctx.fillText(`Moves: ${moves}`, gameCanvas.width / 2, gameCanvas.height / 2 + 30);
       
       ctx.fillStyle = '#fff';
-      ctx.font = '20px Arial';
-      ctx.fillText(`Final Score: ${score}`, gameCanvas.width / 2, gameCanvas.height / 2 + 20);
-      
-      ctx.fillStyle = '#0ef';
       ctx.font = '16px Arial';
-      ctx.fillText('Click Restart to play again', gameCanvas.width / 2, gameCanvas.height / 2 + 60);
+      ctx.fillText('Click New Game to play again', gameCanvas.width / 2, gameCanvas.height / 2 + 70);
     }
-
-    // Handle keyboard controls
-    document.addEventListener('keydown', (e) => {
-      if (gamePopup.style.display !== 'flex') return;
+    
+    // Handle canvas click
+    gameCanvas.addEventListener('click', (e) => {
+      if (!gamePopup.style.display === 'flex') return;
       
-      switch(e.key) {
-        case 'ArrowLeft': keys.ArrowLeft = true; break;
-        case 'ArrowRight': keys.ArrowRight = true; break;
-        case 'ArrowUp': keys.ArrowUp = true; break;
-        case 'ArrowDown': keys.ArrowDown = true; break;
-        case ' ': keys.Space = true; e.preventDefault(); break;
+      const rect = gameCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Check if click is on a card (not in the UI area)
+      if (y < gameCanvas.height * 0.9) {
+        handleCardClick(x, y);
       }
     });
-
-    document.addEventListener('keyup', (e) => {
-      switch(e.key) {
-        case 'ArrowLeft': keys.ArrowLeft = false; break;
-        case 'ArrowRight': keys.ArrowRight = false; break;
-        case 'ArrowUp': keys.ArrowUp = false; break;
-        case 'ArrowDown': keys.ArrowDown = false; break;
-        case ' ': keys.Space = false; e.preventDefault(); break;
+    
+    // Handle touch events
+    gameCanvas.addEventListener('touchstart', (e) => {
+      if (!gamePopup.style.display === 'flex') return;
+      e.preventDefault();
+      
+      const rect = gameCanvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      
+      if (y < gameCanvas.height * 0.9) {
+        handleCardClick(x, y);
       }
-    });
-
+    }, { passive: false });
+    
     // Show/hide game popup
     gameBtn.addEventListener('click', () => {
       gamePopup.style.display = 'flex';
-      startGame();
+      initGame();
     });
-
+    
     closeGame.addEventListener('click', () => {
       gamePopup.style.display = 'none';
-      resetGame();
+      clearInterval(timerInterval);
     });
-
+    
     restartGame.addEventListener('click', () => {
-      resetGame();
-      startGame();
+      initGame();
     });
-
-    // Set canvas size properly
-    function resizeCanvas() {
-      const size = Math.min(400, window.innerWidth * 0.9);
-      gameCanvas.width = size;
-      gameCanvas.height = 250; // Smaller height
-      
-      // Adjust player position if canvas size changes
-      if (player) {
-        player.x = gameCanvas.width / 2 - 25;
-        player.y = gameCanvas.height - 60;
+    
+    newGameBtn.addEventListener('click', () => {
+      initGame();
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (gamePopup.style.display === 'flex') {
+        resizeCanvas();
+        drawGame();
       }
-    }
-
-    window.addEventListener('load', () => {
-      resizeCanvas();
-      simulateLoading();
     });
-    window.addEventListener('resize', resizeCanvas);
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
