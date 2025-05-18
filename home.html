@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GUYz in Tech - Innovation for Everyone</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     * {
@@ -19,7 +19,10 @@
       color: rgba(255, 255, 255, 0.9);
       overflow-x: hidden;
       line-height: 1.6;
-      padding-top: 70px; /* Reduced for mobile */
+      padding-top: 70px;
+      min-height: 100vh;
+      position: relative;
+      padding-bottom: 150px; /* Space for footer */
     }
 
     /* Loading bar styles */
@@ -28,7 +31,7 @@
       top: 0;
       left: 0;
       width: 0%;
-      height: 3px; /* Thinner on mobile */
+      height: 3px;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       z-index: 9999;
       transition: width 0.4s ease;
@@ -58,7 +61,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.8rem 5%; /* Reduced padding */
+      padding: 0.8rem 5%;
       position: fixed;
       width: 100%;
       top: 0;
@@ -70,7 +73,7 @@
     }
 
     .logo {
-      font-size: 1.5rem; /* Smaller logo */
+      font-size: 1.5rem;
       font-weight: bold;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       -webkit-background-clip: text;
@@ -84,11 +87,11 @@
     .logo::after {
       content: '';
       position: absolute;
-      width: 6px; /* Smaller dot */
+      width: 6px;
       height: 6px;
       background: #0ef;
       border-radius: 50%;
-      bottom: 10px; /* Adjusted position */
+      bottom: 10px;
       right: -10px;
       box-shadow: 0 0 8px #0ef, 0 0 16px #0ef;
     }
@@ -115,7 +118,7 @@
       text-decoration: none;
       position: relative;
       transition: all 0.3s;
-      font-size: 0.9rem; /* Smaller font */
+      font-size: 0.9rem;
       font-weight: 500;
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       padding: 0.5rem 0;
@@ -142,12 +145,12 @@
     }
 
     .hero {
-      min-height: calc(100vh - 70px); /* Adjusted for smaller header */
+      min-height: calc(100vh - 70px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      max-width: 100%; /* Full width on mobile */
+      max-width: 100%;
       padding: 2rem 0;
     }
 
@@ -156,7 +159,7 @@
     }
 
     h1 {
-      font-size: 2.2rem; /* Smaller on mobile */
+      font-size: 2.2rem;
       margin-bottom: 1.2rem;
       line-height: 1.2;
     }
@@ -169,24 +172,24 @@
     }
 
     .tagline {
-      font-size: 1.1rem; /* Smaller on mobile */
+      font-size: 1.1rem;
       margin-bottom: 2rem;
       opacity: 0.9;
     }
 
     .btn {
-      padding: 0.8rem 1.5rem; /* Smaller button */
+      padding: 0.8rem 1.5rem;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: #fff;
       border: none;
       border-radius: 50px;
-      font-size: 0.9rem; /* Smaller text */
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
       text-decoration: none;
       display: inline-block;
-      margin: 0.5rem 0; /* Added margin for mobile */
+      margin: 0.5rem 0;
     }
 
     .btn:hover {
@@ -196,18 +199,18 @@
 
     .values {
       display: flex;
-      flex-direction: column; /* Stack on mobile */
-      gap: 1.5rem; /* Reduced gap */
-      margin-top: 3rem; /* Reduced margin */
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 3rem;
       flex-wrap: wrap;
     }
 
     .value-card {
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem; /* Reduced padding */
+      padding: 1.5rem;
       border-radius: 10px;
       flex: 1;
-      min-width: 100%; /* Full width on mobile */
+      min-width: 100%;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
       backdrop-filter: blur(10px);
@@ -221,18 +224,18 @@
 
     .value-card h3 {
       color: #0ef;
-      margin-bottom: 0.8rem; /* Reduced */
-      font-size: 1.3rem; /* Smaller */
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
     }
 
     .value-card p {
       opacity: 0.9;
-      font-size: 0.95rem; /* Smaller text */
+      font-size: 0.95rem;
     }
 
     .scroll-indicator {
       position: absolute;
-      bottom: 1.5rem; /* Raised slightly */
+      bottom: 1.5rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -243,7 +246,7 @@
 
     .scroll-indicator .line {
       width: 2px;
-      height: 25px; /* Shorter */
+      height: 25px;
       background: linear-gradient(to bottom, #ff3e9d, #0ef);
       margin-bottom: 5px;
     }
@@ -266,12 +269,12 @@
     }
 
     .tech-stats {
-      position: relative; /* Changed from absolute */
+      position: relative;
       top: auto;
       right: auto;
       transform: none;
       display: flex;
-      flex-direction: row; /* Keep row but wrap */
+      flex-direction: row;
       flex-wrap: wrap;
       gap: 1.5rem;
       margin-top: 3rem;
@@ -279,29 +282,29 @@
     }
 
     .stat {
-      text-align: center; /* Center on mobile */
-      min-width: 100px; /* Prevent too small */
+      text-align: center;
+      min-width: 100px;
     }
 
     .stat h3 {
-      font-size: 1.8rem; /* Smaller */
+      font-size: 1.8rem;
       color: #0ef;
-      margin-bottom: 0.3rem; /* Reduced */
+      margin-bottom: 0.3rem;
     }
 
     .stat p {
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
       opacity: 0.9;
     }
 
     section {
-      padding: 70px 5%; /* Reduced padding */
+      padding: 70px 5%;
       position: relative;
     }
 
     .section-title {
-      font-size: 2rem; /* Smaller */
-      margin-bottom: 2rem; /* Reduced */
+      font-size: 2rem;
+      margin-bottom: 2rem;
       position: relative;
       display: inline-block;
     }
@@ -310,38 +313,38 @@
       content: '';
       position: absolute;
       width: 100%;
-      height: 2px; /* Thinner */
-      bottom: -8px; /* Raised */
+      height: 2px;
+      bottom: -8px;
       left: 0;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
     }
 
     .about-content {
       display: flex;
-      flex-direction: column; /* Stack on mobile */
-      gap: 2rem; /* Reduced gap */
+      flex-direction: column;
+      gap: 2rem;
       align-items: center;
-      margin-bottom: 2rem; /* Reduced */
+      margin-bottom: 2rem;
     }
 
     .about-text {
       flex: 1;
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem; /* Reduced */
+      padding: 1.5rem;
       border-radius: 10px;
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .about-text p {
-      margin-bottom: 1.2rem; /* Reduced */
-      font-size: 1rem; /* Smaller */
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
     }
 
     .about-image {
       flex: 1;
-      min-height: 250px; /* Smaller */
-      width: 100%; /* Full width */
+      min-height: 250px;
+      width: 100%;
       background-color: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(14, 255, 255, 0.2);
       border-radius: 10px;
@@ -349,20 +352,20 @@
       justify-content: center;
       align-items: center;
       color: #0ef;
-      font-size: 1rem; /* Smaller */
+      font-size: 1rem;
       backdrop-filter: blur(5px);
     }
 
     .mission-vision {
       display: flex;
-      flex-direction: column; /* Stack on mobile */
-      gap: 1.5rem; /* Reduced */
-      margin-top: 2rem; /* Reduced */
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .mission-card, .vision-card {
       flex: 1;
-      padding: 1.5rem; /* Reduced */
+      padding: 1.5rem;
       background: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -378,20 +381,20 @@
 
     .mission-card h3, .vision-card h3 {
       color: #ff3e9d;
-      margin-bottom: 1rem; /* Reduced */
-      font-size: 1.5rem; /* Smaller */
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
     }
 
     .mission-card p, .vision-card p {
-      font-size: 1rem; /* Smaller */
+      font-size: 1rem;
       opacity: 0.9;
     }
 
     .quote {
-      font-size: 1.2rem; /* Smaller */
+      font-size: 1.2rem;
       font-style: italic;
-      margin: 2rem 0; /* Reduced */
-      padding: 1.5rem; /* Reduced */
+      margin: 2rem 0;
+      padding: 1.5rem;
       border-left: 3px solid #0ef;
       background: rgba(14, 255, 255, 0.1);
       line-height: 1.5;
@@ -399,17 +402,17 @@
 
     .quote .gradient-text {
       display: block;
-      margin-top: 1rem; /* Reduced */
-      font-size: 1rem; /* Smaller */
+      margin-top: 1rem;
+      font-size: 1rem;
       font-style: normal;
     }
 
     /* Projects Section */
     .projects-container {
       position: relative;
-      max-width: 100%; /* Full width */
-      margin: 2rem auto; /* Reduced */
-      padding: 10px; /* Reduced */
+      max-width: 100%;
+      margin: 2rem auto;
+      padding: 10px;
       overflow: hidden;
     }
 
@@ -418,23 +421,23 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      height: auto; /* Auto height */
-      min-height: 400px; /* Minimum height */
+      height: auto;
+      min-height: 400px;
       perspective: 1000px;
     }
 
     .project-card {
-      position: relative; /* Changed from absolute */
-      width: 100%; /* Full width */
-      max-width: 300px; /* Max width */
-      margin: 0 auto; /* Center */
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
       transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
       transform-style: preserve-3d;
-      display: none; /* Hide by default */
+      display: none;
     }
 
     .project-card.active {
-      display: block; /* Show active */
+      display: block;
       transform: none;
       filter: none;
       left: auto;
@@ -442,45 +445,45 @@
 
     .project-card.prev,
     .project-card.next {
-      display: none; /* Hide prev/next on mobile */
+      display: none;
     }
 
     .slider-nav {
-      position: relative; /* Changed from absolute */
+      position: relative;
       top: auto;
       width: 100%;
       display: flex;
       justify-content: space-between;
       z-index: 4;
       transform: none;
-      margin: 1rem 0; /* Added margin */
+      margin: 1rem 0;
       pointer-events: all;
     }
 
     .slider-btn {
-      width: 40px; /* Smaller */
+      width: 40px;
       height: 40px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ff3e9d, #0ef);
       border: none;
       color: white;
-      font-size: 1.2rem; /* Smaller */
+      font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5); /* Smaller shadow */
-      margin: 0 10px; /* Reduced margin */
+      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5);
+      margin: 0 10px;
     }
 
     .slider-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255, 62, 157, 0.7); /* Smaller shadow */
+      box-shadow: 0 0 20px rgba(255, 62, 157, 0.7);
     }
 
     .project-image {
-      height: 180px; /* Smaller */
+      height: 180px;
       background-color: rgba(255, 255, 255, 0.1);
       display: flex;
       justify-content: center;
@@ -502,26 +505,26 @@
     }
 
     .project-info {
-      padding: 1.2rem; /* Reduced */
+      padding: 1.2rem;
     }
 
     .project-info h3 {
       color: #0ef;
-      margin-bottom: 0.8rem; /* Reduced */
-      font-size: 1.3rem; /* Smaller */
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
     }
 
     .project-info p {
       opacity: 0.9;
-      font-size: 0.95rem; /* Smaller */
-      margin-bottom: 1.2rem; /* Reduced */
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
     }
 
     .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 0.8rem; /* Reduced */
+      margin-top: 0.8rem;
     }
 
     .tech-tag {
@@ -529,7 +532,7 @@
       color: #0ef;
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      font-size: 0.7rem; /* Smaller */
+      font-size: 0.7rem;
       border: 1px solid rgba(14, 255, 255, 0.3);
     }
 
@@ -542,38 +545,38 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      margin: 2rem 0; /* Reduced */
+      margin: 2rem 0;
     }
 
     .community-stat {
-      padding: 1rem; /* Reduced */
-      min-width: 100px; /* Prevent too small */
+      padding: 1rem;
+      min-width: 100px;
       flex: 1;
     }
 
     .community-stat h3 {
-      font-size: 1.8rem; /* Smaller */
+      font-size: 1.8rem;
       color: #ff3e9d;
-      margin-bottom: 0.3rem; /* Reduced */
+      margin-bottom: 0.3rem;
     }
 
     .community-stat p {
       opacity: 0.9;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
 
     .community-image {
-      height: 200px; /* Smaller */
+      height: 200px;
       background-color: rgba(255, 255, 255, 0.05);
       border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 1.5rem auto; /* Reduced */
+      margin: 1.5rem auto;
       border: 1px solid rgba(14, 255, 255, 0.2);
       color: #0ef;
-      font-size: 1rem; /* Smaller */
-      max-width: 100%; /* Full width */
+      font-size: 1rem;
+      max-width: 100%;
     }
 
     /* Game popup styles */
@@ -588,16 +591,16 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
-      padding: 20px; /* Added padding */
+      padding: 20px;
     }
 
     .game-container {
       background: rgba(0, 0, 0, 0.9);
       border: 2px solid #0ef;
       border-radius: 10px;
-      padding: 1rem; /* Reduced */
-      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5); /* Smaller shadow */
-      max-width: 100%; /* Full width */
+      padding: 1rem;
+      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5);
+      max-width: 100%;
       width: 100%;
       text-align: center;
     }
@@ -606,12 +609,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.8rem; /* Reduced */
+      margin-bottom: 0.8rem;
     }
 
     .game-title {
       color: #0ef;
-      font-size: 1.3rem; /* Smaller */
+      font-size: 1.3rem;
       font-weight: 600;
     }
 
@@ -620,9 +623,9 @@
       color: white;
       border: none;
       border-radius: 50%;
-      width: 25px; /* Smaller */
+      width: 25px;
       height: 25px;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -634,34 +637,35 @@
     #game-canvas {
       background-color: #111;
       width: 100%;
-      height: 250px; /* Smaller */
+      height: 250px;
       margin: 0 auto;
       display: block;
       border: 1px solid #0ef;
+      touch-action: none;
     }
 
     .game-controls {
-      margin-top: 0.8rem; /* Reduced */
+      margin-top: 0.8rem;
       color: #0ef;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
 
     .game-stats {
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.5rem;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
 
     .game-btn {
-      margin-top: 0.8rem; /* Reduced */
-      padding: 0.5rem 1.2rem; /* Smaller */
+      margin-top: 0.8rem;
+      padding: 0.5rem 1.2rem;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
       font-weight: 600;
       transition: transform 0.3s;
     }
@@ -670,9 +674,36 @@
       transform: translateY(-3px);
     }
 
+    /* Touch controls for mobile */
+    .touch-controls {
+      display: none;
+      justify-content: space-between;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .touch-btn {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .touch-btn:active {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
     /* Contact Section Styles */
     .contact-section {
-      padding: 70px 5%; /* Reduced */
+      padding: 70px 5%;
       position: relative;
       background: rgba(0, 0, 0, 0.7);
       border-top: 1px solid rgba(14, 255, 255, 0.2);
@@ -680,15 +711,15 @@
 
     .contact-container {
       display: flex;
-      flex-direction: column; /* Stack on mobile */
-      gap: 2rem; /* Reduced */
-      margin-top: 1.5rem; /* Reduced */
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1.5rem;
     }
 
     .contact-info {
       flex: 1;
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem; /* Reduced */
+      padding: 1.5rem;
       border-radius: 10px;
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -696,21 +727,21 @@
 
     .contact-info h3 {
       color: #0ef;
-      margin-bottom: 1.2rem; /* Reduced */
-      font-size: 1.5rem; /* Smaller */
+      margin-bottom: 1.2rem;
+      font-size: 1.5rem;
     }
 
     .contact-methods {
       display: flex;
       flex-direction: column;
-      gap: 1rem; /* Reduced */
+      gap: 1rem;
     }
 
     .contact-method {
       display: flex;
       align-items: center;
-      gap: 0.8rem; /* Reduced */
-      padding: 0.8rem; /* Reduced */
+      gap: 0.8rem;
+      padding: 0.8rem;
       border-radius: 8px;
       transition: all 0.3s ease;
       background: rgba(255, 255, 255, 0.05);
@@ -724,13 +755,13 @@
     }
 
     .contact-icon {
-      width: 35px; /* Smaller */
+      width: 35px;
       height: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      font-size: 1rem; /* Smaller */
+      font-size: 1rem;
     }
 
     .whatsapp-icon {
@@ -744,49 +775,49 @@
     }
 
     .contact-text h4 {
-      margin-bottom: 0.2rem; /* Reduced */
+      margin-bottom: 0.2rem;
       color: #ff3e9d;
-      font-size: 1rem; /* Smaller */
+      font-size: 1rem;
     }
 
     .contact-text p {
       opacity: 0.9;
-      font-size: 0.85rem; /* Smaller */
+      font-size: 0.85rem;
     }
 
     .contact-form {
       flex: 1;
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem; /* Reduced */
+      padding: 1.5rem;
       border-radius: 10px;
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .form-group {
-      margin-bottom: 1.2rem; /* Reduced */
+      margin-bottom: 1.2rem;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 0.4rem; /* Reduced */
+      margin-bottom: 0.4rem;
       color: #0ef;
-      font-size: 0.95rem; /* Smaller */
+      font-size: 0.95rem;
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 0.7rem; /* Reduced */
+      padding: 0.7rem;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 5px;
       color: white;
-      font-size: 0.95rem; /* Smaller */
+      font-size: 0.95rem;
     }
 
     .form-group textarea {
-      min-height: 100px; /* Smaller */
+      min-height: 100px;
       resize: vertical;
     }
 
@@ -794,13 +825,13 @@
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: white;
       border: none;
-      padding: 0.7rem 1.2rem; /* Smaller */
+      padding: 0.7rem 1.2rem;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 0.95rem; /* Smaller */
+      font-size: 0.95rem;
       font-weight: 600;
       transition: transform 0.3s;
-      width: 100%; /* Full width */
+      width: 100%;
     }
 
     .form-submit:hover {
@@ -818,27 +849,27 @@
       background-color: rgba(0, 0, 0, 0.9);
       z-index: 1000;
       overflow-y: auto;
-      padding: 20px; /* Added padding */
+      padding: 20px;
     }
 
     .modal-content {
       background: rgba(0, 0, 0, 0.9);
-      margin: 2rem auto; /* Reduced */
-      padding: 1.5rem; /* Reduced */
+      margin: 2rem auto;
+      padding: 1.5rem;
       border: 2px solid #0ef;
       border-radius: 10px;
-      max-width: 100%; /* Full width */
+      max-width: 100%;
       width: 100%;
       position: relative;
-      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5); /* Smaller shadow */
+      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5);
     }
 
     .close-modal {
       position: absolute;
-      top: 0.8rem; /* Reduced */
+      top: 0.8rem;
       right: 0.8rem;
       color: #ff3e9d;
-      font-size: 1.5rem; /* Smaller */
+      font-size: 1.5rem;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -848,20 +879,20 @@
     }
 
     .modal-header {
-      margin-bottom: 1.5rem; /* Reduced */
+      margin-bottom: 1.5rem;
     }
 
     .modal-header h3 {
-      font-size: 1.8rem; /* Smaller */
+      font-size: 1.8rem;
       color: #0ef;
-      margin-bottom: 0.8rem; /* Reduced */
+      margin-bottom: 0.8rem;
     }
 
     .modal-image {
       width: 100%;
-      height: 200px; /* Smaller */
+      height: 200px;
       background-color: rgba(255, 255, 255, 0.1);
-      margin-bottom: 1.2rem; /* Reduced */
+      margin-bottom: 1.2rem;
       border-radius: 5px;
       overflow: hidden;
     }
@@ -873,36 +904,36 @@
     }
 
     .modal-body {
-      margin-bottom: 1.5rem; /* Reduced */
+      margin-bottom: 1.5rem;
     }
 
     .modal-section {
-      margin-bottom: 1.2rem; /* Reduced */
+      margin-bottom: 1.2rem;
     }
 
     .modal-section h4 {
       color: #ff3e9d;
-      margin-bottom: 0.7rem; /* Reduced */
-      font-size: 1.2rem; /* Smaller */
+      margin-bottom: 0.7rem;
+      font-size: 1.2rem;
     }
 
     .modal-section p {
-      margin-bottom: 0.8rem; /* Reduced */
+      margin-bottom: 0.8rem;
       line-height: 1.6;
-      font-size: 0.95rem; /* Smaller */
+      font-size: 0.95rem;
     }
 
     .modal-footer {
       display: flex;
-      flex-direction: column; /* Stack on mobile */
+      flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem; /* Added gap */
+      gap: 1rem;
     }
 
     .project-links {
       display: flex;
-      gap: 1rem; /* Added gap */
+      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -918,7 +949,7 @@
       text-decoration: none;
       transition: all 0.3s;
       border: 1px solid rgba(14, 255, 255, 0.3);
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
 
     .project-links a:hover {
@@ -928,23 +959,21 @@
 
     /* Services Section */
     .services-section {
-      padding: 70px 5%; /* Reduced */
+      padding: 70px 5%;
       background: rgba(0, 0, 0, 0.7);
       border-top: 1px solid rgba(14, 255, 255, 0.2);
     }
 
     .services-grid {
-      display: flex;
-      flex-direction: column; /* Stack on mobile */
-      gap: 1.5rem; /* Reduced */
-      margin-top: 2rem; /* Reduced */
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .service-card {
-      flex: 1;
-      min-width: 100%; /* Full width */
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem; /* Reduced */
+      padding: 1.5rem;
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
@@ -959,57 +988,57 @@
 
     .service-card h3 {
       color: #0ef;
-      margin-bottom: 1rem; /* Reduced */
-      font-size: 1.3rem; /* Smaller */
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
       display: flex;
       align-items: center;
-      gap: 0.8rem; /* Reduced */
+      gap: 0.8rem;
     }
 
     .service-card h3 .icon {
-      width: 35px; /* Smaller */
+      width: 35px;
       height: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       background: rgba(14, 255, 255, 0.1);
-      font-size: 1.1rem; /* Smaller */
+      font-size: 1.1rem;
     }
 
     .service-card p {
-      margin-bottom: 1.2rem; /* Reduced */
-      font-size: 0.95rem; /* Smaller */
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
     }
 
     .service-card .btn {
-      padding: 0.7rem 1.2rem; /* Smaller */
-      font-size: 0.9rem; /* Smaller */
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
     }
 
     /* Community Join Options */
     .join-options {
       display: flex;
-      flex-direction: column; /* Stack on mobile */
+      flex-direction: column;
       justify-content: center;
-      gap: 1rem; /* Reduced */
-      margin-top: 1.5rem; /* Reduced */
+      gap: 1rem;
+      margin-top: 1.5rem;
       align-items: center;
     }
 
     .join-option {
       display: flex;
       align-items: center;
-      gap: 0.8rem; /* Reduced */
-      padding: 0.8rem 1.2rem; /* Reduced */
+      gap: 0.8rem;
+      padding: 0.8rem 1.2rem;
       background: rgba(14, 255, 255, 0.1);
       border-radius: 50px;
       text-decoration: none;
       color: white;
       transition: all 0.3s;
       border: 1px solid rgba(14, 255, 255, 0.3);
-      width: 100%; /* Full width */
-      max-width: 300px; /* Max width */
+      width: 100%;
+      max-width: 300px;
       justify-content: center;
     }
 
@@ -1019,13 +1048,13 @@
     }
 
     .join-option .icon {
-      width: 25px; /* Smaller */
+      width: 25px;
       height: 25px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
 
     .whatsapp-option .icon {
@@ -1041,24 +1070,24 @@
     /* Chatbot styles */
     .chatbot-container {
       position: fixed;
-      bottom: 20px; /* Raised */
-      right: 20px; /* Brought in */
+      bottom: 20px;
+      right: 20px;
       z-index: 1000;
     }
     
     .chatbot-btn {
-      width: 50px; /* Smaller */
+      width: 50px;
       height: 50px;
       border-radius: 50%;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       border: none;
       color: white;
-      font-size: 1.3rem; /* Smaller */
+      font-size: 1.3rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5); /* Smaller shadow */
+      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5);
       transition: all 0.3s ease;
     }
     
@@ -1068,9 +1097,9 @@
     
     .chatbot-window {
       position: absolute;
-      bottom: 60px; /* Adjusted */
+      bottom: 60px;
       right: 0;
-      width: 280px; /* Smaller */
+      width: 280px;
       background: rgba(0, 0, 0, 0.9);
       border: 2px solid #0ef;
       border-radius: 15px;
@@ -1086,35 +1115,35 @@
     
     .chatbot-header {
       background: linear-gradient(90deg, #ff3e9d, #0ef);
-      padding: 0.7rem; /* Reduced */
+      padding: 0.7rem;
       color: white;
       font-weight: bold;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.95rem; /* Smaller */
+      font-size: 0.95rem;
     }
     
     .chatbot-close {
       background: none;
       border: none;
       color: white;
-      font-size: 1.1rem; /* Smaller */
+      font-size: 1.1rem;
       cursor: pointer;
     }
     
     .chatbot-messages {
-      height: 200px; /* Smaller */
+      height: 200px;
       overflow-y: auto;
-      padding: 0.8rem; /* Reduced */
+      padding: 0.8rem;
     }
     
     .message {
-      margin-bottom: 0.8rem; /* Reduced */
-      padding: 0.7rem; /* Reduced */
+      margin-bottom: 0.8rem;
+      padding: 0.7rem;
       border-radius: 10px;
       max-width: 80%;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
     
     .bot-message {
@@ -1142,9 +1171,9 @@
       background: rgba(14, 255, 255, 0.1);
       border: 1px solid rgba(14, 255, 255, 0.3);
       color: #0ef;
-      padding: 0.4rem 0.7rem; /* Reduced */
+      padding: 0.4rem 0.7rem;
       border-radius: 20px;
-      font-size: 0.75rem; /* Smaller */
+      font-size: 0.75rem;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -1161,57 +1190,62 @@
     
     .chatbot-input input {
       flex: 1;
-      padding: 0.7rem; /* Reduced */
+      padding: 0.7rem;
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 5px;
       color: white;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
     
     .chatbot-input button {
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: white;
       border: none;
-      padding: 0 0.8rem; /* Reduced */
+      padding: 0 0.8rem;
       border-radius: 5px;
       margin-left: 0.5rem;
       cursor: pointer;
-      font-size: 0.9rem; /* Smaller */
+      font-size: 0.9rem;
     }
 
-    /* COLLABORATORS CIRCLE */
-    .collaborators-circle {
-      width: 180px; /* Smaller */
-      height: 180px;
-      border-radius: 50%;
-      position: relative;
-      margin: 1.5rem auto; /* Reduced */
-      border: 2px solid #0ef; /* Thinner */
-      box-shadow: 0 0 20px rgba(14, 255, 255, 0.3), /* Smaller shadow */
-                  inset 0 0 15px rgba(255, 62, 157, 0.3);
-      background: rgba(0, 0, 0, 0.5);
+    /* COLLABORATORS SECTION */
+    .collaborators-section {
+      margin: 2rem 0;
     }
 
-    .collaborator {
-      width: 50px; /* Smaller */
-      height: 50px;
+    .collaborators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .collaborator-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .collaborator-avatar {
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       overflow: hidden;
-      position: absolute;
       border: 2px solid #ff3e9d;
-      transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      box-shadow: 0 0 10px rgba(255, 62, 157, 0.5); /* Smaller shadow */
+      box-shadow: 0 0 15px rgba(255, 62, 157, 0.5);
+      transition: all 0.3s ease;
+      margin-bottom: 0.8rem;
     }
 
-    .collaborator:hover {
-      transform: scale(1.2) rotate(10deg); /* Less dramatic */
-      z-index: 2;
-      box-shadow: 0 0 15px rgba(255, 62, 157, 0.9); /* Smaller shadow */
+    .collaborator-avatar:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 62, 157, 0.9);
       border-color: #0ef;
     }
 
-    .collaborator img {
+    .collaborator-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1219,8 +1253,114 @@
       transition: filter 0.3s ease;
     }
 
-    .collaborator:hover img {
+    .collaborator-avatar:hover img {
       filter: grayscale(0%);
+    }
+
+    .collaborator-name {
+      font-size: 0.9rem;
+      color: #0ef;
+      margin-bottom: 0.3rem;
+    }
+
+    .collaborator-role {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 2rem 5%;
+      border-top: 1px solid rgba(14, 255, 255, 0.2);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .footer-about {
+      max-width: 500px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .footer-column h4 {
+      color: #0ef;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-column a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #0ef;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(90deg, #ff3e9d, #0ef);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.7;
     }
 
     /* Mobile menu styles */
@@ -1253,30 +1393,9 @@
         font-size: 1.2rem;
       }
       
-      /* Adjust collaborator positions for mobile */
-      .collaborator {
-        width: 40px;
-        height: 40px;
-      }
-      
-      .collaborator:nth-child(1) {
-        top: 5px;
-        left: 60px;
-      }
-      
-      .collaborator:nth-child(2) {
-        top: 60px;
-        left: 5px;
-      }
-      
-      .collaborator:nth-child(3) {
-        top: 60px;
-        right: 5px;
-      }
-      
-      .collaborator:nth-child(4) {
-        bottom: 5px;
-        left: 60px;
+      /* Show touch controls on mobile */
+      .touch-controls {
+        display: flex;
       }
     }
 
@@ -1380,7 +1499,7 @@
       }
       
       .services-grid {
-        flex-direction: row;
+        grid-template-columns: repeat(2, 1fr);
       }
       
       .join-options {
@@ -1389,6 +1508,15 @@
       
       .modal-footer {
         flex-direction: row;
+      }
+
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .footer-links {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -1407,14 +1535,8 @@
         padding: 1rem;
       }
       
-      .collaborators-circle {
-        width: 150px;
-        height: 150px;
-      }
-      
-      .collaborator {
-        width: 35px;
-        height: 35px;
+      .collaborators-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -1655,6 +1777,18 @@
         <p>Specializing in gamified experiences, we help you engage your audience through game mechanics, rewards systems, and interactive elements that boost participation and retention.</p>
         <a href="#contact" class="btn">Talk to us</a>
       </div>
+      
+      <div class="service-card">
+        <h3><span class="icon">🤖</span> AI & Machine Learning</h3>
+        <p>Leverage the power of artificial intelligence to automate processes, gain insights from data, and create intelligent applications that adapt to your users' needs.</p>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
+      
+      <div class="service-card">
+        <h3><span class="icon">📚</span> Tech Education & Training</h3>
+        <p>Our customized training programs help individuals and organizations develop the digital skills needed to thrive in today's technology-driven world.</p>
+        <a href="#contact" class="btn">Talk to us</a>
+      </div>
     </div>
   </section>
 
@@ -1690,6 +1824,16 @@
               <p>Send us a detailed message about your needs</p>
             </div>
           </a>
+          
+          <div class="contact-method">
+            <div class="contact-icon" style="background: #0ef;">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Call Us</h4>
+              <p>+27 68 196 0560</p>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -1718,7 +1862,7 @@
     </div>
   </section>
 
-<!-- Project Modals with Collaborators Circle -->
+<!-- Project Modals with Collaborators Grid -->
 <div id="robocodes-modal" class="project-modal">
   <div class="modal-content">
     <span class="close-modal">&times;</span>
@@ -1740,19 +1884,38 @@
       </div>
       
       <div class="modal-section">
-        <h4>Collaborations</h4>
-        <div class="collaborators-circle">
-          <div class="collaborator" style="top: 10px; left: 70px;">
-            <img src="kat.jpg" alt="RoboCodes Project">
+        <h4>Collaborators</h4>
+        <div class="collaborators-grid">
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="kat.jpg" alt="Project Lead">
+            </div>
+            <div class="collaborator-name">Jane Smith</div>
+            <div class="collaborator-role">Project Lead</div>
           </div>
-          <div class="collaborator" style="top: 70px; left: 10px;">
-            <img src="kat.jpg" alt="Education Expert">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="katlego.jpg" alt="Education Expert">
+            </div>
+            <div class="collaborator-name">Dr. Sarah Johnson</div>
+            <div class="collaborator-role">Education Expert</div>
           </div>
-          <div class="collaborator" style="top: 70px; right: 10px;">
-            <img src="kat.jpg" alt="Game Designer">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="qhawe.png" alt="Game Designer">
+            </div>
+            <div class="collaborator-name">Mike Chen</div>
+            <div class="collaborator-role">Game Designer</div>
           </div>
-          <div class="collaborator" style="bottom: 10px; left: 70px;">
-            <img src="qhawe.png" alt="AI Specialist">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="water-meter.jpg" alt="AI Specialist">
+            </div>
+            <div class="collaborator-name">Amina Diallo</div>
+            <div class="collaborator-role">AI Specialist</div>
           </div>
         </div>
         <p>We partnered with local schools and community centers to pilot the program. Educational psychologists helped us design age-appropriate learning paths, while game designers ensured the experience remained engaging and rewarding for young learners.</p>
@@ -1803,19 +1966,38 @@
       </div>
       
       <div class="modal-section">
-        <h4>Collaborations</h4>
-        <div class="collaborators-circle">
-          <div class="collaborator" style="top: 10px; left: 70px;">
-            <img src="kat.jpg" alt="NGO Director">
+        <h4>Collaborators</h4>
+        <div class="collaborators-grid">
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+            </div>
+            <div class="collaborator-name">Katlego Nomsa Mphetseni</div>
+            <div class="collaborator-role">Lead Developer</div>
           </div>
-          <div class="collaborator" style="top: 70px; left: 10px;">
-            <img src="psychologist.jpg" alt="Psychologist">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="psychologist.jpg" alt="Psychologist">
+            </div>
+            <div class="collaborator-name">Dr. Lisa Williams</div>
+            <div class="collaborator-role">Psychologist</div>
           </div>
-          <div class="collaborator" style="top: 70px; right: 10px;">
-            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="community-leader.jpg" alt="Community Leader">
+            </div>
+            <div class="collaborator-name">Nomsa Khumalo</div>
+            <div class="collaborator-role">Community Leader</div>
           </div>
-          <div class="collaborator" style="bottom: 10px; left: 70px;">
-            <img src="community-leader.jpg" alt="Community Leader">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="ngo-director.jpg" alt="NGO Director">
+            </div>
+            <div class="collaborator-name">Sarah Johnson</div>
+            <div class="collaborator-role">NGO Director</div>
           </div>
         </div>
         <p>We worked closely with NGOs specializing in gender-based violence prevention, psychologists, and survivors to ensure the content was both accurate and sensitive. Special thanks to developer Ms Katlego Nomsa Mphetseni for her contributions.</p>
@@ -1870,19 +2052,38 @@
       </div>
       
       <div class="modal-section">
-        <h4>Collaborations</h4>
-        <div class="collaborators-circle">
-          <div class="collaborator" style="top: 10px; left: 70px;">
-            <img src="environmental-scientist.jpg" alt="Environmental Scientist">
+        <h4>Collaborators</h4>
+        <div class="collaborators-grid">
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+            </div>
+            <div class="collaborator-name">Katlego Nomsa Mphetseni</div>
+            <div class="collaborator-role">Lead Developer</div>
           </div>
-          <div class="collaborator" style="top: 70px; left: 10px;">
-            <img src="hardware-engineer.jpg" alt="Hardware Engineer">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="relebogile.jpg" alt="Relebogile [Last Name]">
+            </div>
+            <div class="collaborator-name">Relebogile [Last Name]</div>
+            <div class="collaborator-role">Co-Developer</div>
           </div>
-          <div class="collaborator" style="top: 70px; right: 10px;">
-            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="environmental-scientist.jpg" alt="Environmental Scientist">
+            </div>
+            <div class="collaborator-name">Dr. James Wilson</div>
+            <div class="collaborator-role">Environmental Scientist</div>
           </div>
-          <div class="collaborator" style="bottom: 10px; left: 70px;">
-            <img src="municipal-officer.jpg" alt="Municipal Officer">
+          
+          <div class="collaborator-card">
+            <div class="collaborator-avatar">
+              <img src="municipal-officer.jpg" alt="Municipal Officer">
+            </div>
+            <div class="collaborator-name">Thabo Mbeki</div>
+            <div class="collaborator-role">Municipal Officer</div>
           </div>
         </div>
         <p>We worked closely with environmental scientists to ensure our water-saving tips were scientifically valid. Local municipalities helped us test the system with real households. Special thanks to developers Ms Katlego Nomsa Mphetseni and Ms Relebogile [Last Name] for their contributions.</p>
@@ -1915,17 +2116,19 @@
   <div class="game-popup" id="game-popup">
     <div class="game-container">
       <div class="game-header">
-        <h2 class="game-title">Code Defender</h2>
+        <h2 class="game-title">Memory Match</h2>
         <button class="close-game" id="close-game">×</button>
       </div>
       <canvas id="game-canvas"></canvas>
       <div class="game-controls">
         <div class="game-stats">
           <p id="score">Score: 0</p>
-          <p id="level">Level: 1</p>
-          <p id="lives">Lives: 3</p>
+          <p id="moves">Moves: 0</p>
+          <p id="pairs">Pairs: 0/8</p>
         </div>
-        <p>Use arrow keys to move and space to shoot</p>
+        <div class="touch-controls">
+          <div class="touch-btn" id="restart-btn">⟳</div>
+        </div>
         <button class="game-btn" id="restart-game">Restart Game</button>
       </div>
     </div>
@@ -1955,6 +2158,60 @@
     </div>
   </div>
 </div>
+
+<!-- Footer Section -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-about">
+      <div class="footer-logo">GUYzInTech</div>
+      <p class="footer-about">Established in 2024, GUYzInTech is a women-led technology company creating impactful, community-driven solutions through innovation, education, and outreach.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/+27681960560" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:guyzconnect@gmail.com" class="social-link" target="_blank"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-links">
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Web Development</a></li>
+          <li><a href="#services">App Development</a></li>
+          <li><a href="#services">Gamification</a></li>
+          <li><a href="#services">AI Solutions</a></li>
+          <li><a href="#services">Tech Training</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+27681960560">+27 68 196 0560</a></li>
+          <li><a href="mailto:guyzconnect@gmail.com">guyzconnect@gmail.com</a></li>
+          <li><a href="https://wa.me/+27681960560">WhatsApp</a></li>
+          <li>Pretoria, South Africa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    &copy; 2024 GUYzInTech. All Rights Reserved.
+  </div>
+</footer>
 
   <script>
     // Loading bar functionality
@@ -2015,7 +2272,7 @@
     
     // Particles setup
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1500; // Reduced for mobile performance
+    const particlesCount = 1500;
     
     const posArray = new Float32Array(particlesCount * 3);
     
@@ -2129,525 +2386,248 @@
     const restartGame = document.getElementById('restart-game');
     const gameCanvas = document.getElementById('game-canvas');
     const scoreDisplay = document.getElementById('score');
-    const levelDisplay = document.getElementById('level');
-    const livesDisplay = document.getElementById('lives');
+    const movesDisplay = document.getElementById('moves');
+    const pairsDisplay = document.getElementById('pairs');
+    const restartBtn = document.getElementById('restart-btn');
 
     // Game state
     let gameInterval;
     let score = 0;
-    let level = 1;
-    let lives = 3;
-    let gameSpeed = 1;
-    let isGameOver = false;
+    let moves = 0;
+    let pairsFound = 0;
+    let totalPairs = 8;
+    let firstCard = null;
+    let secondCard = null;
+    let canClick = true;
+    let cards = [];
     
-    // Player object
-    let player = {
-      x: gameCanvas.width / 2 - 25,
-      y: gameCanvas.height - 60,
-      width: 50,
-      height: 50,
-      speed: 5,
-      color: '#0ef'
-    };
+    // Card symbols
+    const symbols = ['💻', '🎮', '🤖', '📱', '🔌', '💾', '🖥️', '📊'];
     
-    // Game objects
-    let bullets = [];
-    let enemies = [];
-    let explosions = [];
-    let powerUps = [];
-    
-    // Controls
-    let keys = {
-      ArrowLeft: false,
-      ArrowRight: false,
-      ArrowUp: false,
-      ArrowDown: false,
-      Space: false
-    };
-    
-    let lastShot = 0;
-    const shotDelay = 300;
-    
-    // Game images (we'll use simple shapes but could be replaced with actual images)
-    const playerImg = {
-      draw(ctx) {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.moveTo(this.x + this.width / 2, this.y);
-        ctx.lineTo(this.x, this.y + this.height);
-        ctx.lineTo(this.x + this.width, this.y + this.height);
-        ctx.closePath();
-        ctx.fill();
-        
-        // Add some details
-        ctx.fillStyle = '#ff3e9d';
-        ctx.beginPath();
-        ctx.arc(this.x + this.width / 2, this.y + this.height / 2, 5, 0, Math.PI * 2);
-        ctx.fill();
+    // Game initialization
+    function initGame() {
+      // Create pairs of cards
+      let cardSymbols = [];
+      for (let i = 0; i < totalPairs; i++) {
+        cardSymbols.push(symbols[i]);
+        cardSymbols.push(symbols[i]);
       }
-    };
-    
-    const enemyImg = {
-      draw(ctx, x, y, size) {
-        // Draw bug-like enemy
-        ctx.fillStyle = '#f00';
-        ctx.beginPath();
-        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Eyes
-        ctx.fillStyle = '#fff';
-        ctx.beginPath();
-        ctx.arc(x - size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
-        ctx.arc(x + size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Antennae
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(x - size / 4, y - size / 3);
-        ctx.lineTo(x - size / 2, y - size / 1.5);
-        ctx.moveTo(x + size / 4, y - size / 3);
-        ctx.lineTo(x + size / 2, y - size / 1.5);
-        ctx.stroke();
-      }
-    };
-    
-    const powerUpImg = {
-      draw(ctx, x, y, size) {
-        // Draw power-up as a shield
-        ctx.fillStyle = '#0f0';
-        ctx.beginPath();
-        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-        ctx.fill();
-        
-        ctx.strokeStyle = '#fff';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(x, y, size / 2 - 2, 0, Math.PI * 2);
-        ctx.stroke();
-        
-        ctx.fillStyle = '#fff';
-        ctx.font = `bold ${size / 2}px Arial`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('+', x, y);
-      }
-    };
-
-    function startGame() {
+      
+      // Shuffle cards
+      cardSymbols = shuffleArray(cardSymbols);
+      
+      // Create card objects
+      cards = cardSymbols.map((symbol, index) => ({
+        id: index,
+        symbol,
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0,
+        revealed: false,
+        matched: false
+      }));
+      
       // Reset game state
       score = 0;
-      level = 1;
-      lives = 3;
-      gameSpeed = 1;
-      isGameOver = false;
+      moves = 0;
+      pairsFound = 0;
+      firstCard = null;
+      secondCard = null;
+      canClick = true;
       
-      player = {
-        x: gameCanvas.width / 2 - 25,
-        y: gameCanvas.height - 60,
-        width: 50,
-        height: 50,
-        speed: 5,
-        color: '#0ef'
-      };
-      
-      bullets = [];
-      enemies = [];
-      explosions = [];
-      powerUps = [];
-      
-      // Update displays
       updateDisplays();
-      
-      // Start game loop
-      if (gameInterval) clearInterval(gameInterval);
-      gameInterval = setInterval(gameLoop, 16);
-      
-      // Draw initial state
+    }
+
+    // Shuffle array
+    function shuffleArray(array) {
+      const newArray = [...array];
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+      }
+      return newArray;
+    }
+
+    // Start game
+    function startGame() {
+      initGame();
+      gamePopup.style.display = 'flex';
       drawGame();
     }
 
+    // Reset game
     function resetGame() {
-      clearInterval(gameInterval);
-    }
-
-    function gameLoop() {
-      if (isGameOver) return;
-      
-      update();
+      initGame();
       drawGame();
     }
 
-    function update() {
-      // Move player
-      if (keys.ArrowLeft && player.x > 0) {
-        player.x -= player.speed;
-      }
-      if (keys.ArrowRight && player.x < gameCanvas.width - player.width) {
-        player.x += player.speed;
-      }
-      if (keys.ArrowUp && player.y > 0) {
-        player.y -= player.speed;
-      }
-      if (keys.ArrowDown && player.y < gameCanvas.height - player.height) {
-        player.y += player.speed;
-      }
-      
-      // Shoot bullets
-      const now = Date.now();
-      if (keys.Space && now - lastShot > shotDelay) {
-        bullets.push({
-          x: player.x + player.width / 2 - 2.5,
-          y: player.y,
-          width: 5,
-          height: 15,
-          speed: 7 * gameSpeed,
-          color: '#ff3e9d'
-        });
-        lastShot = now;
-      }
-      
-      // Move bullets
-      for (let i = bullets.length - 1; i >= 0; i--) {
-        bullets[i].y -= bullets[i].speed;
-        
-        // Remove bullets that are off screen
-        if (bullets[i].y < 0) {
-          bullets.splice(i, 1);
-        }
-      }
-      
-      // Spawn enemies based on level
-      const spawnRate = 0.02 + (level * 0.005);
-      if (Math.random() < spawnRate) {
-        const size = 20 + Math.random() * 20;
-        enemies.push({
-          x: Math.random() * (gameCanvas.width - size),
-          y: -size,
-          width: size,
-          height: size,
-          speed: (1 + Math.random() * 2) * gameSpeed,
-          health: Math.ceil(level / 2),
-          maxHealth: Math.ceil(level / 2)
-        });
-      }
-      
-      // Spawn power-ups occasionally
-      if (Math.random() < 0.005) {
-        powerUps.push({
-          x: Math.random() * (gameCanvas.width - 20),
-          y: -20,
-          width: 20,
-          height: 20,
-          speed: 2 * gameSpeed,
-          type: Math.random() > 0.5 ? 'life' : 'power'
-        });
-      }
-      
-      // Move enemies and check collisions
-      for (let i = enemies.length - 1; i >= 0; i--) {
-        enemies[i].y += enemies[i].speed;
-        
-        // Check if enemy hit player
-        if (checkCollision(enemies[i], player)) {
-          lives--;
-          updateDisplays();
-          
-          // Create explosion
-          explosions.push({
-            x: enemies[i].x + enemies[i].width / 2,
-            y: enemies[i].y + enemies[i].height / 2,
-            size: enemies[i].width * 1.5,
-            frames: 10
-          });
-          
-          enemies.splice(i, 1);
-          
-          if (lives <= 0) {
-            gameOver();
-          }
-          continue;
-        }
-        
-        // Check if enemy reached bottom
-        if (enemies[i].y > gameCanvas.height) {
-          enemies.splice(i, 1);
-          continue;
-        }
-        
-        // Check bullet collisions
-        for (let j = bullets.length - 1; j >= 0; j--) {
-          if (checkCollision(bullets[j], enemies[i])) {
-            enemies[i].health--;
-            
-            // Create small explosion
-            explosions.push({
-              x: bullets[j].x + bullets[j].width / 2,
-              y: bullets[j].y + bullets[j].height / 2,
-              size: 15,
-              frames: 5
-            });
-            
-            bullets.splice(j, 1);
-            
-            if (enemies[i].health <= 0) {
-              score += 10 * level;
-              updateDisplays();
-              
-              // Create bigger explosion
-              explosions.push({
-                x: enemies[i].x + enemies[i].width / 2,
-                y: enemies[i].y + enemies[i].height / 2,
-                size: enemies[i].width * 1.5,
-                frames: 15
-              });
-              
-              // Chance to drop power-up
-              if (Math.random() < 0.2) {
-                powerUps.push({
-                  x: enemies[i].x + enemies[i].width / 2 - 10,
-                  y: enemies[i].y + enemies[i].height / 2 - 10,
-                  width: 20,
-                  height: 20,
-                  speed: 2,
-                  type: Math.random() > 0.5 ? 'life' : 'power'
-                });
-              }
-              
-              enemies.splice(i, 1);
-              
-              // Check level progression
-              if (score >= level * 100) {
-                levelUp();
-              }
-            }
-            break;
-          }
-        }
-      }
-      
-      // Move power-ups
-      for (let i = powerUps.length - 1; i >= 0; i--) {
-        powerUps[i].y += powerUps[i].speed;
-        
-        // Check if power-up collected
-        if (checkCollision(powerUps[i], player)) {
-          if (powerUps[i].type === 'life') {
-            lives++;
-          } else {
-            // Power-up effect (faster shooting temporarily)
-            player.speed *= 1.5;
-            setTimeout(() => {
-              player.speed /= 1.5;
-            }, 5000);
-          }
-          updateDisplays();
-          powerUps.splice(i, 1);
-          continue;
-        }
-        
-        // Remove if off screen
-        if (powerUps[i].y > gameCanvas.height) {
-          powerUps.splice(i, 1);
-        }
-      }
-      
-      // Update explosions
-      for (let i = explosions.length - 1; i >= 0; i--) {
-        explosions[i].frames--;
-        if (explosions[i].frames <= 0) {
-          explosions.splice(i, 1);
-        }
-      }
+    // Update displays
+    function updateDisplays() {
+      scoreDisplay.textContent = `Score: ${score}`;
+      movesDisplay.textContent = `Moves: ${moves}`;
+      pairsDisplay.textContent = `Pairs: ${pairsFound}/${totalPairs}`;
     }
 
-    function checkCollision(obj1, obj2) {
-      return obj1.x < obj2.x + obj2.width &&
-             obj1.x + obj1.width > obj2.x &&
-             obj1.y < obj2.y + obj2.height &&
-             obj1.y + obj1.height > obj2.y;
-    }
-
+    // Draw game
     function drawGame() {
       const ctx = gameCanvas.getContext('2d');
+      const width = gameCanvas.width;
+      const height = gameCanvas.height;
+      const padding = 10;
+      const cardWidth = (width - padding * 5) / 4;
+      const cardHeight = (height - padding * 3) / 4;
       
       // Clear canvas
       ctx.fillStyle = '#111';
-      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+      ctx.fillRect(0, 0, width, height);
       
-      // Draw starry background
-      ctx.fillStyle = '#fff';
-      for (let i = 0; i < 50; i++) {
-        const x = Math.random() * gameCanvas.width;
-        const y = (Math.random() * gameCanvas.height + Date.now() / 100) % gameCanvas.height;
-        const size = Math.random() * 2;
-        ctx.fillRect(x, y, size, size);
-      }
-      
-      // Draw explosions
-      for (let explosion of explosions) {
-        const radius = explosion.size * (1 - explosion.frames / 15);
-        const gradient = ctx.createRadialGradient(
-          explosion.x, explosion.y, 0,
-          explosion.x, explosion.y, radius
-        );
-        gradient.addColorStop(0, '#ff3e9d');
-        gradient.addColorStop(0.5, '#f80');
-        gradient.addColorStop(1, 'transparent');
-        
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(explosion.x, explosion.y, radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      
-      // Draw bullets
-      for (let bullet of bullets) {
-        ctx.fillStyle = bullet.color;
-        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-        
-        // Add glow effect
-        ctx.shadowColor = bullet.color;
-        ctx.shadowBlur = 5;
-        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
-        ctx.shadowBlur = 0;
-      }
-      
-      // Draw enemies
-      for (let enemy of enemies) {
-        enemyImg.draw(ctx, enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width);
-        
-        // Draw health bar
-        if (enemy.health < enemy.maxHealth) {
-          const healthWidth = enemy.width * (enemy.health / enemy.maxHealth);
-          ctx.fillStyle = '#f00';
-          ctx.fillRect(enemy.x, enemy.y - 10, enemy.width, 3);
-          ctx.fillStyle = '#0f0';
-          ctx.fillRect(enemy.x, enemy.y - 10, healthWidth, 3);
+      // Draw grid background
+      ctx.fillStyle = 'rgba(14, 255, 255, 0.05)';
+      for (let y = 0; y < 4; y++) {
+        for (let x = 0; x < 4; x++) {
+          if ((x + y) % 2 === 0) {
+            ctx.fillRect(
+              x * (cardWidth + padding) + padding,
+              y * (cardHeight + padding) + padding,
+              cardWidth,
+              cardHeight
+            );
+          }
         }
       }
       
-      // Draw power-ups
-      for (let powerUp of powerUps) {
-        powerUpImg.draw(ctx, powerUp.x + powerUp.width / 2, powerUp.y + powerUp.height / 2, powerUp.width);
+      // Draw cards
+      for (let i = 0; i < cards.length; i++) {
+        const row = Math.floor(i / 4);
+        const col = i % 4;
+        const x = col * (cardWidth + padding) + padding;
+        const y = row * (cardHeight + padding) + padding;
+        
+        // Update card position and size
+        cards[i].x = x;
+        cards[i].y = y;
+        cards[i].width = cardWidth;
+        cards[i].height = cardHeight;
+        
+        // Draw card background
+        ctx.fillStyle = cards[i].revealed ? '#0ef' : '#ff3e9d';
+        ctx.fillRect(x, y, cardWidth, cardHeight);
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x, y, cardWidth, cardHeight);
+        
+        // Draw symbol if revealed
+        if (cards[i].revealed || cards[i].matched) {
+          ctx.fillStyle = 'white';
+          ctx.font = `${Math.min(cardWidth, cardHeight) * 0.5}px Arial`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(cards[i].symbol, x + cardWidth / 2, y + cardHeight / 2);
+        }
+        
+        // Draw checkmark if matched
+        if (cards[i].matched) {
+          ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
+          ctx.fillRect(x, y, cardWidth, cardHeight);
+        }
+      }
+    }
+
+    // Handle card click
+    function handleCardClick(x, y) {
+      if (!canClick) return;
+      
+      // Find clicked card
+      const clickedCard = cards.find(card => 
+        x >= card.x && x <= card.x + card.width &&
+        y >= card.y && y <= card.y + card.height &&
+        !card.revealed && !card.matched
+      );
+      
+      if (!clickedCard) return;
+      
+      // Reveal the card
+      clickedCard.revealed = true;
+      drawGame();
+      
+      // If this is the first card in the pair
+      if (!firstCard) {
+        firstCard = clickedCard;
+        return;
       }
       
-      // Draw player
-      playerImg.draw(ctx);
+      // If this is the second card in the pair
+      secondCard = clickedCard;
+      moves++;
+      canClick = false;
       
-      // Draw HUD
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-      ctx.fillRect(0, 0, gameCanvas.width, 30);
+      // Check for match
+      if (firstCard.symbol === secondCard.symbol) {
+        // Match found
+        firstCard.matched = true;
+        secondCard.matched = true;
+        pairsFound++;
+        score += 10;
+        
+        // Check for win
+        if (pairsFound === totalPairs) {
+          setTimeout(() => {
+            alert(`Congratulations! You won with ${moves} moves and a score of ${score}!`);
+          }, 500);
+        }
+        
+        updateDisplays();
+        drawGame();
+        canClick = true;
+      } else {
+        // No match - flip cards back after delay
+        setTimeout(() => {
+          firstCard.revealed = false;
+          secondCard.revealed = false;
+          firstCard = null;
+          secondCard = null;
+          canClick = true;
+          drawGame();
+        }, 1000);
+      }
       
-      ctx.fillStyle = '#0ef';
-      ctx.font = '14px Arial';
-      ctx.textAlign = 'left';
-      ctx.fillText(`Score: ${score}`, 10, 20);
-      
-      ctx.textAlign = 'center';
-      ctx.fillText(`Level: ${level}`, gameCanvas.width / 2, 20);
-      
-      ctx.textAlign = 'right';
-      ctx.fillText(`Lives: ${lives}`, gameCanvas.width - 10, 20);
-    }
-
-    function updateDisplays() {
-      scoreDisplay.textContent = `Score: ${score}`;
-      levelDisplay.textContent = `Level: ${level}`;
-      livesDisplay.textContent = `Lives: ${lives}`;
-    }
-
-    function levelUp() {
-      level++;
-      gameSpeed *= 1.1;
+      firstCard = null;
+      secondCard = null;
       updateDisplays();
-      
-      // Flash the screen
-      const ctx = gameCanvas.getContext('2d');
-      ctx.fillStyle = 'rgba(14, 255, 255, 0.3)';
-      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-      
-      // Show level up message
-      ctx.fillStyle = '#ff3e9d';
-      ctx.font = '24px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText(`LEVEL ${level}`, gameCanvas.width / 2, gameCanvas.height / 2);
     }
 
-    function gameOver() {
-      isGameOver = true;
-      clearInterval(gameInterval);
-      
-      const ctx = gameCanvas.getContext('2d');
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-      
-      ctx.fillStyle = '#f00';
-      ctx.font = '30px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText('GAME OVER', gameCanvas.width / 2, gameCanvas.height / 2 - 30);
-      
-      ctx.fillStyle = '#fff';
-      ctx.font = '20px Arial';
-      ctx.fillText(`Final Score: ${score}`, gameCanvas.width / 2, gameCanvas.height / 2 + 20);
-      
-      ctx.fillStyle = '#0ef';
-      ctx.font = '16px Arial';
-      ctx.fillText('Click Restart to play again', gameCanvas.width / 2, gameCanvas.height / 2 + 60);
-    }
-
-    // Handle keyboard controls
-    document.addEventListener('keydown', (e) => {
-      if (gamePopup.style.display !== 'flex') return;
-      
-      switch(e.key) {
-        case 'ArrowLeft': keys.ArrowLeft = true; break;
-        case 'ArrowRight': keys.ArrowRight = true; break;
-        case 'ArrowUp': keys.ArrowUp = true; break;
-        case 'ArrowDown': keys.ArrowDown = true; break;
-        case ' ': keys.Space = true; e.preventDefault(); break;
-      }
+    // Handle mouse/touch events
+    gameCanvas.addEventListener('click', (e) => {
+      const rect = gameCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      handleCardClick(x, y);
     });
 
-    document.addEventListener('keyup', (e) => {
-      switch(e.key) {
-        case 'ArrowLeft': keys.ArrowLeft = false; break;
-        case 'ArrowRight': keys.ArrowRight = false; break;
-        case 'ArrowUp': keys.ArrowUp = false; break;
-        case 'ArrowDown': keys.ArrowDown = false; break;
-        case ' ': keys.Space = false; e.preventDefault(); break;
-      }
-    });
+    gameCanvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      const rect = gameCanvas.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      handleCardClick(x, y);
+    }, { passive: false });
 
     // Show/hide game popup
-    gameBtn.addEventListener('click', () => {
-      gamePopup.style.display = 'flex';
-      startGame();
-    });
-
+    gameBtn.addEventListener('click', startGame);
     closeGame.addEventListener('click', () => {
       gamePopup.style.display = 'none';
-      resetGame();
     });
-
-    restartGame.addEventListener('click', () => {
-      resetGame();
-      startGame();
-    });
+    restartGame.addEventListener('click', resetGame);
+    restartBtn.addEventListener('click', resetGame);
 
     // Set canvas size properly
     function resizeCanvas() {
       const size = Math.min(400, window.innerWidth * 0.9);
       gameCanvas.width = size;
-      gameCanvas.height = 250; // Smaller height
-      
-      // Adjust player position if canvas size changes
-      if (player) {
-        player.x = gameCanvas.width / 2 - 25;
-        player.y = gameCanvas.height - 60;
-      }
+      gameCanvas.height = 250;
+      drawGame();
     }
 
     window.addEventListener('load', () => {
