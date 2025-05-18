@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GUYz in Tech - Innovation for Everyone</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     * {
@@ -19,10 +19,7 @@
       color: rgba(255, 255, 255, 0.9);
       overflow-x: hidden;
       line-height: 1.6;
-      padding-top: 70px;
-      min-height: 100vh;
-      position: relative;
-      padding-bottom: 150px; /* Space for footer */
+      padding-top: 70px; /* Reduced for mobile */
     }
 
     /* Loading bar styles */
@@ -31,7 +28,7 @@
       top: 0;
       left: 0;
       width: 0%;
-      height: 3px;
+      height: 3px; /* Thinner on mobile */
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       z-index: 9999;
       transition: width 0.4s ease;
@@ -61,7 +58,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.8rem 5%;
+      padding: 0.8rem 5%; /* Reduced padding */
       position: fixed;
       width: 100%;
       top: 0;
@@ -73,7 +70,7 @@
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.5rem; /* Smaller logo */
       font-weight: bold;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       -webkit-background-clip: text;
@@ -87,11 +84,11 @@
     .logo::after {
       content: '';
       position: absolute;
-      width: 6px;
+      width: 6px; /* Smaller dot */
       height: 6px;
       background: #0ef;
       border-radius: 50%;
-      bottom: 10px;
+      bottom: 10px; /* Adjusted position */
       right: -10px;
       box-shadow: 0 0 8px #0ef, 0 0 16px #0ef;
     }
@@ -118,7 +115,7 @@
       text-decoration: none;
       position: relative;
       transition: all 0.3s;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller font */
       font-weight: 500;
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
       padding: 0.5rem 0;
@@ -145,12 +142,12 @@
     }
 
     .hero {
-      min-height: calc(100vh - 70px);
+      min-height: calc(100vh - 70px); /* Adjusted for smaller header */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      max-width: 100%;
+      max-width: 100%; /* Full width on mobile */
       padding: 2rem 0;
     }
 
@@ -159,7 +156,7 @@
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.2rem; /* Smaller on mobile */
       margin-bottom: 1.2rem;
       line-height: 1.2;
     }
@@ -172,24 +169,24 @@
     }
 
     .tagline {
-      font-size: 1.1rem;
+      font-size: 1.1rem; /* Smaller on mobile */
       margin-bottom: 2rem;
       opacity: 0.9;
     }
 
     .btn {
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem 1.5rem; /* Smaller button */
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: #fff;
       border: none;
       border-radius: 50px;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller text */
       font-weight: 600;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
       text-decoration: none;
       display: inline-block;
-      margin: 0.5rem 0;
+      margin: 0.5rem 0; /* Added margin for mobile */
     }
 
     .btn:hover {
@@ -199,18 +196,18 @@
 
     .values {
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 3rem;
+      flex-direction: column; /* Stack on mobile */
+      gap: 1.5rem; /* Reduced gap */
+      margin-top: 3rem; /* Reduced margin */
       flex-wrap: wrap;
     }
 
     .value-card {
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem;
+      padding: 1.5rem; /* Reduced padding */
       border-radius: 10px;
       flex: 1;
-      min-width: 100%;
+      min-width: 100%; /* Full width on mobile */
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
       backdrop-filter: blur(10px);
@@ -224,18 +221,18 @@
 
     .value-card h3 {
       color: #0ef;
-      margin-bottom: 0.8rem;
-      font-size: 1.3rem;
+      margin-bottom: 0.8rem; /* Reduced */
+      font-size: 1.3rem; /* Smaller */
     }
 
     .value-card p {
       opacity: 0.9;
-      font-size: 0.95rem;
+      font-size: 0.95rem; /* Smaller text */
     }
 
     .scroll-indicator {
       position: absolute;
-      bottom: 1.5rem;
+      bottom: 1.5rem; /* Raised slightly */
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -246,7 +243,7 @@
 
     .scroll-indicator .line {
       width: 2px;
-      height: 25px;
+      height: 25px; /* Shorter */
       background: linear-gradient(to bottom, #ff3e9d, #0ef);
       margin-bottom: 5px;
     }
@@ -269,12 +266,12 @@
     }
 
     .tech-stats {
-      position: relative;
+      position: relative; /* Changed from absolute */
       top: auto;
       right: auto;
       transform: none;
       display: flex;
-      flex-direction: row;
+      flex-direction: row; /* Keep row but wrap */
       flex-wrap: wrap;
       gap: 1.5rem;
       margin-top: 3rem;
@@ -282,29 +279,29 @@
     }
 
     .stat {
-      text-align: center;
-      min-width: 100px;
+      text-align: center; /* Center on mobile */
+      min-width: 100px; /* Prevent too small */
     }
 
     .stat h3 {
-      font-size: 1.8rem;
+      font-size: 1.8rem; /* Smaller */
       color: #0ef;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.3rem; /* Reduced */
     }
 
     .stat p {
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
       opacity: 0.9;
     }
 
     section {
-      padding: 70px 5%;
+      padding: 70px 5%; /* Reduced padding */
       position: relative;
     }
 
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      font-size: 2rem; /* Smaller */
+      margin-bottom: 2rem; /* Reduced */
       position: relative;
       display: inline-block;
     }
@@ -313,38 +310,38 @@
       content: '';
       position: absolute;
       width: 100%;
-      height: 2px;
-      bottom: -8px;
+      height: 2px; /* Thinner */
+      bottom: -8px; /* Raised */
       left: 0;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
     }
 
     .about-content {
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      flex-direction: column; /* Stack on mobile */
+      gap: 2rem; /* Reduced gap */
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2rem; /* Reduced */
     }
 
     .about-text {
       flex: 1;
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem;
+      padding: 1.5rem; /* Reduced */
       border-radius: 10px;
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .about-text p {
-      margin-bottom: 1.2rem;
-      font-size: 1rem;
+      margin-bottom: 1.2rem; /* Reduced */
+      font-size: 1rem; /* Smaller */
     }
 
     .about-image {
       flex: 1;
-      min-height: 250px;
-      width: 100%;
+      min-height: 250px; /* Smaller */
+      width: 100%; /* Full width */
       background-color: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(14, 255, 255, 0.2);
       border-radius: 10px;
@@ -352,20 +349,20 @@
       justify-content: center;
       align-items: center;
       color: #0ef;
-      font-size: 1rem;
+      font-size: 1rem; /* Smaller */
       backdrop-filter: blur(5px);
     }
 
     .mission-vision {
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 2rem;
+      flex-direction: column; /* Stack on mobile */
+      gap: 1.5rem; /* Reduced */
+      margin-top: 2rem; /* Reduced */
     }
 
     .mission-card, .vision-card {
       flex: 1;
-      padding: 1.5rem;
+      padding: 1.5rem; /* Reduced */
       background: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -381,20 +378,20 @@
 
     .mission-card h3, .vision-card h3 {
       color: #ff3e9d;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+      margin-bottom: 1rem; /* Reduced */
+      font-size: 1.5rem; /* Smaller */
     }
 
     .mission-card p, .vision-card p {
-      font-size: 1rem;
+      font-size: 1rem; /* Smaller */
       opacity: 0.9;
     }
 
     .quote {
-      font-size: 1.2rem;
+      font-size: 1.2rem; /* Smaller */
       font-style: italic;
-      margin: 2rem 0;
-      padding: 1.5rem;
+      margin: 2rem 0; /* Reduced */
+      padding: 1.5rem; /* Reduced */
       border-left: 3px solid #0ef;
       background: rgba(14, 255, 255, 0.1);
       line-height: 1.5;
@@ -402,17 +399,17 @@
 
     .quote .gradient-text {
       display: block;
-      margin-top: 1rem;
-      font-size: 1rem;
+      margin-top: 1rem; /* Reduced */
+      font-size: 1rem; /* Smaller */
       font-style: normal;
     }
 
     /* Projects Section */
     .projects-container {
       position: relative;
-      max-width: 100%;
-      margin: 2rem auto;
-      padding: 10px;
+      max-width: 100%; /* Full width */
+      margin: 2rem auto; /* Reduced */
+      padding: 10px; /* Reduced */
       overflow: hidden;
     }
 
@@ -421,23 +418,23 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      height: auto;
-      min-height: 400px;
+      height: auto; /* Auto height */
+      min-height: 400px; /* Minimum height */
       perspective: 1000px;
     }
 
     .project-card {
-      position: relative;
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto;
+      position: relative; /* Changed from absolute */
+      width: 100%; /* Full width */
+      max-width: 300px; /* Max width */
+      margin: 0 auto; /* Center */
       transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
       transform-style: preserve-3d;
-      display: none;
+      display: none; /* Hide by default */
     }
 
     .project-card.active {
-      display: block;
+      display: block; /* Show active */
       transform: none;
       filter: none;
       left: auto;
@@ -445,45 +442,45 @@
 
     .project-card.prev,
     .project-card.next {
-      display: none;
+      display: none; /* Hide prev/next on mobile */
     }
 
     .slider-nav {
-      position: relative;
+      position: relative; /* Changed from absolute */
       top: auto;
       width: 100%;
       display: flex;
       justify-content: space-between;
       z-index: 4;
       transform: none;
-      margin: 1rem 0;
+      margin: 1rem 0; /* Added margin */
       pointer-events: all;
     }
 
     .slider-btn {
-      width: 40px;
+      width: 40px; /* Smaller */
       height: 40px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ff3e9d, #0ef);
       border: none;
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.2rem; /* Smaller */
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5);
-      margin: 0 10px;
+      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5); /* Smaller shadow */
+      margin: 0 10px; /* Reduced margin */
     }
 
     .slider-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255, 62, 157, 0.7);
+      box-shadow: 0 0 20px rgba(255, 62, 157, 0.7); /* Smaller shadow */
     }
 
     .project-image {
-      height: 180px;
+      height: 180px; /* Smaller */
       background-color: rgba(255, 255, 255, 0.1);
       display: flex;
       justify-content: center;
@@ -505,26 +502,26 @@
     }
 
     .project-info {
-      padding: 1.2rem;
+      padding: 1.2rem; /* Reduced */
     }
 
     .project-info h3 {
       color: #0ef;
-      margin-bottom: 0.8rem;
-      font-size: 1.3rem;
+      margin-bottom: 0.8rem; /* Reduced */
+      font-size: 1.3rem; /* Smaller */
     }
 
     .project-info p {
       opacity: 0.9;
-      font-size: 0.95rem;
-      margin-bottom: 1.2rem;
+      font-size: 0.95rem; /* Smaller */
+      margin-bottom: 1.2rem; /* Reduced */
     }
 
     .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 0.8rem;
+      margin-top: 0.8rem; /* Reduced */
     }
 
     .tech-tag {
@@ -532,7 +529,7 @@
       color: #0ef;
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
-      font-size: 0.7rem;
+      font-size: 0.7rem; /* Smaller */
       border: 1px solid rgba(14, 255, 255, 0.3);
     }
 
@@ -545,38 +542,38 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      margin: 2rem 0;
+      margin: 2rem 0; /* Reduced */
     }
 
     .community-stat {
-      padding: 1rem;
-      min-width: 100px;
+      padding: 1rem; /* Reduced */
+      min-width: 100px; /* Prevent too small */
       flex: 1;
     }
 
     .community-stat h3 {
-      font-size: 1.8rem;
+      font-size: 1.8rem; /* Smaller */
       color: #ff3e9d;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.3rem; /* Reduced */
     }
 
     .community-stat p {
       opacity: 0.9;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
 
     .community-image {
-      height: 200px;
+      height: 200px; /* Smaller */
       background-color: rgba(255, 255, 255, 0.05);
       border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 1.5rem auto;
+      margin: 1.5rem auto; /* Reduced */
       border: 1px solid rgba(14, 255, 255, 0.2);
       color: #0ef;
-      font-size: 1rem;
-      max-width: 100%;
+      font-size: 1rem; /* Smaller */
+      max-width: 100%; /* Full width */
     }
 
     /* Game popup styles */
@@ -591,16 +588,16 @@
       z-index: 1000;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 20px; /* Added padding */
     }
 
     .game-container {
       background: rgba(0, 0, 0, 0.9);
       border: 2px solid #0ef;
       border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5);
-      max-width: 100%;
+      padding: 1rem; /* Reduced */
+      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5); /* Smaller shadow */
+      max-width: 100%; /* Full width */
       width: 100%;
       text-align: center;
     }
@@ -609,12 +606,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.8rem; /* Reduced */
     }
 
     .game-title {
       color: #0ef;
-      font-size: 1.3rem;
+      font-size: 1.3rem; /* Smaller */
       font-weight: 600;
     }
 
@@ -623,9 +620,9 @@
       color: white;
       border: none;
       border-radius: 50%;
-      width: 25px;
+      width: 25px; /* Smaller */
       height: 25px;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -637,35 +634,34 @@
     #game-canvas {
       background-color: #111;
       width: 100%;
-      height: 250px;
+      height: 250px; /* Smaller */
       margin: 0 auto;
       display: block;
       border: 1px solid #0ef;
-      touch-action: none;
     }
 
     .game-controls {
-      margin-top: 0.8rem;
+      margin-top: 0.8rem; /* Reduced */
       color: #0ef;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
 
     .game-stats {
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
 
     .game-btn {
-      margin-top: 0.8rem;
-      padding: 0.5rem 1.2rem;
+      margin-top: 0.8rem; /* Reduced */
+      padding: 0.5rem 1.2rem; /* Smaller */
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
       font-weight: 600;
       transition: transform 0.3s;
     }
@@ -674,36 +670,9 @@
       transform: translateY(-3px);
     }
 
-    /* Touch controls for mobile */
-    .touch-controls {
-      display: none;
-      justify-content: space-between;
-      margin-top: 10px;
-      width: 100%;
-    }
-
-    .touch-btn {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 1.5rem;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-    }
-
-    .touch-btn:active {
-      background: rgba(255, 255, 255, 0.4);
-    }
-
     /* Contact Section Styles */
     .contact-section {
-      padding: 70px 5%;
+      padding: 70px 5%; /* Reduced */
       position: relative;
       background: rgba(0, 0, 0, 0.7);
       border-top: 1px solid rgba(14, 255, 255, 0.2);
@@ -711,15 +680,15 @@
 
     .contact-container {
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-top: 1.5rem;
+      flex-direction: column; /* Stack on mobile */
+      gap: 2rem; /* Reduced */
+      margin-top: 1.5rem; /* Reduced */
     }
 
     .contact-info {
       flex: 1;
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem;
+      padding: 1.5rem; /* Reduced */
       border-radius: 10px;
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -727,21 +696,21 @@
 
     .contact-info h3 {
       color: #0ef;
-      margin-bottom: 1.2rem;
-      font-size: 1.5rem;
+      margin-bottom: 1.2rem; /* Reduced */
+      font-size: 1.5rem; /* Smaller */
     }
 
     .contact-methods {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1rem; /* Reduced */
     }
 
     .contact-method {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem;
+      gap: 0.8rem; /* Reduced */
+      padding: 0.8rem; /* Reduced */
       border-radius: 8px;
       transition: all 0.3s ease;
       background: rgba(255, 255, 255, 0.05);
@@ -755,13 +724,13 @@
     }
 
     .contact-icon {
-      width: 35px;
+      width: 35px; /* Smaller */
       height: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      font-size: 1rem;
+      font-size: 1rem; /* Smaller */
     }
 
     .whatsapp-icon {
@@ -775,49 +744,49 @@
     }
 
     .contact-text h4 {
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.2rem; /* Reduced */
       color: #ff3e9d;
-      font-size: 1rem;
+      font-size: 1rem; /* Smaller */
     }
 
     .contact-text p {
       opacity: 0.9;
-      font-size: 0.85rem;
+      font-size: 0.85rem; /* Smaller */
     }
 
     .contact-form {
       flex: 1;
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem;
+      padding: 1.5rem; /* Reduced */
       border-radius: 10px;
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .form-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.2rem; /* Reduced */
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.4rem; /* Reduced */
       color: #0ef;
-      font-size: 0.95rem;
+      font-size: 0.95rem; /* Smaller */
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 0.7rem;
+      padding: 0.7rem; /* Reduced */
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 5px;
       color: white;
-      font-size: 0.95rem;
+      font-size: 0.95rem; /* Smaller */
     }
 
     .form-group textarea {
-      min-height: 100px;
+      min-height: 100px; /* Smaller */
       resize: vertical;
     }
 
@@ -825,13 +794,13 @@
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: white;
       border: none;
-      padding: 0.7rem 1.2rem;
+      padding: 0.7rem 1.2rem; /* Smaller */
       border-radius: 5px;
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: 0.95rem; /* Smaller */
       font-weight: 600;
       transition: transform 0.3s;
-      width: 100%;
+      width: 100%; /* Full width */
     }
 
     .form-submit:hover {
@@ -849,27 +818,27 @@
       background-color: rgba(0, 0, 0, 0.9);
       z-index: 1000;
       overflow-y: auto;
-      padding: 20px;
+      padding: 20px; /* Added padding */
     }
 
     .modal-content {
       background: rgba(0, 0, 0, 0.9);
-      margin: 2rem auto;
-      padding: 1.5rem;
+      margin: 2rem auto; /* Reduced */
+      padding: 1.5rem; /* Reduced */
       border: 2px solid #0ef;
       border-radius: 10px;
-      max-width: 100%;
+      max-width: 100%; /* Full width */
       width: 100%;
       position: relative;
-      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5);
+      box-shadow: 0 0 20px rgba(14, 255, 255, 0.5); /* Smaller shadow */
     }
 
     .close-modal {
       position: absolute;
-      top: 0.8rem;
+      top: 0.8rem; /* Reduced */
       right: 0.8rem;
       color: #ff3e9d;
-      font-size: 1.5rem;
+      font-size: 1.5rem; /* Smaller */
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -879,20 +848,20 @@
     }
 
     .modal-header {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem; /* Reduced */
     }
 
     .modal-header h3 {
-      font-size: 1.8rem;
+      font-size: 1.8rem; /* Smaller */
       color: #0ef;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.8rem; /* Reduced */
     }
 
     .modal-image {
       width: 100%;
-      height: 200px;
+      height: 200px; /* Smaller */
       background-color: rgba(255, 255, 255, 0.1);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.2rem; /* Reduced */
       border-radius: 5px;
       overflow: hidden;
     }
@@ -904,36 +873,36 @@
     }
 
     .modal-body {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem; /* Reduced */
     }
 
     .modal-section {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.2rem; /* Reduced */
     }
 
     .modal-section h4 {
       color: #ff3e9d;
-      margin-bottom: 0.7rem;
-      font-size: 1.2rem;
+      margin-bottom: 0.7rem; /* Reduced */
+      font-size: 1.2rem; /* Smaller */
     }
 
     .modal-section p {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.8rem; /* Reduced */
       line-height: 1.6;
-      font-size: 0.95rem;
+      font-size: 0.95rem; /* Smaller */
     }
 
     .modal-footer {
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Stack on mobile */
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      gap: 1rem; /* Added gap */
     }
 
     .project-links {
       display: flex;
-      gap: 1rem;
+      gap: 1rem; /* Added gap */
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -949,7 +918,7 @@
       text-decoration: none;
       transition: all 0.3s;
       border: 1px solid rgba(14, 255, 255, 0.3);
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
 
     .project-links a:hover {
@@ -959,21 +928,23 @@
 
     /* Services Section */
     .services-section {
-      padding: 70px 5%;
+      padding: 70px 5%; /* Reduced */
       background: rgba(0, 0, 0, 0.7);
       border-top: 1px solid rgba(14, 255, 255, 0.2);
     }
 
     .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
+      display: flex;
+      flex-direction: column; /* Stack on mobile */
+      gap: 1.5rem; /* Reduced */
+      margin-top: 2rem; /* Reduced */
     }
 
     .service-card {
+      flex: 1;
+      min-width: 100%; /* Full width */
       background: rgba(0, 0, 0, 0.6);
-      padding: 1.5rem;
+      padding: 1.5rem; /* Reduced */
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
@@ -988,57 +959,57 @@
 
     .service-card h3 {
       color: #0ef;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
+      margin-bottom: 1rem; /* Reduced */
+      font-size: 1.3rem; /* Smaller */
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.8rem; /* Reduced */
     }
 
     .service-card h3 .icon {
-      width: 35px;
+      width: 35px; /* Smaller */
       height: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       background: rgba(14, 255, 255, 0.1);
-      font-size: 1.1rem;
+      font-size: 1.1rem; /* Smaller */
     }
 
     .service-card p {
-      margin-bottom: 1.2rem;
-      font-size: 0.95rem;
+      margin-bottom: 1.2rem; /* Reduced */
+      font-size: 0.95rem; /* Smaller */
     }
 
     .service-card .btn {
-      padding: 0.7rem 1.2rem;
-      font-size: 0.9rem;
+      padding: 0.7rem 1.2rem; /* Smaller */
+      font-size: 0.9rem; /* Smaller */
     }
 
     /* Community Join Options */
     .join-options {
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Stack on mobile */
       justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
+      gap: 1rem; /* Reduced */
+      margin-top: 1.5rem; /* Reduced */
       align-items: center;
     }
 
     .join-option {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1.2rem;
+      gap: 0.8rem; /* Reduced */
+      padding: 0.8rem 1.2rem; /* Reduced */
       background: rgba(14, 255, 255, 0.1);
       border-radius: 50px;
       text-decoration: none;
       color: white;
       transition: all 0.3s;
       border: 1px solid rgba(14, 255, 255, 0.3);
-      width: 100%;
-      max-width: 300px;
+      width: 100%; /* Full width */
+      max-width: 300px; /* Max width */
       justify-content: center;
     }
 
@@ -1048,13 +1019,13 @@
     }
 
     .join-option .icon {
-      width: 25px;
+      width: 25px; /* Smaller */
       height: 25px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
 
     .whatsapp-option .icon {
@@ -1070,24 +1041,24 @@
     /* Chatbot styles */
     .chatbot-container {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 20px; /* Raised */
+      right: 20px; /* Brought in */
       z-index: 1000;
     }
     
     .chatbot-btn {
-      width: 50px;
+      width: 50px; /* Smaller */
       height: 50px;
       border-radius: 50%;
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       border: none;
       color: white;
-      font-size: 1.3rem;
+      font-size: 1.3rem; /* Smaller */
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5);
+      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5); /* Smaller shadow */
       transition: all 0.3s ease;
     }
     
@@ -1097,9 +1068,9 @@
     
     .chatbot-window {
       position: absolute;
-      bottom: 60px;
+      bottom: 60px; /* Adjusted */
       right: 0;
-      width: 280px;
+      width: 280px; /* Smaller */
       background: rgba(0, 0, 0, 0.9);
       border: 2px solid #0ef;
       border-radius: 15px;
@@ -1115,35 +1086,35 @@
     
     .chatbot-header {
       background: linear-gradient(90deg, #ff3e9d, #0ef);
-      padding: 0.7rem;
+      padding: 0.7rem; /* Reduced */
       color: white;
       font-weight: bold;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.95rem;
+      font-size: 0.95rem; /* Smaller */
     }
     
     .chatbot-close {
       background: none;
       border: none;
       color: white;
-      font-size: 1.1rem;
+      font-size: 1.1rem; /* Smaller */
       cursor: pointer;
     }
     
     .chatbot-messages {
-      height: 200px;
+      height: 200px; /* Smaller */
       overflow-y: auto;
-      padding: 0.8rem;
+      padding: 0.8rem; /* Reduced */
     }
     
     .message {
-      margin-bottom: 0.8rem;
-      padding: 0.7rem;
+      margin-bottom: 0.8rem; /* Reduced */
+      padding: 0.7rem; /* Reduced */
       border-radius: 10px;
       max-width: 80%;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
     
     .bot-message {
@@ -1171,9 +1142,9 @@
       background: rgba(14, 255, 255, 0.1);
       border: 1px solid rgba(14, 255, 255, 0.3);
       color: #0ef;
-      padding: 0.4rem 0.7rem;
+      padding: 0.4rem 0.7rem; /* Reduced */
       border-radius: 20px;
-      font-size: 0.75rem;
+      font-size: 0.75rem; /* Smaller */
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -1190,62 +1161,57 @@
     
     .chatbot-input input {
       flex: 1;
-      padding: 0.7rem;
+      padding: 0.7rem; /* Reduced */
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 5px;
       color: white;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
     
     .chatbot-input button {
       background: linear-gradient(90deg, #ff3e9d, #0ef);
       color: white;
       border: none;
-      padding: 0 0.8rem;
+      padding: 0 0.8rem; /* Reduced */
       border-radius: 5px;
       margin-left: 0.5rem;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.9rem; /* Smaller */
     }
 
-    /* COLLABORATORS SECTION */
-    .collaborators-section {
-      margin: 2rem 0;
+    /* COLLABORATORS CIRCLE */
+    .collaborators-circle {
+      width: 180px; /* Smaller */
+      height: 180px;
+      border-radius: 50%;
+      position: relative;
+      margin: 1.5rem auto; /* Reduced */
+      border: 2px solid #0ef; /* Thinner */
+      box-shadow: 0 0 20px rgba(14, 255, 255, 0.3), /* Smaller shadow */
+                  inset 0 0 15px rgba(255, 62, 157, 0.3);
+      background: rgba(0, 0, 0, 0.5);
     }
 
-    .collaborators-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .collaborator-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .collaborator-avatar {
-      width: 80px;
-      height: 80px;
+    .collaborator {
+      width: 50px; /* Smaller */
+      height: 50px;
       border-radius: 50%;
       overflow: hidden;
+      position: absolute;
       border: 2px solid #ff3e9d;
-      box-shadow: 0 0 15px rgba(255, 62, 157, 0.5);
-      transition: all 0.3s ease;
-      margin-bottom: 0.8rem;
+      transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+      box-shadow: 0 0 10px rgba(255, 62, 157, 0.5); /* Smaller shadow */
     }
 
-    .collaborator-avatar:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255, 62, 157, 0.9);
+    .collaborator:hover {
+      transform: scale(1.2) rotate(10deg); /* Less dramatic */
+      z-index: 2;
+      box-shadow: 0 0 15px rgba(255, 62, 157, 0.9); /* Smaller shadow */
       border-color: #0ef;
     }
 
-    .collaborator-avatar img {
+    .collaborator img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1253,114 +1219,8 @@
       transition: filter 0.3s ease;
     }
 
-    .collaborator-avatar:hover img {
+    .collaborator:hover img {
       filter: grayscale(0%);
-    }
-
-    .collaborator-name {
-      font-size: 0.9rem;
-      color: #0ef;
-      margin-bottom: 0.3rem;
-    }
-
-    .collaborator-role {
-      font-size: 0.8rem;
-      opacity: 0.8;
-    }
-
-    /* Footer Styles */
-    footer {
-      background: rgba(0, 0, 0, 0.9);
-      padding: 2rem 5%;
-      border-top: 1px solid rgba(14, 255, 255, 0.2);
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .footer-logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      background: linear-gradient(90deg, #ff3e9d, #0ef);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
-    }
-
-    .footer-about {
-      max-width: 500px;
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    .footer-links {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    .footer-column h4 {
-      color: #0ef;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .footer-column ul {
-      list-style: none;
-    }
-
-    .footer-column li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-column a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .footer-column a:hover {
-      color: #0ef;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      transition: all 0.3s;
-    }
-
-    .social-link:hover {
-      transform: translateY(-3px);
-      background: linear-gradient(90deg, #ff3e9d, #0ef);
-    }
-
-    .footer-bottom {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-      font-size: 0.8rem;
-      opacity: 0.7;
     }
 
     /* Mobile menu styles */
@@ -1393,9 +1253,30 @@
         font-size: 1.2rem;
       }
       
-      /* Show touch controls on mobile */
-      .touch-controls {
-        display: flex;
+      /* Adjust collaborator positions for mobile */
+      .collaborator {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .collaborator:nth-child(1) {
+        top: 5px;
+        left: 60px;
+      }
+      
+      .collaborator:nth-child(2) {
+        top: 60px;
+        left: 5px;
+      }
+      
+      .collaborator:nth-child(3) {
+        top: 60px;
+        right: 5px;
+      }
+      
+      .collaborator:nth-child(4) {
+        bottom: 5px;
+        left: 60px;
       }
     }
 
@@ -1499,7 +1380,7 @@
       }
       
       .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+        flex-direction: row;
       }
       
       .join-options {
@@ -1508,15 +1389,6 @@
       
       .modal-footer {
         flex-direction: row;
-      }
-
-      .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .footer-links {
-        grid-template-columns: repeat(3, 1fr);
       }
     }
 
@@ -1535,8 +1407,14 @@
         padding: 1rem;
       }
       
-      .collaborators-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .collaborators-circle {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .collaborator {
+        width: 35px;
+        height: 35px;
       }
     }
   </style>
@@ -1777,18 +1655,6 @@
         <p>Specializing in gamified experiences, we help you engage your audience through game mechanics, rewards systems, and interactive elements that boost participation and retention.</p>
         <a href="#contact" class="btn">Talk to us</a>
       </div>
-      
-      <div class="service-card">
-        <h3><span class="icon">🤖</span> AI & Machine Learning</h3>
-        <p>Leverage the power of artificial intelligence to automate processes, gain insights from data, and create intelligent applications that adapt to your users' needs.</p>
-        <a href="#contact" class="btn">Talk to us</a>
-      </div>
-      
-      <div class="service-card">
-        <h3><span class="icon">📚</span> Tech Education & Training</h3>
-        <p>Our customized training programs help individuals and organizations develop the digital skills needed to thrive in today's technology-driven world.</p>
-        <a href="#contact" class="btn">Talk to us</a>
-      </div>
     </div>
   </section>
 
@@ -1824,16 +1690,6 @@
               <p>Send us a detailed message about your needs</p>
             </div>
           </a>
-          
-          <div class="contact-method">
-            <div class="contact-icon" style="background: #0ef;">
-              <i class="fas fa-phone"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Call Us</h4>
-              <p>+27 68 196 0560</p>
-            </div>
-          </div>
         </div>
       </div>
       
@@ -1862,7 +1718,7 @@
     </div>
   </section>
 
-<!-- Project Modals with Collaborators Grid -->
+<!-- Project Modals with Collaborators Circle -->
 <div id="robocodes-modal" class="project-modal">
   <div class="modal-content">
     <span class="close-modal">&times;</span>
@@ -1884,38 +1740,19 @@
       </div>
       
       <div class="modal-section">
-        <h4>Collaborators</h4>
-        <div class="collaborators-grid">
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="kat.jpg" alt="Project Lead">
-            </div>
-            <div class="collaborator-name">Jane Smith</div>
-            <div class="collaborator-role">Project Lead</div>
+        <h4>Collaborations</h4>
+        <div class="collaborators-circle">
+          <div class="collaborator" style="top: 10px; left: 70px;">
+            <img src="kat.jpg" alt="RoboCodes Project">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="katlego.jpg" alt="Education Expert">
-            </div>
-            <div class="collaborator-name">Dr. Sarah Johnson</div>
-            <div class="collaborator-role">Education Expert</div>
+          <div class="collaborator" style="top: 70px; left: 10px;">
+            <img src="kat.jpg" alt="Education Expert">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="qhawe.png" alt="Game Designer">
-            </div>
-            <div class="collaborator-name">Mike Chen</div>
-            <div class="collaborator-role">Game Designer</div>
+          <div class="collaborator" style="top: 70px; right: 10px;">
+            <img src="kat.jpg" alt="Game Designer">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="water-meter.jpg" alt="AI Specialist">
-            </div>
-            <div class="collaborator-name">Amina Diallo</div>
-            <div class="collaborator-role">AI Specialist</div>
+          <div class="collaborator" style="bottom: 10px; left: 70px;">
+            <img src="qhawe.png" alt="AI Specialist">
           </div>
         </div>
         <p>We partnered with local schools and community centers to pilot the program. Educational psychologists helped us design age-appropriate learning paths, while game designers ensured the experience remained engaging and rewarding for young learners.</p>
@@ -1966,38 +1803,19 @@
       </div>
       
       <div class="modal-section">
-        <h4>Collaborators</h4>
-        <div class="collaborators-grid">
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
-            </div>
-            <div class="collaborator-name">Katlego Nomsa Mphetseni</div>
-            <div class="collaborator-role">Lead Developer</div>
+        <h4>Collaborations</h4>
+        <div class="collaborators-circle">
+          <div class="collaborator" style="top: 10px; left: 70px;">
+            <img src="kat.jpg" alt="NGO Director">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="psychologist.jpg" alt="Psychologist">
-            </div>
-            <div class="collaborator-name">Dr. Lisa Williams</div>
-            <div class="collaborator-role">Psychologist</div>
+          <div class="collaborator" style="top: 70px; left: 10px;">
+            <img src="psychologist.jpg" alt="Psychologist">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="community-leader.jpg" alt="Community Leader">
-            </div>
-            <div class="collaborator-name">Nomsa Khumalo</div>
-            <div class="collaborator-role">Community Leader</div>
+          <div class="collaborator" style="top: 70px; right: 10px;">
+            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="ngo-director.jpg" alt="NGO Director">
-            </div>
-            <div class="collaborator-name">Sarah Johnson</div>
-            <div class="collaborator-role">NGO Director</div>
+          <div class="collaborator" style="bottom: 10px; left: 70px;">
+            <img src="community-leader.jpg" alt="Community Leader">
           </div>
         </div>
         <p>We worked closely with NGOs specializing in gender-based violence prevention, psychologists, and survivors to ensure the content was both accurate and sensitive. Special thanks to developer Ms Katlego Nomsa Mphetseni for her contributions.</p>
@@ -2052,38 +1870,19 @@
       </div>
       
       <div class="modal-section">
-        <h4>Collaborators</h4>
-        <div class="collaborators-grid">
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
-            </div>
-            <div class="collaborator-name">Katlego Nomsa Mphetseni</div>
-            <div class="collaborator-role">Lead Developer</div>
+        <h4>Collaborations</h4>
+        <div class="collaborators-circle">
+          <div class="collaborator" style="top: 10px; left: 70px;">
+            <img src="environmental-scientist.jpg" alt="Environmental Scientist">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="relebogile.jpg" alt="Relebogile [Last Name]">
-            </div>
-            <div class="collaborator-name">Relebogile [Last Name]</div>
-            <div class="collaborator-role">Co-Developer</div>
+          <div class="collaborator" style="top: 70px; left: 10px;">
+            <img src="hardware-engineer.jpg" alt="Hardware Engineer">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="environmental-scientist.jpg" alt="Environmental Scientist">
-            </div>
-            <div class="collaborator-name">Dr. James Wilson</div>
-            <div class="collaborator-role">Environmental Scientist</div>
+          <div class="collaborator" style="top: 70px; right: 10px;">
+            <img src="katlego.jpg" alt="Katlego Nomsa Mphetseni">
           </div>
-          
-          <div class="collaborator-card">
-            <div class="collaborator-avatar">
-              <img src="municipal-officer.jpg" alt="Municipal Officer">
-            </div>
-            <div class="collaborator-name">Thabo Mbeki</div>
-            <div class="collaborator-role">Municipal Officer</div>
+          <div class="collaborator" style="bottom: 10px; left: 70px;">
+            <img src="municipal-officer.jpg" alt="Municipal Officer">
           </div>
         </div>
         <p>We worked closely with environmental scientists to ensure our water-saving tips were scientifically valid. Local municipalities helped us test the system with real households. Special thanks to developers Ms Katlego Nomsa Mphetseni and Ms Relebogile [Last Name] for their contributions.</p>
@@ -2116,19 +1915,17 @@
   <div class="game-popup" id="game-popup">
     <div class="game-container">
       <div class="game-header">
-        <h2 class="game-title">Memory Match</h2>
+        <h2 class="game-title">Code Defender</h2>
         <button class="close-game" id="close-game">×</button>
       </div>
       <canvas id="game-canvas"></canvas>
       <div class="game-controls">
         <div class="game-stats">
           <p id="score">Score: 0</p>
-          <p id="moves">Moves: 0</p>
-          <p id="pairs">Pairs: 0/8</p>
+          <p id="level">Level: 1</p>
+          <p id="lives">Lives: 3</p>
         </div>
-        <div class="touch-controls">
-          <div class="touch-btn" id="restart-btn">⟳</div>
-        </div>
+        <p>Use arrow keys to move and space to shoot</p>
         <button class="game-btn" id="restart-game">Restart Game</button>
       </div>
     </div>
@@ -2158,60 +1955,6 @@
     </div>
   </div>
 </div>
-
-<!-- Footer Section -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-about">
-      <div class="footer-logo">GUYzInTech</div>
-      <p class="footer-about">Established in 2024, GUYzInTech is a women-led technology company creating impactful, community-driven solutions through innovation, education, and outreach.</p>
-      <div class="social-links">
-        <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://wa.me/+27681960560" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:guyzconnect@gmail.com" class="social-link" target="_blank"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-    
-    <div class="footer-links">
-      <div class="footer-column">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#community">Community</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">Web Development</a></li>
-          <li><a href="#services">App Development</a></li>
-          <li><a href="#services">Gamification</a></li>
-          <li><a href="#services">AI Solutions</a></li>
-          <li><a href="#services">Tech Training</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+27681960560">+27 68 196 0560</a></li>
-          <li><a href="mailto:guyzconnect@gmail.com">guyzconnect@gmail.com</a></li>
-          <li><a href="https://wa.me/+27681960560">WhatsApp</a></li>
-          <li>Pretoria, South Africa</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  
-  <div class="footer-bottom">
-    &copy; 2024 GUYzInTech. All Rights Reserved.
-  </div>
-</footer>
 
   <script>
     // Loading bar functionality
@@ -2272,7 +2015,7 @@
     
     // Particles setup
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1500;
+    const particlesCount = 1500; // Reduced for mobile performance
     
     const posArray = new Float32Array(particlesCount * 3);
     
@@ -2386,248 +2129,525 @@
     const restartGame = document.getElementById('restart-game');
     const gameCanvas = document.getElementById('game-canvas');
     const scoreDisplay = document.getElementById('score');
-    const movesDisplay = document.getElementById('moves');
-    const pairsDisplay = document.getElementById('pairs');
-    const restartBtn = document.getElementById('restart-btn');
+    const levelDisplay = document.getElementById('level');
+    const livesDisplay = document.getElementById('lives');
 
     // Game state
     let gameInterval;
     let score = 0;
-    let moves = 0;
-    let pairsFound = 0;
-    let totalPairs = 8;
-    let firstCard = null;
-    let secondCard = null;
-    let canClick = true;
-    let cards = [];
+    let level = 1;
+    let lives = 3;
+    let gameSpeed = 1;
+    let isGameOver = false;
     
-    // Card symbols
-    const symbols = ['💻', '🎮', '🤖', '📱', '🔌', '💾', '🖥️', '📊'];
+    // Player object
+    let player = {
+      x: gameCanvas.width / 2 - 25,
+      y: gameCanvas.height - 60,
+      width: 50,
+      height: 50,
+      speed: 5,
+      color: '#0ef'
+    };
     
-    // Game initialization
-    function initGame() {
-      // Create pairs of cards
-      let cardSymbols = [];
-      for (let i = 0; i < totalPairs; i++) {
-        cardSymbols.push(symbols[i]);
-        cardSymbols.push(symbols[i]);
+    // Game objects
+    let bullets = [];
+    let enemies = [];
+    let explosions = [];
+    let powerUps = [];
+    
+    // Controls
+    let keys = {
+      ArrowLeft: false,
+      ArrowRight: false,
+      ArrowUp: false,
+      ArrowDown: false,
+      Space: false
+    };
+    
+    let lastShot = 0;
+    const shotDelay = 300;
+    
+    // Game images (we'll use simple shapes but could be replaced with actual images)
+    const playerImg = {
+      draw(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(this.x + this.width / 2, this.y);
+        ctx.lineTo(this.x, this.y + this.height);
+        ctx.lineTo(this.x + this.width, this.y + this.height);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Add some details
+        ctx.fillStyle = '#ff3e9d';
+        ctx.beginPath();
+        ctx.arc(this.x + this.width / 2, this.y + this.height / 2, 5, 0, Math.PI * 2);
+        ctx.fill();
       }
-      
-      // Shuffle cards
-      cardSymbols = shuffleArray(cardSymbols);
-      
-      // Create card objects
-      cards = cardSymbols.map((symbol, index) => ({
-        id: index,
-        symbol,
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0,
-        revealed: false,
-        matched: false
-      }));
-      
+    };
+    
+    const enemyImg = {
+      draw(ctx, x, y, size) {
+        // Draw bug-like enemy
+        ctx.fillStyle = '#f00';
+        ctx.beginPath();
+        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Eyes
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(x - size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
+        ctx.arc(x + size / 4, y - size / 6, size / 6, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Antennae
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(x - size / 4, y - size / 3);
+        ctx.lineTo(x - size / 2, y - size / 1.5);
+        ctx.moveTo(x + size / 4, y - size / 3);
+        ctx.lineTo(x + size / 2, y - size / 1.5);
+        ctx.stroke();
+      }
+    };
+    
+    const powerUpImg = {
+      draw(ctx, x, y, size) {
+        // Draw power-up as a shield
+        ctx.fillStyle = '#0f0';
+        ctx.beginPath();
+        ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(x, y, size / 2 - 2, 0, Math.PI * 2);
+        ctx.stroke();
+        
+        ctx.fillStyle = '#fff';
+        ctx.font = `bold ${size / 2}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('+', x, y);
+      }
+    };
+
+    function startGame() {
       // Reset game state
       score = 0;
-      moves = 0;
-      pairsFound = 0;
-      firstCard = null;
-      secondCard = null;
-      canClick = true;
+      level = 1;
+      lives = 3;
+      gameSpeed = 1;
+      isGameOver = false;
       
+      player = {
+        x: gameCanvas.width / 2 - 25,
+        y: gameCanvas.height - 60,
+        width: 50,
+        height: 50,
+        speed: 5,
+        color: '#0ef'
+      };
+      
+      bullets = [];
+      enemies = [];
+      explosions = [];
+      powerUps = [];
+      
+      // Update displays
       updateDisplays();
-    }
-
-    // Shuffle array
-    function shuffleArray(array) {
-      const newArray = [...array];
-      for (let i = newArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-      }
-      return newArray;
-    }
-
-    // Start game
-    function startGame() {
-      initGame();
-      gamePopup.style.display = 'flex';
+      
+      // Start game loop
+      if (gameInterval) clearInterval(gameInterval);
+      gameInterval = setInterval(gameLoop, 16);
+      
+      // Draw initial state
       drawGame();
     }
 
-    // Reset game
     function resetGame() {
-      initGame();
+      clearInterval(gameInterval);
+    }
+
+    function gameLoop() {
+      if (isGameOver) return;
+      
+      update();
       drawGame();
     }
 
-    // Update displays
-    function updateDisplays() {
-      scoreDisplay.textContent = `Score: ${score}`;
-      movesDisplay.textContent = `Moves: ${moves}`;
-      pairsDisplay.textContent = `Pairs: ${pairsFound}/${totalPairs}`;
-    }
-
-    // Draw game
-    function drawGame() {
-      const ctx = gameCanvas.getContext('2d');
-      const width = gameCanvas.width;
-      const height = gameCanvas.height;
-      const padding = 10;
-      const cardWidth = (width - padding * 5) / 4;
-      const cardHeight = (height - padding * 3) / 4;
+    function update() {
+      // Move player
+      if (keys.ArrowLeft && player.x > 0) {
+        player.x -= player.speed;
+      }
+      if (keys.ArrowRight && player.x < gameCanvas.width - player.width) {
+        player.x += player.speed;
+      }
+      if (keys.ArrowUp && player.y > 0) {
+        player.y -= player.speed;
+      }
+      if (keys.ArrowDown && player.y < gameCanvas.height - player.height) {
+        player.y += player.speed;
+      }
       
-      // Clear canvas
-      ctx.fillStyle = '#111';
-      ctx.fillRect(0, 0, width, height);
+      // Shoot bullets
+      const now = Date.now();
+      if (keys.Space && now - lastShot > shotDelay) {
+        bullets.push({
+          x: player.x + player.width / 2 - 2.5,
+          y: player.y,
+          width: 5,
+          height: 15,
+          speed: 7 * gameSpeed,
+          color: '#ff3e9d'
+        });
+        lastShot = now;
+      }
       
-      // Draw grid background
-      ctx.fillStyle = 'rgba(14, 255, 255, 0.05)';
-      for (let y = 0; y < 4; y++) {
-        for (let x = 0; x < 4; x++) {
-          if ((x + y) % 2 === 0) {
-            ctx.fillRect(
-              x * (cardWidth + padding) + padding,
-              y * (cardHeight + padding) + padding,
-              cardWidth,
-              cardHeight
-            );
+      // Move bullets
+      for (let i = bullets.length - 1; i >= 0; i--) {
+        bullets[i].y -= bullets[i].speed;
+        
+        // Remove bullets that are off screen
+        if (bullets[i].y < 0) {
+          bullets.splice(i, 1);
+        }
+      }
+      
+      // Spawn enemies based on level
+      const spawnRate = 0.02 + (level * 0.005);
+      if (Math.random() < spawnRate) {
+        const size = 20 + Math.random() * 20;
+        enemies.push({
+          x: Math.random() * (gameCanvas.width - size),
+          y: -size,
+          width: size,
+          height: size,
+          speed: (1 + Math.random() * 2) * gameSpeed,
+          health: Math.ceil(level / 2),
+          maxHealth: Math.ceil(level / 2)
+        });
+      }
+      
+      // Spawn power-ups occasionally
+      if (Math.random() < 0.005) {
+        powerUps.push({
+          x: Math.random() * (gameCanvas.width - 20),
+          y: -20,
+          width: 20,
+          height: 20,
+          speed: 2 * gameSpeed,
+          type: Math.random() > 0.5 ? 'life' : 'power'
+        });
+      }
+      
+      // Move enemies and check collisions
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        enemies[i].y += enemies[i].speed;
+        
+        // Check if enemy hit player
+        if (checkCollision(enemies[i], player)) {
+          lives--;
+          updateDisplays();
+          
+          // Create explosion
+          explosions.push({
+            x: enemies[i].x + enemies[i].width / 2,
+            y: enemies[i].y + enemies[i].height / 2,
+            size: enemies[i].width * 1.5,
+            frames: 10
+          });
+          
+          enemies.splice(i, 1);
+          
+          if (lives <= 0) {
+            gameOver();
+          }
+          continue;
+        }
+        
+        // Check if enemy reached bottom
+        if (enemies[i].y > gameCanvas.height) {
+          enemies.splice(i, 1);
+          continue;
+        }
+        
+        // Check bullet collisions
+        for (let j = bullets.length - 1; j >= 0; j--) {
+          if (checkCollision(bullets[j], enemies[i])) {
+            enemies[i].health--;
+            
+            // Create small explosion
+            explosions.push({
+              x: bullets[j].x + bullets[j].width / 2,
+              y: bullets[j].y + bullets[j].height / 2,
+              size: 15,
+              frames: 5
+            });
+            
+            bullets.splice(j, 1);
+            
+            if (enemies[i].health <= 0) {
+              score += 10 * level;
+              updateDisplays();
+              
+              // Create bigger explosion
+              explosions.push({
+                x: enemies[i].x + enemies[i].width / 2,
+                y: enemies[i].y + enemies[i].height / 2,
+                size: enemies[i].width * 1.5,
+                frames: 15
+              });
+              
+              // Chance to drop power-up
+              if (Math.random() < 0.2) {
+                powerUps.push({
+                  x: enemies[i].x + enemies[i].width / 2 - 10,
+                  y: enemies[i].y + enemies[i].height / 2 - 10,
+                  width: 20,
+                  height: 20,
+                  speed: 2,
+                  type: Math.random() > 0.5 ? 'life' : 'power'
+                });
+              }
+              
+              enemies.splice(i, 1);
+              
+              // Check level progression
+              if (score >= level * 100) {
+                levelUp();
+              }
+            }
+            break;
           }
         }
       }
       
-      // Draw cards
-      for (let i = 0; i < cards.length; i++) {
-        const row = Math.floor(i / 4);
-        const col = i % 4;
-        const x = col * (cardWidth + padding) + padding;
-        const y = row * (cardHeight + padding) + padding;
+      // Move power-ups
+      for (let i = powerUps.length - 1; i >= 0; i--) {
+        powerUps[i].y += powerUps[i].speed;
         
-        // Update card position and size
-        cards[i].x = x;
-        cards[i].y = y;
-        cards[i].width = cardWidth;
-        cards[i].height = cardHeight;
-        
-        // Draw card background
-        ctx.fillStyle = cards[i].revealed ? '#0ef' : '#ff3e9d';
-        ctx.fillRect(x, y, cardWidth, cardHeight);
-        ctx.strokeStyle = 'white';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(x, y, cardWidth, cardHeight);
-        
-        // Draw symbol if revealed
-        if (cards[i].revealed || cards[i].matched) {
-          ctx.fillStyle = 'white';
-          ctx.font = `${Math.min(cardWidth, cardHeight) * 0.5}px Arial`;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(cards[i].symbol, x + cardWidth / 2, y + cardHeight / 2);
+        // Check if power-up collected
+        if (checkCollision(powerUps[i], player)) {
+          if (powerUps[i].type === 'life') {
+            lives++;
+          } else {
+            // Power-up effect (faster shooting temporarily)
+            player.speed *= 1.5;
+            setTimeout(() => {
+              player.speed /= 1.5;
+            }, 5000);
+          }
+          updateDisplays();
+          powerUps.splice(i, 1);
+          continue;
         }
         
-        // Draw checkmark if matched
-        if (cards[i].matched) {
-          ctx.fillStyle = 'rgba(0, 255, 0, 0.3)';
-          ctx.fillRect(x, y, cardWidth, cardHeight);
+        // Remove if off screen
+        if (powerUps[i].y > gameCanvas.height) {
+          powerUps.splice(i, 1);
+        }
+      }
+      
+      // Update explosions
+      for (let i = explosions.length - 1; i >= 0; i--) {
+        explosions[i].frames--;
+        if (explosions[i].frames <= 0) {
+          explosions.splice(i, 1);
         }
       }
     }
 
-    // Handle card click
-    function handleCardClick(x, y) {
-      if (!canClick) return;
+    function checkCollision(obj1, obj2) {
+      return obj1.x < obj2.x + obj2.width &&
+             obj1.x + obj1.width > obj2.x &&
+             obj1.y < obj2.y + obj2.height &&
+             obj1.y + obj1.height > obj2.y;
+    }
+
+    function drawGame() {
+      const ctx = gameCanvas.getContext('2d');
       
-      // Find clicked card
-      const clickedCard = cards.find(card => 
-        x >= card.x && x <= card.x + card.width &&
-        y >= card.y && y <= card.y + card.height &&
-        !card.revealed && !card.matched
-      );
+      // Clear canvas
+      ctx.fillStyle = '#111';
+      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
       
-      if (!clickedCard) return;
-      
-      // Reveal the card
-      clickedCard.revealed = true;
-      drawGame();
-      
-      // If this is the first card in the pair
-      if (!firstCard) {
-        firstCard = clickedCard;
-        return;
+      // Draw starry background
+      ctx.fillStyle = '#fff';
+      for (let i = 0; i < 50; i++) {
+        const x = Math.random() * gameCanvas.width;
+        const y = (Math.random() * gameCanvas.height + Date.now() / 100) % gameCanvas.height;
+        const size = Math.random() * 2;
+        ctx.fillRect(x, y, size, size);
       }
       
-      // If this is the second card in the pair
-      secondCard = clickedCard;
-      moves++;
-      canClick = false;
-      
-      // Check for match
-      if (firstCard.symbol === secondCard.symbol) {
-        // Match found
-        firstCard.matched = true;
-        secondCard.matched = true;
-        pairsFound++;
-        score += 10;
+      // Draw explosions
+      for (let explosion of explosions) {
+        const radius = explosion.size * (1 - explosion.frames / 15);
+        const gradient = ctx.createRadialGradient(
+          explosion.x, explosion.y, 0,
+          explosion.x, explosion.y, radius
+        );
+        gradient.addColorStop(0, '#ff3e9d');
+        gradient.addColorStop(0.5, '#f80');
+        gradient.addColorStop(1, 'transparent');
         
-        // Check for win
-        if (pairsFound === totalPairs) {
-          setTimeout(() => {
-            alert(`Congratulations! You won with ${moves} moves and a score of ${score}!`);
-          }, 500);
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(explosion.x, explosion.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      
+      // Draw bullets
+      for (let bullet of bullets) {
+        ctx.fillStyle = bullet.color;
+        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+        
+        // Add glow effect
+        ctx.shadowColor = bullet.color;
+        ctx.shadowBlur = 5;
+        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+        ctx.shadowBlur = 0;
+      }
+      
+      // Draw enemies
+      for (let enemy of enemies) {
+        enemyImg.draw(ctx, enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width);
+        
+        // Draw health bar
+        if (enemy.health < enemy.maxHealth) {
+          const healthWidth = enemy.width * (enemy.health / enemy.maxHealth);
+          ctx.fillStyle = '#f00';
+          ctx.fillRect(enemy.x, enemy.y - 10, enemy.width, 3);
+          ctx.fillStyle = '#0f0';
+          ctx.fillRect(enemy.x, enemy.y - 10, healthWidth, 3);
         }
-        
-        updateDisplays();
-        drawGame();
-        canClick = true;
-      } else {
-        // No match - flip cards back after delay
-        setTimeout(() => {
-          firstCard.revealed = false;
-          secondCard.revealed = false;
-          firstCard = null;
-          secondCard = null;
-          canClick = true;
-          drawGame();
-        }, 1000);
       }
       
-      firstCard = null;
-      secondCard = null;
+      // Draw power-ups
+      for (let powerUp of powerUps) {
+        powerUpImg.draw(ctx, powerUp.x + powerUp.width / 2, powerUp.y + powerUp.height / 2, powerUp.width);
+      }
+      
+      // Draw player
+      playerImg.draw(ctx);
+      
+      // Draw HUD
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+      ctx.fillRect(0, 0, gameCanvas.width, 30);
+      
+      ctx.fillStyle = '#0ef';
+      ctx.font = '14px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText(`Score: ${score}`, 10, 20);
+      
+      ctx.textAlign = 'center';
+      ctx.fillText(`Level: ${level}`, gameCanvas.width / 2, 20);
+      
+      ctx.textAlign = 'right';
+      ctx.fillText(`Lives: ${lives}`, gameCanvas.width - 10, 20);
+    }
+
+    function updateDisplays() {
+      scoreDisplay.textContent = `Score: ${score}`;
+      levelDisplay.textContent = `Level: ${level}`;
+      livesDisplay.textContent = `Lives: ${lives}`;
+    }
+
+    function levelUp() {
+      level++;
+      gameSpeed *= 1.1;
       updateDisplays();
+      
+      // Flash the screen
+      const ctx = gameCanvas.getContext('2d');
+      ctx.fillStyle = 'rgba(14, 255, 255, 0.3)';
+      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+      
+      // Show level up message
+      ctx.fillStyle = '#ff3e9d';
+      ctx.font = '24px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(`LEVEL ${level}`, gameCanvas.width / 2, gameCanvas.height / 2);
     }
 
-    // Handle mouse/touch events
-    gameCanvas.addEventListener('click', (e) => {
-      const rect = gameCanvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      handleCardClick(x, y);
+    function gameOver() {
+      isGameOver = true;
+      clearInterval(gameInterval);
+      
+      const ctx = gameCanvas.getContext('2d');
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+      
+      ctx.fillStyle = '#f00';
+      ctx.font = '30px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('GAME OVER', gameCanvas.width / 2, gameCanvas.height / 2 - 30);
+      
+      ctx.fillStyle = '#fff';
+      ctx.font = '20px Arial';
+      ctx.fillText(`Final Score: ${score}`, gameCanvas.width / 2, gameCanvas.height / 2 + 20);
+      
+      ctx.fillStyle = '#0ef';
+      ctx.font = '16px Arial';
+      ctx.fillText('Click Restart to play again', gameCanvas.width / 2, gameCanvas.height / 2 + 60);
+    }
+
+    // Handle keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (gamePopup.style.display !== 'flex') return;
+      
+      switch(e.key) {
+        case 'ArrowLeft': keys.ArrowLeft = true; break;
+        case 'ArrowRight': keys.ArrowRight = true; break;
+        case 'ArrowUp': keys.ArrowUp = true; break;
+        case 'ArrowDown': keys.ArrowDown = true; break;
+        case ' ': keys.Space = true; e.preventDefault(); break;
+      }
     });
 
-    gameCanvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      const rect = gameCanvas.getBoundingClientRect();
-      const touch = e.touches[0];
-      const x = touch.clientX - rect.left;
-      const y = touch.clientY - rect.top;
-      handleCardClick(x, y);
-    }, { passive: false });
+    document.addEventListener('keyup', (e) => {
+      switch(e.key) {
+        case 'ArrowLeft': keys.ArrowLeft = false; break;
+        case 'ArrowRight': keys.ArrowRight = false; break;
+        case 'ArrowUp': keys.ArrowUp = false; break;
+        case 'ArrowDown': keys.ArrowDown = false; break;
+        case ' ': keys.Space = false; e.preventDefault(); break;
+      }
+    });
 
     // Show/hide game popup
-    gameBtn.addEventListener('click', startGame);
+    gameBtn.addEventListener('click', () => {
+      gamePopup.style.display = 'flex';
+      startGame();
+    });
+
     closeGame.addEventListener('click', () => {
       gamePopup.style.display = 'none';
+      resetGame();
     });
-    restartGame.addEventListener('click', resetGame);
-    restartBtn.addEventListener('click', resetGame);
+
+    restartGame.addEventListener('click', () => {
+      resetGame();
+      startGame();
+    });
 
     // Set canvas size properly
     function resizeCanvas() {
       const size = Math.min(400, window.innerWidth * 0.9);
       gameCanvas.width = size;
-      gameCanvas.height = 250;
-      drawGame();
+      gameCanvas.height = 250; // Smaller height
+      
+      // Adjust player position if canvas size changes
+      if (player) {
+        player.x = gameCanvas.width / 2 - 25;
+        player.y = gameCanvas.height - 60;
+      }
     }
 
     window.addEventListener('load', () => {
