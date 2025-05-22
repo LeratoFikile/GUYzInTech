@@ -562,23 +562,79 @@
       font-size: 0.9rem; /* Smaller */
     }
 
-    .community-image {
-      height: 200px; /* Smaller */
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 1.5rem auto; /* Reduced */
-      border: 1px solid rgba(14, 255, 255, 0.2);
-      color: #0ef;
-      font-size: 1rem; /* Smaller */
-      max-width: 100%; /* Full width */
-    }
+.community-slideshow {
+  position: relative;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(14, 255, 255, 0.2);
+}
+
+.slideshow-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 400px;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slideshow-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.slideshow-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slideshow-dot.active {
+  background: #0ef;
+}
+
+.slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow-arrow.prev {
+  left: 10px;
+}
+
+.slideshow-arrow.next {
+  right: 10px;
+}
 
     /* Game popup styles */
-    /* Game popup styles */
- /* Game popup styles */
     .game-popup {
       display: none;
       position: fixed;
@@ -721,8 +777,6 @@
       background: rgba(255, 255, 255, 0.4);
     }
 
-
-
     /* Contact Section Styles */
     .contact-section {
       padding: 70px 5%; /* Reduced */
@@ -770,9 +824,10 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* Changed contact method colors to be less distracting */
     .contact-method:hover {
-      background: rgba(14, 255, 255, 0.1);
-      border-color: rgba(14, 255, 255, 0.3);
+      background: rgba(14, 255, 255, 0.05);
+      border-color: rgba(14, 255, 255, 0.2);
       transform: translateY(-3px);
     }
 
@@ -787,24 +842,41 @@
     }
 
     .whatsapp-icon {
-      background: #25D366;
-      color: white;
+      background: rgba(37, 211, 102, 0.2); /* More subtle color */
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .email-icon {
-      background: #D44638;
-      color: white;
+      background: rgba(212, 70, 56, 0.2); /* More subtle color */
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .contact-text h4 {
       margin-bottom: 0.2rem; /* Reduced */
-      color: #ff3e9d;
+      color: rgba(255, 255, 255, 0.9); /* Changed from bright color */
       font-size: 1rem; /* Smaller */
     }
 
     .contact-text p {
       opacity: 0.9;
       font-size: 0.85rem; /* Smaller */
+      color: rgba(255, 255, 255, 0.7); /* Lighter text */
+    }
+
+    /* Changed join option colors to be less distracting */
+    .whatsapp-option {
+      background: rgba(37, 211, 102, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .email-option {
+      background: rgba(212, 70, 56, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .join-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
     }
 
     .contact-form {
@@ -1119,12 +1191,12 @@
     }
 
     .whatsapp-option .icon {
-      background: #25D366;
+      background: rgba(37, 211, 102, 0.5);
       color: white;
     }
 
     .email-option .icon {
-      background: #D44638;
+      background: rgba(212, 70, 56, 0.5);
       color: white;
     }
 
@@ -1212,7 +1284,7 @@
     }
 
     .whatsapp-link {
-      background: #25D366;
+      background: rgba(37, 211, 102, 0.7);
     }
 
     .instagram-link {
@@ -1224,7 +1296,7 @@
     }
 
     .email-link {
-      background: #D44638;
+      background: rgba(212, 70, 56, 0.7);
     }
 
     .footer-links {
@@ -1604,6 +1676,66 @@
         height: 60px;
       }
     }
+    /* Game instructions popup */
+.game-instructions {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1001;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.instructions-container {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #ff3e9d;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 62, 157, 0.5);
+}
+
+.instructions-container h2 {
+  color: #0ef;
+  margin-bottom: 1rem;
+}
+
+.instructions-container p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.instructions-list {
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.instructions-list li {
+  margin-bottom: 0.8rem;
+}
+
+.start-game-btn {
+  padding: 0.8rem 2rem;
+  background: linear-gradient(90deg, #ff3e9d, #0ef);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.start-game-btn:hover {
+  transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
@@ -1630,7 +1762,7 @@
       <h1>Redefining <span class="gradient-text">Technology</span> for Everyone</h1>
       <p class="tagline">Women-led innovation creating impactful, community-driven solutions through education, outreach, and cutting-edge development.</p>
       <a href="#about" class="btn">Learn More</a>
-      <button id="game-btn" class="btn" style="margin-top: 20px;">Play Game</button>
+     <button id="game-btn" class="btn" style="margin-top: 20px;">Play Game</button>
       
       <div class="values">
         <div class="value-card">
@@ -1775,51 +1907,70 @@
   </div>
 </section>
 
-  <!-- Community Section -->
-   <section id="community" class="community-section">
-    <h2 class="section-title">Our Community</h2>
-    
-    <div class="quote">
-      "Alone we can do so little; together we can code the future."
-      <span class="gradient-text">- Our Community Mantra</span>
+<!-- Community Section -->
+<section id="community" class="community-section">
+  <h2 class="section-title">Our Community</h2>
+  
+  <div class="quote">
+    "Alone we can do so little; together we can code the future."
+    <span class="gradient-text">- Our Community Mantra</span>
+  </div>
+  
+  <p>At GUYz, we believe technology thrives when it's built by and for diverse communities. Our outreach programs create spaces where everyone can learn, grow, and contribute to the digital world.</p>
+  
+  <div class="community-stats">
+    <div class="community-stat">
+      <h3>1</h3>
+      <p>Workshops Held</p>
     </div>
-    
-    <p>At GUYz, we believe technology thrives when it's built by and for diverse communities. Our outreach programs create spaces where everyone can learn, grow, and contribute to the digital world.</p>
-    
-    <div class="community-stats">
-      <div class="community-stat">
-        <h3>1</h3>
-        <p>Workshops Held</p>
+    <div class="community-stat">
+      <h3>200</h3>
+      <p>Community Members</p>
+    </div>
+    <div class="community-stat">
+      <h3>0</h3>
+      <p>Partner Organizations</p>
+    </div>
+  </div>
+  
+  <div class="community-slideshow">
+    <div class="slideshow-container" id="slideshow-container">
+      <div class="slide">
+        <img src="com.jpg" alt="Community Image 1">
       </div>
-      <div class="community-stat">
-        <h3>200</h3>
-        <p>Community Members</p>
+      <div class="slide">
+        <img src="comm.jpg" alt="Community Image 2">
       </div>
-      <div class="community-stat">
-        <h3>0</h3>
-        <p>Partner Organizations</p>
+      <div class="slide">
+        <img src="commm.jpg" alt="Community Image 3">
+      </div>
+      <div class="slide">
+        <img src="commmm.jpg" alt="Community Image 4">
+      </div>
+      <div class="slide">
+        <img src="com.jpg" alt="Community Image 5">
       </div>
     </div>
-    
-    <div class="community-image">
-       <img src="com.jpg" alt="RoboCodes Project">
-    </div>
-    
-    <div class="join-options">
-      <a href="https://wa.me/+27785947191" class="join-option whatsapp-option" target="_blank">
-        <div class="icon">
-          <i class="fab fa-whatsapp"></i>
-        </div>
-        <span>Join via WhatsApp</span>
-      </a>
-      <a href="mailto:guyzconnect@gmail.com" class="join-option email-option" target="_blank">
-        <div class="icon">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <span>Join via Email</span>
-      </a>
-    </div>
-  </section>
+    <button class="slideshow-arrow prev" id="prev-slide">‹</button>
+    <button class="slideshow-arrow next" id="next-slide">›</button>
+    <div class="slideshow-nav" id="slideshow-dots"></div>
+  </div>
+  
+  <div class="join-options">
+    <a href="https://wa.me/+27785947191" class="join-option whatsapp-option" target="_blank">
+      <div class="icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <span>Join via WhatsApp</span>
+    </a>
+    <a href="mailto:guyzconnect@gmail.com" class="join-option email-option" target="_blank">
+      <div class="icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <span>Join via Email</span>
+    </a>
+  </div>
+</section>
 
   <!-- Services Section -->
   <section class="services-section">
@@ -1842,10 +1993,7 @@
         <p>Specializing in gamified experiences, we help you engage your audience through game mechanics, rewards systems, and interactive elements that boost participation and retention.</p>
         <a href="#contact" class="btn">Talk to us</a>
       </div>
-
-
-
-      <div class="service-card">
+            <div class="service-card">
         <h3><span class="icon">🌐</span> Digital Literacy Programs</h3>
         <p>Comprehensive training programs designed to equip individuals and organizations with essential digital skills for the modern world.</p>
         <a href="#contact" class="btn">Talk to us</a>
@@ -2086,7 +2234,23 @@
     </div>
   </div>
 </div>
-
+<!-- Game Instructions Popup -->
+<div class="game-instructions" id="game-instructions">
+  <div class="instructions-container">
+    <h2>GUYz Letter Runner</h2>
+    <p>Collect letters to spell "GUYz" and "GUYzInTech" while avoiding obstacles!</p>
+    
+    <ul class="instructions-list">
+      <li>Use <strong>LEFT</strong> and <strong>RIGHT</strong> arrow keys to move between lanes</li>
+      <li>Collect letters to spell the target words</li>
+      <li>Avoid the pink obstacles - they'll end your run!</li>
+      <li>Complete words for bonus points</li>
+      <li>The game gets faster as you play</li>
+    </ul>
+    
+    <button class="start-game-btn" id="start-game">Start Game</button>
+  </div>
+</div>
 <!-- Game Popup - Subway Surfers Style Game -->
   <div class="game-popup" id="game-popup">
     <div class="game-container">
@@ -2341,12 +2505,114 @@
     
     pulse();
 
-// [Previous JavaScript remains exactly the same until the game section]
+    // Community Slideshow
+    const slideshowContainer = document.getElementById('slideshow-container');
+    const slides = document.querySelectorAll('.slide');
+    const prevSlideBtn = document.getElementById('prev-slide');
+    const nextSlideBtn = document.getElementById('next-slide');
+    const dotsContainer = document.getElementById('slideshow-dots');
+    let currentSlide = 0;
+
+    // Create dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('slideshow-dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.slideshow-dot');
+
+    function updateSlideshow() {
+      slideshowContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update dots
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateSlideshow();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateSlideshow();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateSlideshow();
+    }
+
+    // Auto-advance slides every 5 seconds
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    // Pause on hover
+    const slideshow = document.querySelector('.community-slideshow');
+    slideshow.addEventListener('mouseenter', () => {
+      clearInterval(slideInterval);
+    });
+
+    slideshow.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(nextSlide, 5000);
+    });
+
+    prevSlideBtn.addEventListener('click', () => {
+      prevSlide();
+      resetSlideInterval();
+    });
+
+    nextSlideBtn.addEventListener('click', () => {
+      nextSlide();
+      resetSlideInterval();
+    });
+
+    function resetSlideInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Initialize slideshow
+    updateSlideshow();
+
+    // Game instructions functionality
+    const gameInstructions = document.getElementById('game-instructions');
+    const startGameBtn = document.getElementById('start-game');
+    const gameBtn = document.getElementById('game-btn');
+
+    // Show instructions when play game is clicked
+    gameBtn.addEventListener('click', () => {
+      gameInstructions.style.display = 'flex';
+    });
+
+    // Start game when instructions are dismissed
+    startGameBtn.addEventListener('click', () => {
+      gameInstructions.style.display = 'none';
+      gamePopup.style.display = 'flex';
+      resizeCanvas();
+      initGame();
+      
+      // Start game loop
+      if (gameInterval) clearInterval(gameInterval);
+      gameInterval = setInterval(updateGame, 16);
+      gameStarted = true;
+    });
+
+    // Close instructions if clicked outside
+    gameInstructions.addEventListener('click', (e) => {
+      if (e.target === gameInstructions) {
+        gameInstructions.style.display = 'none';
+      }
+    });
 
     // Space Invaders Style Game
- // Subway Surfers Style Game
     const gamePopup = document.getElementById('game-popup');
-    const gameBtn = document.getElementById('game-btn');
     const closeGame = document.getElementById('close-game');
     const restartGame = document.getElementById('restart-game');
     const gameCanvas = document.getElementById('game-canvas');
@@ -2723,17 +2989,6 @@
     rightBtn.addEventListener('touchend', () => { keys.ArrowRight = false; });
     
     // Show/hide game popup
-    gameBtn.addEventListener('click', () => {
-      gamePopup.style.display = 'flex';
-      resizeCanvas();
-      initGame();
-      
-      // Start game loop
-      if (gameInterval) clearInterval(gameInterval);
-      gameInterval = setInterval(updateGame, 16);
-      gameStarted = true;
-    });
-    
     closeGame.addEventListener('click', () => {
       gamePopup.style.display = 'none';
       clearInterval(gameInterval);
@@ -2788,15 +3043,6 @@
     
     // Initialize footer particles
     createFooterParticles();
-
-    
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      if (gamePopup.style.display === 'flex') {
-        resizeCanvas();
-        drawGame();
-      }
-    });
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
