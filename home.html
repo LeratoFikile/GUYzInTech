@@ -248,14 +248,6 @@
       margin-bottom: 5px;
     }
 
-    .scroll-indicator .arrow {
-      border: solid #0ef;
-      border-width: 0 2px 2px 0;
-      display: inline-block;
-      padding: 3px;
-      transform: rotate(45deg);
-    }
-
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0) translateX(-50%);
@@ -340,7 +332,6 @@
 
     .about-image {
       flex: 1;
-      min-height: 250px; /* Smaller */
       width: 100%; /* Full width */
       background-color: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(14, 255, 255, 0.2);
@@ -351,6 +342,14 @@
       color: #0ef;
       font-size: 1rem; /* Smaller */
       backdrop-filter: blur(5px);
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
     }
 
     .mission-vision {
@@ -458,25 +457,27 @@
     }
 
     .slider-btn {
-      width: 40px; /* Smaller */
-      height: 40px;
+      width: 50px; /* Larger */
+      height: 50px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ff3e9d, #0ef);
-      border: none;
-      color: white;
-      font-size: 1.2rem; /* Smaller */
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #0ef;
+      color: #0ef;
+      font-size: 1.5rem; /* Larger */
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(14, 255, 255, 0.5); /* Smaller shadow */
+      box-shadow: 0 0 10px rgba(14, 255, 255, 0.5);
       margin: 0 10px; /* Reduced margin */
     }
 
     .slider-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255, 62, 157, 0.7); /* Smaller shadow */
+      background: linear-gradient(135deg, #ff3e9d, #0ef);
+      color: white;
+      box-shadow: 0 0 20px rgba(14, 255, 255, 0.7);
     }
 
     .project-image {
@@ -612,26 +613,34 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #0ef;
+  border: 2px solid #0ef;
+  width: 50px; /* Larger */
+  height: 50px;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Larger */
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 15px rgba(14, 255, 255, 0.5);
+  transition: all 0.3s;
+}
+
+.slideshow-arrow:hover {
+  background: linear-gradient(135deg, #ff3e9d, #0ef);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
 }
 
 .slideshow-arrow.prev {
-  left: 10px;
+  left: 15px; /* Slightly more space */
 }
 
 .slideshow-arrow.next {
-  right: 10px;
+  right: 15px; /* Slightly more space */
 }
 
     /* Game popup styles */
@@ -1141,7 +1150,7 @@
 
     .service-card p {
       margin-bottom: 1.2rem; /* Reduced */
-      font-size: 0.95rem; /* Smaller */
+            font-size: 0.95rem; /* Smaller */
     }
 
     .service-card .btn {
@@ -1797,7 +1806,6 @@
 
     <div class="scroll-indicator">
       <div class="line"></div>
-      <div class="arrow"></div>
     </div>
   </div>
 
@@ -1820,7 +1828,7 @@
       </div>
       
       <div class="about-image">
-        [Team Photo Placeholder]
+         <img src="team.jpg" alt="GUYz in Tech Team" style="width:100%; height:auto;">
       </div>
     </div>
     
@@ -2161,7 +2169,7 @@
           <span class="tech-tag">Three.js</span>
           <span class="tech-tag">Visual Studio Code</span>
           <span class="tech-tag">Firebase</span>
-          <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Node.js</span>
           <span class="tech-tag">Express</span>
         </div>
       </div>
@@ -3150,7 +3158,7 @@
     const botResponses = {
       'work with us': "We'd love to collaborate! Here's how to reach us:\n\n📧 guyzconnect@gmail.com\n📱 +27 68 196 0560\n💬 WhatsApp: +27 68 196 0560\n\nOr fill out our contact form below!",
       'projects': "Our current projects:\n\n🤖 RoboCodes - AI education platform\n🛡️ QhaweLami - GBV prevention app\n💧 AquaGuard - Water monitoring system\n\nClick any project to learn more!",
-      'community': "Join our community through:\n\n🔹 Monthly tech workshops\n🔹 Hackathons\n🔹 Mentorship programs\n🔹 Digital literacy initiatives\n\nVisit our Community section for upcoming events!",
+      'community': "Join our community through:\n\n🔹 Monthly tech workshops\n🔹 Hackathons\n🔹 Mentorship programs\n🔹 Digital literacy initiatives\n\nVisit our Community section for upcoming events",
       'services': "We offer:\n\n💻 Custom Web & App Development\n🎮 Gamification Solutions\n🤖 AI & IoT Integration\n📚 Tech Education Programs\n\nLet us know what you're interested in!",
       'team': "GUYz is a women-led tech collective with diverse expertise:\n\n👩‍💻 Developers\n🎨 Designers\n📊 Data Scientists\n👩‍🏫 Educators\n\nWe're passionate about inclusive tech solutions!",
       'mission': "Our mission is to create inclusive, real-world tech solutions that empower individuals, strengthen communities, and make technology accessible for all.",
